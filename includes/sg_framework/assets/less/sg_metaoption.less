@@ -1,0 +1,97 @@
+.sg-to-wrap{ 
+	&, a, h2, h3{
+		color:#666;	
+	}
+	padding:20px 10px; 
+}
+
+.sg-to-container{ 
+	width:900px;
+	h2{ font-weight:normal; padding-top:0; }
+	ul{ margin:0; padding:0; }
+	li{ list-style:none; }
+	.sg-form-tab{ 
+		background:@base_bg_color; border:@base_border_prop; border-top:0 none; overflow:hidden;
+		
+		.sg-form-tab-nav{
+			display:none;
+		}
+		.sg-form-tab-group{
+			border-left:0 none; min-height:500px;	
+			h2{ display:block; }
+		}
+		
+		&.collapse{
+			.sg-form-tab-nav{
+				display:block;
+			}
+			.sg-form-tab-group{ 
+				border-left:@base_border_prop;
+			}
+		}
+	}
+}
+
+.sg-to-header{ 
+	border:#ddd solid 1px; overflow:hidden; padding:10px 15px; text-shadow:rgba(255,255,255,0.9) 0 1px 0;
+	border-radius:4px 4px 0 0;
+	background:#f1f1f1; 
+	
+	.sg-to-logo{ float:left; margin-top:5px; }
+	.icon32{ float:right; margin:0; }
+}
+
+.sg-to-toolbar{ 
+	padding:10px 15px; background:#fff; border:@base_border_prop; border-top:0 none; overflow:hidden; clear:both;
+}
+
+.sg-to-footer{ text-align:center; padding:15px; }
+
+.sg-to-tab-nav{
+	float:left; width:220px; z-index:999;
+	
+	li{ 
+		border-bottom:#ddd solid 1px; margin:0;
+		ul{ display:none; border-top:#ddd solid 1px; background:#eaeaea; }
+		li{ border-bottom:0 none; }
+				
+		&.current{
+			background:#fff; margin-right:-1px;
+			> a{ opacity:1; }
+			> ul{ display:block; }	
+			&.parent{
+				background:none;
+				.icon-toggle{ background-position:0 2px; }
+			}
+		}
+		&:hover a{ opacity:1; }
+	}
+	a{ 
+		display:block; padding:10px 15px; font-weight:600; line-height:1.2em; cursor:pointer; text-decoration:none; position:relative;
+		.sg-icon{ position:absolute; right:10px; }
+	}
+	
+	.sg-to-icon{ display:inline-block; margin-right:5px; vertical-align:middle; }
+}
+
+.sg-to-tab-group{ 
+	background:#fff; overflow:hidden; padding:15px;
+	
+	h2{ padding-bottom:5px; margin-bottom:15px; border-bottom:#eee solid 3px; }
+}
+
+.sg-to-logo{
+	small{ font-size:12px; line-height:1em; vertical-align:baseline; color:#999; }	
+}
+
+.sg-to-expand{
+	&.button{ 
+		padding:0 4px;
+		
+		.sg-icon{ margin-top:-4px; } 
+	}
+}
+
+.sg-to-title + .section{ 
+	.title{ padding-top:0; }
+}
