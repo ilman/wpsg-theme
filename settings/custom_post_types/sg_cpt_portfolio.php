@@ -15,7 +15,7 @@ function sg_cpt_portfolio() {
 		)
 	);
 }
-add_action('init', 'sg_cpt_portfolio');
+//add_action('init', 'sg_cpt_portfolio');
 
 
 /*----metabox for custom post type----*/
