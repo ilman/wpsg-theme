@@ -63,6 +63,7 @@ for($i=9; $i<72; $i++){
 }
 
 $option_color_sets = array();
+$option_color_sets[] =array('label'=>'None', 'value'=>'');	
 for($i=1; $i<=10; $i++){
 	$option_color_sets[] = array('label'=>'Color Set '.$i, 'value'=>'color-set-'.$i);	
 }
@@ -161,6 +162,20 @@ $fields[] = array(
 			'id'		=> 'favicon',
 			'default'	=> 'http://labs.caliberi.com/fchblog/wp-content/themes/falcon_blog/assets/img/falcon-logo.png',
 			'type'		=> 'upload'
+		),
+		array(  
+			'label'		=> 'Add Section',
+			'desc'		=> 'Add section wrapper in content',
+			'id' 		=> 'add_section',  
+			'default'	=> 'true', 
+			'type'		=> 'checkbox'
+		),
+		array(  
+			'label'		=> 'Add Container',
+			'desc'		=> 'Add container wrapper in content',
+			'id' 		=> 'add_container',  
+			'default'	=> 'true', 
+			'type'		=> 'checkbox'
 		),
 	)
 );	
@@ -366,12 +381,6 @@ $fields[] = array(
 					'options'	=> $option_body_layouts
 				),
 				array (  
-					'label'		=> 'Enable Responsive',
-					'id' 		=> 'body_responsive',  
-					'default'	=> true, 
-					'type'		=> 'checkbox'
-				),
-				array (  
 					'label'		=> 'Background Color',
 					'id' 		=> 'body_background_color',
 					'type'		=> 'color',
@@ -449,7 +458,7 @@ $fields[] = array(
 				array (  
 					'label'		=> 'Enable Promo Bar',
 					'id' 		=> 'promo_bar',  
-					'default'	=> true, 
+					'default'	=> false, 
 					'type'		=> 'checkbox',
 				),
 				array (  
@@ -479,7 +488,7 @@ $fields[] = array(
 				array (  
 					'label'		=> 'Enable Top Header',
 					'id' 		=> 'header_top',  
-					'default'	=> true, 
+					'default'	=> false, 
 					'type'		=> 'checkbox',
 				),
 				array (  
