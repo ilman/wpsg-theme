@@ -213,7 +213,7 @@ $fields = array(
 					),
 					array(
 						'label'		=> 'Offset',
-						'id'		=> 'separator',
+						'id'		=> 'offset',
 						'type'		=> 'select',
 						'options'	=> $option_col_widths
 					),
@@ -351,6 +351,23 @@ $fields = array(
 				'label'		=> 'Block',
 				'type'		=> 'heading',
 				'attr'		=> array(
+					'data-code'	=> '[sg_block {param}]'.$dummy_content_block.'[/sg_block]'.$nl.$nl,
+				),
+				'fields'	=> array(
+					array(
+						'label'		=> 'Extra Class',
+						'id'		=> 'class',
+						'type'		=> 'text',
+					),
+					array(
+						'type'		=> 'button_insert'
+					),
+				)
+			),
+			array(
+				'label'		=> 'Block Thumb',
+				'type'		=> 'heading',
+				'attr'		=> array(
 					'data-code'	=> '[sg_block {param}]'.$nl.'[sg_block_thumb]'.$dummy_content_block.'[/sg_block_thumb]'.$nl.'[sg_block_content]'.$dummy_content_block.'[/sg_block_content][/sg_block]'.$nl.$nl,
 				),
 				'fields'	=> array(
@@ -380,7 +397,7 @@ $fields = array(
 				'label'		=> 'Block Icon',
 				'type'		=> 'heading',
 				'attr'		=> array(
-					'data-code'	=> '[sg_block_icon {param}]'.$dummy_content_block.'[/sg_block_image]'.$nl.$nl,
+					'data-code'	=> '[sg_block_icon {param}]'.$dummy_content_block.'[/sg_block_icon]'.$nl.$nl,
 				),
 				'fields'	=> array(
 					array(
