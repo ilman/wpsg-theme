@@ -25,6 +25,7 @@ sg_include_path('/settings/custom_post_types');				// Custom post types
 sg_include_path('/settings/widgets');						// Widgets
 sg_include_path('/settings/template_tags');					// Template Tags
 sg_include_path('/settings/shortcodes');					// Template Tags
+sg_include_path('/settings/metaboxes');						// Template Tags
 sg_include_path('/custom');									// Custom files related to the theme
 
 /*---- define theme global variable ----*/
