@@ -103,6 +103,9 @@ if(!class_exists('SG_MetaOption')){
 						$new = sg_form::sanitize($new, $sanitizer);	
 						$output[$field_name] = $new;
 					}
+					else{
+						$output[$field_name] = '';
+					}
 				}
 			}
 
