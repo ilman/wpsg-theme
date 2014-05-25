@@ -8,7 +8,9 @@ if(!class_exists('SG_MetaBox')){
 		var $id,
 			$title,
 			$fields,
-			$post_type;
+			$post_type,
+			$context = 'normal', //normal, advanced, side
+			$priority = 'default'; //high, core, default, low
 			
 		public function __construct($args) {
 			if(is_array($args)){
@@ -61,7 +63,7 @@ if(!class_exists('SG_MetaBox')){
 		 */
 		function _add_box() {
 			foreach ( $this->post_type as $post_type ) {
-				add_meta_box( $this->id, $this->title, array( $this, '_box_cb' ), $post_type, 'normal', 'high' );
+				add_meta_box( $this->id, $this->title, array( $this, '_box_cb' ), $post_type, $this->context, $this->priority );
 			}
 		}
 		
