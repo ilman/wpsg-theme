@@ -114,7 +114,7 @@ if(!class_exists('SG_Builder')){
 									
 				if($field['type']=='heading'){
 					if($i > 0){
-						$output .= '</div><!-- tab item -->';	
+						$output .= '</div><!-- tab item heading -->';	
 					}
 					$field_attr['class'] = trim('sg-form-tab-item '.sg_util::val($field_attr,'class'));
 					$field_attr['rel'] = sg_util::slug($field_label);
@@ -125,6 +125,7 @@ if(!class_exists('SG_Builder')){
 					if($field_child){
 						$output .= self::form_builder($field_child, $values, $i+1, $args);
 					}
+					$i++;
 				}
 				elseif($field['type']=='info'){
 					$output .= '<div class="sg-section sg-section-'.sg_util::slug($field_type).'"><div class="option">';
@@ -204,10 +205,10 @@ if(!class_exists('SG_Builder')){
 					$output .= '</div>';
 					$output .= '</div><!-- sg-section -->';
 				}
-				$i++;
+				
 			endforeach;
 
-			if(!$is_child){
+			if(!$is_child && $i>0){
 				$output .= '</div><!-- tab item -->';
 			}
 			$output .= ($is_child) ? '' : '</div><!-- sg-sc-container -->';
