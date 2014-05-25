@@ -31,9 +31,9 @@ function sg_theme_setup(){
 	register_sidebar( array(
 		'name' => 'Blog Sidebar',
 		'id' => 'blog_sidebar',
-		'before_widget' => '<div id="widget-%1$s" class="widget %2$s">',
+		'before_widget' => '<div id="widget-%1$s" class="widget widget-box box-full %2$s">',
 		'after_widget' => '</div><!-- widget -->',
-		'before_title' => '<div class="widget-title">',
+		'before_title' => '<div class="widget-header">',
 		'after_title' => '</div>',
 	) );
 	
@@ -43,7 +43,7 @@ function sg_theme_setup(){
 			'id' => 'footer_column_'.$i,
 			'before_widget' => '<div id="widget-%1$s" class="widget %2$s">',
 			'after_widget' => '</div><!-- widget -->',
-			'before_title' => '<div class="widget-title">',
+			'before_title' => '<div class="widget-header">',
 			'after_title' => '</div>',
 		) );
 	}
@@ -113,16 +113,16 @@ function sg_theme_scripts()
 	$theme_mod_time = date("Y-m-d-H:i:s", filemtime($theme_file_path));
 	
 	//wp_register_style( $handle, $src, $deps, $ver, $media );
-	wp_register_style('bootstrap-css', get_template_directory_uri() . '/assets/bootstrap/css/bootstrap.css', array(), '', 'all' );
-	wp_register_style('font-awesome', get_template_directory_uri() . '/assets/fonts/font-awesome/font-awesome.min.css', array(), '', 'all' );
-	wp_register_style('theme-css', $theme_file_url, array(), $theme_mod_time, 'all' );
-	wp_register_style('font-socmed', get_template_directory_uri() . '/assets/fonts/socmed/style.css', array(), '', 'all' );
+	wp_register_style('bootstrap', get_template_directory_uri() . '/assets/bootstrap/css/bootstrap.min.css', array(), '', 'all' );
+	wp_register_style('font-awesome', get_template_directory_uri() . '/assets/fonts/font-awesome/css/font-awesome.min.css', array(), '', 'all' );
+	wp_register_style('style-theme', $theme_file_url, array(), $theme_mod_time, 'all' );
+	wp_register_style('style-choices', get_template_directory_uri() . '/assets/css/choices.css', array(), '', 'all' );
 	wp_register_style('jquery-isotope', get_template_directory_uri() . '/assets/js/isotope/jquery.isotope.css', array(), '', 'all' );
 	wp_register_style('theme-dynamic-css', $cache_file_url, array(), $cache_mod_time, 'all' );
-	wp_enqueue_style('bootstrap-css');
+	wp_enqueue_style('bootstrap');
 	wp_enqueue_style('font-awesome');
-	wp_enqueue_style('theme-css');
-	wp_enqueue_style('font-socmed');
+	wp_enqueue_style('style-theme');
+	wp_enqueue_style('style-choices');
 	wp_enqueue_style('jquery-isotope' );
 	wp_enqueue_style('theme-dynamic-css' );
 	
