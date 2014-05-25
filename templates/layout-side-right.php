@@ -1,4 +1,4 @@
-<div class="row sidebar-right">
+<div class="row sidebar-right content-wrapper">
 	<div class="col-sm-9 content-main">
 		<?php do_action('sg_content_header'); ?>
 		
