@@ -3,7 +3,7 @@
 if(!class_exists('SG_Util')){
 	class SG_Util{
 
-		static function val($var, $field_name=null, $default=''){
+		static function val($var, $field_name=null, $default=null){
 			if($field_name===null){ return $var; }
 			
 			$value = '';
@@ -20,7 +20,7 @@ if(!class_exists('SG_Util')){
 				$value = $var;
 			}
 			
-			return ($value) ? $value : $default;
+			return ($value!==null) ? $value : $default;
 		}
 
 		static function un_set($var, $field_name=''){
