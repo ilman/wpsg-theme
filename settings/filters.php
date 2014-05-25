@@ -30,7 +30,13 @@ function sg_widget_filter($params){
 	$params[0]['before_widget'] = str_replace('_','-',$params[0]['before_widget']);
 	return $params;
 }
-add_filter('dynamic_sidebar_params', 'sg_widget_filter'); 
+add_filter('dynamic_sidebar_params', 'sg_widget_filter');
+
+/*change widget title style*/
+function sg_widget_title_filter($params){
+	return '<div class="sg-title title-fill">'.$params.'</div>';
+}
+add_filter('widget_title', 'sg_widget_title_filter');
 
 /*change template using filter*/
 function test_asd(){
@@ -62,7 +68,7 @@ function sg_wp_title($title, $sep) {
 
 	return $title;
 }
-add_filter( 'wp_title', 'sg_wp_title', 10, 2 );
+add_filter('wp_title', 'sg_wp_title', 10, 2 );
 
 function shortcode_empty_paragraph_fix( $content ) {
 	$array = array (
