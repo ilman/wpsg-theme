@@ -11,7 +11,10 @@ function sg_cpt_testimonial() {
 			'publicly_queryable' => true,
 			'query_var' => true,
 			'has_archive' => true,
-			'supports' => array( 'title', 'editor', 'thumbnail' ),
+			'supports' => array( 'title', 'editor', 'thumbnail', 'page-attributes' ),
+			'rewrite' => array(
+				'slug' => 'testimonial'
+			),
 		)
 	);
 }
@@ -67,3 +70,24 @@ $sg_cpt_mb_testimonial = new sg_metabox(array(
 	'context'	=> 'normal',
 	'priority'	=> 'high'
 ));
+
+function sg_cpt_testimonial_taxonomies() {
+    register_taxonomy(
+        'sg_cpt_testimonial_group',
+        array('sg_cpt_testimonial'),
+        array(
+            'labels' => array(
+                'name' => 'Testimonial Group',
+                'add_new_item' => 'Add New Testimonial Group',
+                'new_item_name' => "New Testimonial Group"
+            ),
+            'show_ui' => true,
+            'show_tagcloud' => false,
+            'hierarchical' => true,
+            'show_admin_column' => true,
+	        // 'query_var' => true,
+	        // 'rewrite' => array( 'slug' => 'fitness-type' ),
+        )
+    );
+}
+add_action( 'init', 'sg_cpt_testimonial_taxonomies', 0 );

@@ -46,7 +46,7 @@ if(!class_exists('SG_MetaOption')){
 			wp_enqueue_style('thickbox');
 			wp_enqueue_style('jquery-colorpicker', SG_FRAMEWORK_URL.'/assets/js/colorpicker/css/colorpicker.css');
 			wp_enqueue_style('jquery-toastmessage', SG_FRAMEWORK_URL.'/assets/js/toastmessage/css/jquery.toastmessage.css');
-			wp_enqueue_style('sg-admin', SG_FRAMEWORK_URL.'/assets/css/admin.css');
+			wp_enqueue_style('sg-framework', SG_FRAMEWORK_URL.'/assets/css/sg-framework.css');
 		}
 		
 		function _defaults(){

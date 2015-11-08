@@ -50,11 +50,93 @@ function sg_admin_menu_js(){
 }
 add_action('admin_init','sg_admin_menu_js');
 
-function my_admin_notice() {
+/*function my_admin_notice() {
     ?>
     <div class="error">
         <p><?php _e( 'tai kucing Updated!', 'my-text-domain' ); ?></p>
     </div>
     <?php
 }
-add_action( 'admin_notices', 'my_admin_notice' );
+add_action('admin_notices', 'my_admin_notice');*/
+
+
+function sg_admin_enqueue_scripts() {
+    wp_enqueue_style('sg-admin', SG_FRAMEWORK_URL.'/assets/css/admin.css');
+}
+add_action('admin_enqueue_scripts', 'sg_admin_enqueue_scripts');
+
+
+function sg_add_tags_to_page() {
+    register_taxonomy_for_object_type( 'post_tag', 'page' );
+}
+add_action('init' , 'sg_add_tags_to_page');
+
+
+
+function sg_print_script($param) {
+	$content = sg_theme_options($param);
+
+	if(!$content){
+		return;
+	}
+
+	if(strpos($content, '<script') !== false){
+		print_r($content);
+	}
+	else{
+		echo "\n".'<script type="text/javascript">'."\n";
+		print_r($content);
+		echo "\n".'</script>'."\n";
+	}
+}
+
+function sg_head_script(){
+	sg_print_script('script_head');
+}
+add_action('wp_head', 'sg_head_script');
+
+function sg_foot_script(){
+	sg_print_script('script_foot');
+}
+add_action('wp_footer', 'sg_foot_script');
+
+function choices_property_redirect(){
+	if (is_admin()){
+		return;
+	}
+
+	$url = "http://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
+
+	if(strpos($url, '/property-details.html') !== false){
+		$str = urldecode($_SERVER['QUERY_STRING']);
+		parse_str($str, $arr);
+
+		$eaaid = isset($arr['aid']) ? '{'.$arr['aid'].'}' : '';
+		$eapid = isset($arr['pid']) ? $arr['pid'] : '';
+
+		$redirect = site_url('/property-details/?eaaid='.$eaaid.'&eapid='.$eapid);
+
+		wp_redirect($redirect);
+		exit();
+	}
+}
+add_action('init', 'choices_property_redirect');
+
+function my_form_phone_cleaner($form){
+
+	$fields = SG_Util::val($form, 'fields');
+	foreach($fields as $key_field=>$field){
+		$label = SG_Util::val($field, 'label');
+		
+		if(trim($label) == 'Phone Number'){
+			$input_id = SG_Util::val($field, 'id');
+
+			break;
+		}
+	}
+
+	if(isset($input_id) && isset($_POST['input_'.$input_id])){
+		$_POST['input_'.$input_id] = preg_replace("/[^0-9+]/", '', $_POST['input_'.$input_id]);
+	}
+}
+add_action("gform_pre_submission", "my_form_phone_cleaner");

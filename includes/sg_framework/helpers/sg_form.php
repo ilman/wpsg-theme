@@ -45,7 +45,7 @@ if(!class_exists('SG_Form')){
 			// css		
 			wp_enqueue_style('thickbox');
 			wp_enqueue_style('jquery-colorpicker', SG_FRAMEWORK_URL.'/assets/js/colorpicker/css/colorpicker.css');		
-			wp_enqueue_style( 'sg-admin', SG_FRAMEWORK_URL.'/assets/css/admin.css');
+			wp_enqueue_style( 'sg-framework', SG_FRAMEWORK_URL.'/assets/css/sg-framework.css');
 		}
 
 		static function _inline_attr($attrs){
@@ -92,6 +92,7 @@ if(!class_exists('SG_Form')){
 			//prepare field_class
 			$field_class = sg_util::val($field_attr,'class');
 
+			$value = sg_util::val($value, str_replace('[]', '', $field_name));
 			
 			if($value===null){
 				$value = $default;	
@@ -253,7 +254,7 @@ if(!class_exists('SG_Form')){
 					$param_attr = self::_inline_attr($field_attr);
 					$param_attr .= ($event_attr) ? ' '.$event_attr : '';
 
-					$output .= '<span class="'.$prefix.' input color-placeholder"><span class="'.$prefix.' color-preview"></span></span> ';
+					$output .= '<span class="'.$prefix.' input color-placeholder"><span class="'.$prefix.' color-preview" style="background-color:'.$value.'"></span></span> ';
 					$output .= '<input type="text" '.trim($param_attr).'/> ';
 					$output .= '<button type="button" class="button '.$prefix.' color-button">Select Color</button> ';
 				break;

@@ -1,4 +1,4 @@
-<div class="row sidebar-right">
+<div class="row sidebar-right content-wrapper">
 	<div class="col-sm-9">
 		<div class="row">
 			<div class="col-sm-9 content-main pull-right">
@@ -10,7 +10,7 @@
 			</div>
 			<!-- content main -->
 			<aside class="col-sm-3 content-side pull-left">
-				<?php dynamic_sidebar('blog-sidebar'); ?>
+				<?php dynamic_sidebar('secondary-sidebar'); ?>
 			</aside>
 			<!-- content side -->
 		</div>
@@ -18,7 +18,7 @@
 	</div>
 	<!-- content main -->
 	<aside class="col-sm-3 content-side">
-		<?php dynamic_sidebar('blog-sidebar'); ?>
+		<?php dynamic_sidebar('primary-sidebar'); ?>
 	</aside>
 	<!-- content side -->
 </div>

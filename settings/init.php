@@ -29,25 +29,23 @@ function sg_theme_setup(){
 	
 	//This theme use widget area
 	register_sidebar( array(
-		'name' => 'Blog Sidebar',
-		'id' => 'blog_sidebar',
+		'name' => 'Primary Sidebar',
+		'id' => 'primary_sidebar',
 		'before_widget' => '<div id="widget-%1$s" class="widget widget-box box-full %2$s">',
 		'after_widget' => '</div><!-- widget -->',
 		'before_title' => '<div class="widget-header">',
 		'after_title' => '</div>',
 	) );
-	
-	for($i=1; $i<=4; $i++){
-		register_sidebar( array(
-			'name' => 'Footer Column '.$i,
-			'id' => 'footer_column_'.$i,
-			'before_widget' => '<div id="widget-%1$s" class="widget %2$s">',
-			'after_widget' => '</div><!-- widget -->',
-			'before_title' => '<div class="widget-header">',
-			'after_title' => '</div>',
-		) );
-	}
-	
+
+	register_sidebar( array(
+		'name' => 'Secondary Sidebar',
+		'id' => 'secondary_sidebar',
+		'before_widget' => '<div id="widget-%1$s" class="widget widget-box box-full %2$s">',
+		'after_widget' => '</div><!-- widget -->',
+		'before_title' => '<div class="widget-header">',
+		'after_title' => '</div>',
+	) );
+		
 	//Add image size
 	if ( function_exists( 'add_image_size' ) ) { 
 		//add_image_size( 'square40', 40, 40, true );
@@ -113,25 +111,104 @@ function sg_theme_scripts()
 	$theme_mod_time = date("Y-m-d-H:i:s", filemtime($theme_file_path));
 	
 	//wp_register_style( $handle, $src, $deps, $ver, $media );
-	wp_register_style('bootstrap', get_template_directory_uri() . '/assets/bootstrap/css/bootstrap.min.css', array(), '', 'all' );
-	wp_register_style('font-awesome', get_template_directory_uri() . '/assets/fonts/font-awesome/css/font-awesome.min.css', array(), '', 'all' );
-	wp_register_style('style-theme', $theme_file_url, array(), $theme_mod_time, 'all' );
-	wp_register_style('style-choices', get_template_directory_uri() . '/assets/css/choices.css', array(), '', 'all' );
-	wp_register_style('jquery-isotope', get_template_directory_uri() . '/assets/js/isotope/jquery.isotope.css', array(), '', 'all' );
-	wp_register_style('theme-dynamic-css', $cache_file_url, array(), $cache_mod_time, 'all' );
-	wp_enqueue_style('bootstrap');
-	wp_enqueue_style('font-awesome');
-	wp_enqueue_style('style-theme');
-	wp_enqueue_style('style-choices');
-	wp_enqueue_style('jquery-isotope' );
-	wp_enqueue_style('theme-dynamic-css' );
+	wp_enqueue_style('bootstrap', get_template_directory_uri() . '/assets/bootstrap/css/bootstrap.min.css', array(), '', 'all' );
+	wp_enqueue_style('font-awesome', get_template_directory_uri() . '/assets/fonts/font-awesome/css/font-awesome.min.css', array(), '', 'all' );
+	wp_enqueue_style('style-theme', $theme_file_url, array(), $theme_mod_time, 'all' );
+	wp_enqueue_style('style-choices', get_template_directory_uri() . '/assets/css/choices.css', array(), '', 'all' );
+	wp_enqueue_style('style-hover', get_template_directory_uri() . '/assets/css/hover.css', array(), '', 'all' );
+	wp_enqueue_style('style-animate', get_template_directory_uri() . '/assets/css/animate.css', array(), '', 'all' );
+	wp_enqueue_style('jquery-isotope', get_template_directory_uri() . '/assets/js/isotope/jquery.isotope.css', array(), '', 'all' );
+	wp_enqueue_style('jquery-select2', get_template_directory_uri() . '/assets/js/select2/select2.css', array(), '', 'all' );
+	wp_enqueue_style('jquery-magnific-popup', get_template_directory_uri() . '/assets/js/magnific-popup/magnific-popup.css', array(), '', 'all' );
+	wp_enqueue_style('jquery-select2-bootstrap', get_template_directory_uri() . '/assets/js/select2-bootstrap-css/select2-bootstrap.css', array(), '', 'all' );
+	wp_enqueue_style('theme-dynamic-css', $cache_file_url, array(), $cache_mod_time, 'all' );
+	
+	// wp_enqueue_style('bootstrap');
+	// wp_enqueue_style('font-awesome');
+	// wp_enqueue_style('style-theme');
+	// wp_enqueue_style('style-choices');
+	// wp_enqueue_style('jquery-isotope' );
+	// wp_enqueue_style('theme-dynamic-css' );
 	
 	//wp_register_script( $handle, $src, $deps, $ver, $media );	
-	wp_register_script('bootstrap-js', get_template_directory_uri() . '/assets/bootstrap/js/bootstrap.min.js', array('jquery') );
-	wp_register_script('google-maps', '//maps.google.com/maps/api/js?sensor=false' );
-	wp_register_script('jquery-infinite-scroll', get_template_directory_uri() . '/assets/js/jquery.infinitescroll.min.js', array('jquery') );
-	wp_register_script('jquery-isotope', get_template_directory_uri() . '/assets/js/isotope/jquery.isotope.min.js', array('jquery') );
-	wp_register_script('theme-js', get_template_directory_uri() . '/assets/scripts/theme.js', array('jquery','bootstrap-js','google-maps','jquery-isotope','jquery-infinite-scroll'), '', true );
+	wp_register_script('modernizr', 
+		get_template_directory_uri() . '/assets/js/modernizr.min.js');
+	wp_register_script('bootstrap-js', 
+		get_template_directory_uri() . '/assets/bootstrap/js/bootstrap.min.js', 
+		array('jquery'),'1.0.0',true);
+	wp_register_script('jquery-inview', 
+		get_template_directory_uri() . '/assets/js/inview-zuk/jquery.inview.js', 
+		array('jquery'),'1.0.0',true);
+	wp_register_script('jquery-counterup', 
+		get_template_directory_uri() . '/assets/js/counterup/jquery.counterup.js', 
+		array('jquery'),'1.0.0',true);
+	wp_register_script('jquery-flexslider', 
+		get_template_directory_uri() . '/assets/js/flexslider/jquery.flexslider.js', 
+		array('jquery'),'1.0.0',true);
+	wp_register_script('jquery-isotope', 
+		get_template_directory_uri() . '/assets/js/isotope/jquery.isotope.min.js', 
+		array('jquery'),'1.0.0',true);
+	wp_register_script('jquery-isotope-bootstrap', 
+		get_template_directory_uri() . '/assets/js/isotope/jquery.isotope.bootstrap.js', 
+		array('jquery', 'jquery-isotope'),'1.0.0',true);
+	wp_register_script('jquery-knob', 
+		get_template_directory_uri() . '/assets/js/knob/jquery.knob.js', 
+		array('jquery'),'1.0.0',true);
+	wp_register_script('jquery-magnific-popup', 
+		get_template_directory_uri() . '/assets/js/magnific-popup/jquery.magnific-popup.min.js', 
+		array('jquery'),'1.0.0',true);
+	wp_register_script('jquery-sequence', 
+		get_template_directory_uri() . '/assets/js/sequence/scripts/jquery.sequence-min.js', 
+		array('jquery'),'1.0.0',true);
+	wp_register_script('media-element', 
+		get_template_directory_uri() . '/assets/js/media-element/mediaelement-and-player.min.js', 
+		array('jquery'),'1.0.0',true);
+	wp_register_script('jquery-infinite-scroll', 
+		get_template_directory_uri() . '/assets/js/jquery.infinitescroll.min.js', 
+		array('jquery'),'1.0.0',true);
+	wp_register_script('jquery-select2', 
+		get_template_directory_uri() . '/assets/js/select2/select2.min.js', 
+		array('jquery'),'1.0.0',true);
+	wp_register_script('jquery-match-height', 
+		get_template_directory_uri() . '/assets/js/jquery.match-height.js', 
+		array('jquery'),'1.0.0',true);
+
+
+	wp_register_script('google-maps', '//maps.google.com/maps/api/js?sensor=false');
+
+	wp_register_script('sg-animate', 
+		get_template_directory_uri() . '/assets/scripts/animate.js', 
+		array('jquery'),'1.0.0',true);
+	wp_register_script('sg-shortcodes', 
+		get_template_directory_uri() . '/assets/scripts/shortcodes.js', 
+		array('jquery'),'1.0.0',true);
+
+	wp_register_script(
+		'theme-js', 
+		get_template_directory_uri() . '/assets/scripts/theme.js', 
+		array(
+			'modernizr',
+			'jquery',
+			'bootstrap-js',
+			'jquery-inview',
+			'jquery-counterup',
+			'jquery-flexslider',
+			'jquery-isotope',
+			'jquery-isotope-bootstrap',
+			'jquery-knob',
+			'jquery-magnific-popup',
+			'jquery-sequence',
+			'media-element',
+			'jquery-infinite-scroll',
+			'jquery-select2',
+			'jquery-match-height',
+			'google-maps',
+			'sg-animate',
+			'sg-shortcodes',
+		), 
+		'', 
+		true 
+	);
 	wp_enqueue_script('theme-js');
 		
 	
@@ -146,3 +223,13 @@ function sg_theme_scripts()
 	*/
 }
 add_action( 'wp_enqueue_scripts', 'sg_theme_scripts' );  
+
+
+function wpcodex_hide_email_shortcode( $atts , $content = null ) {
+	
+	$content = do_shortcode($content);
+	if(!is_email($content)){ return $content; }
+
+	return '<a href="mailto:'.antispambot($content).'">'.antispambot($content).'</a>';
+}
+add_shortcode( 'email', 'wpcodex_hide_email_shortcode' );

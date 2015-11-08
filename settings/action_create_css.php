@@ -81,3 +81,11 @@ echo sg_str_if('padding-bottom: ', 'footer_padding_bottom','px');
 echo "}\r\n";
 
 ?>
+
+/*----theme option----*/
+
+<?php
+
+echo sg_opt('style_head');
+
+?>

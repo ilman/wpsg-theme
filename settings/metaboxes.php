@@ -72,9 +72,11 @@ $fields = array(
 	return $fields;
 }
 
-$sample_box = new sg_metabox(array(
-	'id'		=> 'sample_box', 
-	'title'		=> 'Sample Box', 
-	'fields'	=> 'sg_admin_metabox_test', 
-	'post_type'	=> 'page'
-));
+// $sample_box = new sg_metabox(array(
+// 	'id'		=> 'sample_box', 
+// 	'title'		=> 'Sample Box', 
+// 	'fields'	=> 'sg_admin_metabox_test', 
+// 	'post_type'	=> 'page',
+// 	'context'	=> 'advanced',
+// 	'priority'	=> 'hight'
+// ));

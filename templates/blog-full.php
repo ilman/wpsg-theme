@@ -1,7 +1,7 @@
-<ul class="post-list row list-separate">
-<?php while ( have_posts() ) : the_post(); ?>
-<li id="post-<?php the_ID(); ?>" <?php post_class('post-item col-sm-12'); ?>>
-	<div class="inner">
+<div class="blog-full">
+	<ul class="post-list row list-separate">
+	<?php while ( have_posts() ) : the_post(); ?>
+	<li id="post-<?php the_ID(); ?>" <?php post_class('post-item col-sm-12'); ?>>
 		<div class="block">
 			<div class="block-thumb full">
 				<?php echo sg_get_post_thumbnail('large') ?>
@@ -26,12 +26,12 @@
 				</div>
 			</div>
 		</div>
-	</div>
-</li>
-<?php endwhile; ?>
-</ul>
-<?php 
-	if(is_single()){
-		include(locate_template('templates/content-bottom.php'));
-	}
-?>
+	</li>
+	<?php endwhile; ?>
+	</ul>
+	<?php 
+		if(is_single()){
+			include(locate_template('templates/content-bottom.php'));
+		}
+	?>
+</div>

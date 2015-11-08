@@ -1,4 +1,4 @@
-<div class="row">
+<div class="row content-wrapper">
 	<div class="col-sm-12 content-main">
 		<?php do_action('sg_content_header'); ?>
 		

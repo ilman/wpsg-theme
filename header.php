@@ -20,7 +20,7 @@
 
 <header id="header">
 	<?php if(sg_opt('header_top')): ?>
-	<div id="header-top" class="<?php echo sg_val_class(array('page-section',sg_opt('header_top_color_set'),sg_opt('header_top_separator'),sg_opt('header_extra_class'))) ?>">
+	<div id="header-top" class="<?php echo sg_val_class(array('theme-header-top page-section',sg_opt('header_top_color_set'),sg_opt('header_top_separator'),sg_opt('header_extra_class'))) ?>">
 		<div class="container">		
 			<div class="pull-left">
 				<?php echo sg_opt('header_top_text') ?>
@@ -53,7 +53,7 @@
 	</div>
 	<!-- header top -->
 	<?php endif; ?>
-	<div id="header-main" class="<?php echo sg_val_class(array('page-section',sg_opt('header_color_set'),sg_opt('header_separator'),sg_opt('header_align'),sg_opt('header_extra_class'))) ?>">
+	<div id="header-main" class="<?php echo sg_val_class(array('theme-header-main page-section bg-trans',sg_opt('header_color_set'),sg_opt('header_separator'),sg_opt('header_align'),sg_opt('header_extra_class'))) ?>">
 		<?php include('header-choices.php') ?>
 	</div>
 	<!-- header-main -->

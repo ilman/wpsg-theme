@@ -44,7 +44,7 @@ if(!class_exists('SG_Util')){
 		
 		static function inline_attr($attr=array()){
 			$inline_attr = '';
-			$allowed_attr = array('class','type','value','name','placeholder','readonly','disabled','rel','id','style','selected','checked');
+			$allowed_attr = array('class','type','value','name','placeholder','readonly','disabled','rel','id','style','selected','checked','rows','multiple');
 
 			if(!is_array($attr) && !is_object($attr)){ return false; }
 						

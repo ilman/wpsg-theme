@@ -11,24 +11,14 @@ function sg_cpt_career() {
 			'publicly_queryable' => true,
 			'query_var' => true,
 			'has_archive' => true,
-			'supports' => array( 'title', 'editor' ),
+			'supports' => array( 'title', 'editor', 'page-attributes' ),
+			'rewrite' => array(
+				'slug' => 'career'
+			),
 		)
 	);
 }
 add_action('init', 'sg_cpt_career');
-
-
-
-/*----rename featured image metabox----*/
-
-function sg_cpt_career_change_image_box()
-{
-    remove_meta_box( 'postimagediv', 'custom_post_type', 'side' );
-    add_meta_box('postimagediv', __('New Text'), 'post_thumbnail_meta_box', 'custom_post_type', 'normal', 'high');
-}
-//add_action('do_meta_boxes', 'sg_cpt_career_change_image_box');
-
-
 
 
 /*----metabox for custom post type----*/
@@ -41,17 +31,27 @@ function sg_cpt_mb_career(){
 
 	/*----options----*/
 
-	
+	$option_career_roles = array(
+		array('label'=>'Sales', 'value'=>'sales'),
+		array('label'=>'Admin', 'value'=>'admin'),
+	);
 
 	/*----fields----*/
 
 	$fields = array(
 		
 		array(
-			'label'		=> 'Title / Position',
-			'id'		=> $prefix.'section_class',
+			'label'		=> 'Ref Code',
+			'id'		=> $prefix.'ref_code',
 			'default'	=> '',
 			'type'		=> 'text'
+		), 
+		array(
+			'label'		=> 'Roles',
+			'id'		=> $prefix.'roles',
+			'default'	=> '',
+			'type'		=> 'select',
+			'options'	=> $option_career_roles
 		)
 		
 	);
@@ -59,11 +59,32 @@ function sg_cpt_mb_career(){
 	return $fields;
 }
 
-// $sg_cpt_mb_career = new sg_metabox(array(
-// 	'id'		=> 'sg_cpt_mb_career', 
-// 	'title'		=> 'Staff Details', 
-// 	'fields'	=> 'sg_cpt_mb_career', 
-// 	'post_type'	=> 'sg_cpt_career',
-// 	'context'	=> 'normal',
-// 	'priority'	=> 'high'
-// ));
+$sg_cpt_mb_career = new sg_metabox(array(
+	'id'		=> 'sg_cpt_mb_career', 
+	'title'		=> 'Career Datas', 
+	'fields'	=> 'sg_cpt_mb_career', 
+	'post_type'	=> 'sg_cpt_career',
+	'context'	=> 'normal',
+	'priority'	=> 'high'
+));
+
+function sg_cpt_career_taxonomies() {
+    register_taxonomy(
+        'sg_cpt_career_group',
+        array('sg_cpt_career'),
+        array(
+            'labels' => array(
+                'name' => 'Career Group',
+                'add_new_item' => 'Add New Career Group',
+                'new_item_name' => "New Career Group"
+            ),
+            'show_ui' => true,
+            'show_tagcloud' => false,
+            'hierarchical' => true,
+            'show_admin_column' => true,
+	        // 'query_var' => true,
+	        // 'rewrite' => array( 'slug' => 'fitness-type' ),
+        )
+    );
+}
+add_action( 'init', 'sg_cpt_career_taxonomies', 0 );

@@ -1,6 +1,6 @@
 <?php 
 
-function sg_admin_shortcode_asd(){
+function sg_framework_shortcode_fields(){
 
 
 /*----options----*/
@@ -116,6 +116,11 @@ $option_block_layouts = array(
 	array('label'=>'Thumb Top', 'value'=>'thumb-top'),
 	array('label'=>'Thumb Left', 'value'=>'thumb-left'),
 	array('label'=>'Thumb Right', 'value'=>'thumb-right'),
+);
+
+$option_list_layouts = array(
+	array('label'=>'Default', 'value'=>''),
+	array('label'=>'Horizontal', 'value'=>'horizontal'),
 );
 
 $option_align_horizontals = array(
@@ -511,6 +516,151 @@ $fields = array(
 
 		)
 	),
+
+
+	/*----block shortcode----*/
+	array(
+		'label'		=> 'Lists',
+		'type'		=> 'heading',
+		'fields'	=> array(
+			array(
+				'label'		=> 'List',
+				'type'		=> 'heading',
+				'attr'		=> array(
+					'data-code'	=> '[sg_list_icon {param}]'.$nl.'[sg_li {param_item}]'.$dummy_content_inline.'[/sg_li]'.$nl.'[/sg_list_icon]'.$nl.$nl,	
+				),
+				'fields'	=> array(
+					array(
+						'label'		=> 'icon',
+						'id'		=> 'icon',
+						'type'		=> 'select',
+						'attr'		=> array(
+							'data-param'	=> '{param_item}',
+						),
+						'options'	=> $option_color_classes
+					),
+					array(
+						'label'		=> 'Extra Class',
+						'id'		=> 'class',
+						'type'		=> 'text',
+					),
+					array(
+						'type'		=> 'button_insert'
+					),
+				)
+			),
+			array(
+				'label'		=> 'List Item',
+				'type'		=> 'heading',
+				'attr'		=> array(
+					'data-code'	=> '[sg_li {param}]'.$dummy_content_inline.'[/sg_li]'.$nl,	
+				),
+				'fields'	=> array(
+					array(
+						'label'		=> 'icon',
+						'id'		=> 'icon',
+						'type'		=> 'select',
+						'options'	=> $option_color_classes
+					),
+					array(
+						'label'		=> 'Extra Class',
+						'id'		=> 'class',
+						'type'		=> 'text',
+					),
+					array(
+						'type'		=> 'button_insert'
+					),
+				)
+			),
+			array(
+				'label'		=> 'List Badge',
+				'type'		=> 'heading',
+				'attr'		=> array(
+					'data-code'	=> '[sg_list_badge {param}]'.$nl.'[sg_dt]'.$dummy_content_block.'[/sg_dt]'.$nl.'[sg_dd]'.$dummy_content_block.'[/sg_dd][/sg_list_badge]'.$nl.$nl,
+				),
+				'fields'	=> array(
+					array(
+						'label'		=> 'Extra Class',
+						'id'		=> 'class',
+						'type'		=> 'text',
+					),
+					array(
+						'type'		=> 'button_insert'
+					),
+				)
+			),
+			array(
+				'label'		=> 'List Badge Item',
+				'type'		=> 'heading',
+				'attr'		=> array(
+					'data-code'	=> '[sg_li {param}]'.$dummy_content_inline.'[/sg_li]'.$nl,	
+				),
+				'fields'	=> array(
+					array(
+						'label'		=> 'icon',
+						'id'		=> 'icon',
+						'type'		=> 'select',
+						'options'	=> $option_color_classes
+					),
+					array(
+						'label'		=> 'Extra Class',
+						'id'		=> 'class',
+						'type'		=> 'text',
+					),
+					array(
+						'type'		=> 'button_insert'
+					),
+				)
+			),
+			array(
+				'label'		=> 'List Group',
+				'type'		=> 'heading',
+				'attr'		=> array(
+					'data-code'	=> '[sg_list_group {param}]'.$nl.'[sg_li]'.$dummy_content_block.'[/sg_li][/sg_list_group]'.$nl.$nl,
+				),
+				'fields'	=> array(
+					array(
+						'label'		=> 'Extra Class',
+						'id'		=> 'class',
+						'type'		=> 'text',
+					),
+					array(
+						'type'		=> 'button_insert'
+					),
+				)
+			),
+			array(
+				'label'		=> 'List DL',
+				'type'		=> 'heading',
+				'attr'		=> array(
+					'data-code'	=> '[sg_list_dl {param}]'.$nl.'[sg_dt]'.$dummy_content_block.'[/sg_dt]'.$nl.'[sg_dd]'.$dummy_content_block.'[/sg_dd][/sg_list_dl]'.$nl.$nl,
+				),
+				'fields'	=> array(
+					array(
+						'label'		=> 'Layout',
+						'id'		=> 'layout',
+						'type'		=> 'select',
+						'options'	=> $option_block_layouts
+					),
+					array(
+						'label'		=> 'Align',
+						'id'		=> 'align',
+						'type'		=> 'select',
+						'options'	=> $option_align_horizontals
+					),
+					array(
+						'label'		=> 'Extra Class',
+						'id'		=> 'class',
+						'type'		=> 'text',
+					),
+					array(
+						'type'		=> 'button_insert'
+					),
+				)
+			),
+		)
+	),
+
 	
 	/*----component shortcode----*/
 	array(
@@ -621,7 +771,7 @@ $fields = array(
 				'label'		=> 'Button',
 				'type'		=> 'heading',
 				'attr'		=> array(
-					'data-code'	=> '[sg_button {param}]Button Text[/sg_button]',
+					'data-code'	=> '[sg_btn {param}]Button Text[/sg_btn]',
 				),
 				'fields'	=> array(
 					array(
@@ -650,55 +800,6 @@ $fields = array(
 					array(
 						'label'		=> 'Style',
 						'id'		=> 'style',
-						'type'		=> 'select',
-						'options'	=> $option_color_classes
-					),
-					array(
-						'label'		=> 'Extra Class',
-						'id'		=> 'class',
-						'type'		=> 'text',
-					),
-					array(
-						'type'		=> 'button_insert'
-					),
-				)
-			),
-			array(
-				'label'		=> 'List Icon',
-				'type'		=> 'heading',
-				'attr'		=> array(
-					'data-code'	=> '[sg_list_icon {param}]'.$nl.'[sg_list_item {param_item}]'.$dummy_content_inline.'[/sg_list_item]'.$nl.'[/sg_list_icon]'.$nl.$nl,	
-				),
-				'fields'	=> array(
-					array(
-						'label'		=> 'icon',
-						'id'		=> 'icon',
-						'type'		=> 'select',
-						'attr'		=> array(
-							'data-param'	=> '{param_item}',
-						),
-						'options'	=> $option_color_classes
-					),
-					array(
-						'label'		=> 'Extra Class',
-						'id'		=> 'class',
-						'type'		=> 'text',
-					),
-					array(
-						'type'		=> 'button_insert'
-					),
-				)
-			),
-			array(
-				'label'		=> 'List Icon Item',
-				'type'		=> 'heading',
-				'attr'		=> array(
-					'data-code'	=> '[sg_list_item {param}]'.$dummy_content_inline.'[/sg_list_item]'.$nl,	
-				),
-				'fields'	=> array(
-					array(
-						'label'		=> 'icon',
-						'id'		=> 'icon',
 						'type'		=> 'select',
 						'options'	=> $option_color_classes
 					),
@@ -756,9 +857,9 @@ return $fields;
 }
 
 new sg_metashortcode(array(
-	'name'			=> 'sg_test_mce',
-	'modal_title'	=> 'test modal title',
-	'button_title'	=> 'test button title mce1',
-	'button_icon'	=> 'http://localhost/wp-dev/wpsg/wp-content/plugins/mtphr-shortcodes/assets/images/mtphr-shortcodes-icon.png',
-	'fields'		=> 'sg_admin_shortcode_asd'
+	'name'			=> 'sg_framework_mce',
+	'modal_title'	=> 'SG Framework Shortcodes',
+	'button_title'	=> 'SG Framework Shortcodes',
+	'button_icon'	=> SG_FRAMEWORK_URL.'/assets/images/sg-framework-icon24.png',
+	'fields'		=> 'sg_framework_shortcode_fields'
 ));

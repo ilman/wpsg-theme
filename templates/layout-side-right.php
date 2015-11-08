@@ -8,7 +8,7 @@
 	</div>
 	<!-- content main -->
 	<aside class="col-sm-3 content-side">
-		<?php dynamic_sidebar('blog-sidebar'); ?>
+		<?php dynamic_sidebar('primary-sidebar'); ?>
 	</aside>
 	<!-- content side -->
 </div>

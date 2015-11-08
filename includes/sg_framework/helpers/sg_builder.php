@@ -4,7 +4,8 @@ if(!class_exists('SG_Builder')){
 	Class SG_Builder{
 
 		static function init(){
-			wp_enqueue_script( 'sg-form-tab', SG_FRAMEWORK_URL.'/assets/scripts/sg_form_tab.js', array('sg-form') );
+			wp_register_script('sg-form-tab', SG_FRAMEWORK_URL.'/assets/scripts/sg_form_tab.js', array('sg-form'));
+			wp_enqueue_script('sg-form-tab');
 		}
 
 		static function nav_builder($fields, $i=0){
@@ -64,8 +65,12 @@ if(!class_exists('SG_Builder')){
 				$field_desc = sg_util::val($field,'desc');
 				$field_attr = sg_util::val($field,'attr');
 				$field_default = sg_util::val($field,'default');
-				$field_options = sg_util::val($field,'options');	
-				$field_value = sg_util::val($values, $field_id);
+				$field_options = sg_util::val($field,'options');
+
+				$field_value = sg_util::val($field, 'value');
+				if($field_value===null){
+					$field_value = sg_util::val($values, $field_id);
+				}
 
 				$field_child = sg_util::val($field,'fields');
 				$field_trigger = sg_util::val($field,'trigger');

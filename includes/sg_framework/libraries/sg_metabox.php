@@ -54,7 +54,7 @@ if(!class_exists('SG_MetaBox')){
 				wp_enqueue_script( 'meta_box', SG_FRAMEWORK_URL.'/assets/js/metabox.js', array('sg-form') );
 				
 				// css
-				wp_enqueue_style( 'sg-admin', SG_FRAMEWORK_URL.'/assets/css/admin.css');
+				wp_enqueue_style( 'sg-framework', SG_FRAMEWORK_URL.'/assets/css/sg-framework.css');
 			}
 		}
 		

@@ -1,5 +1,7 @@
 <?php 
 
+require_once locate_template('/settings/helpers/admin_helper.php');
+
 function sg_admin_theme_option(){
 
 $prefix = ''; 
@@ -153,14 +155,14 @@ $fields[] = array(
 			'label'		=> 'Logo',
 			'desc'		=> 'Enter/upload logo for your site themes',
 			'id'		=> 'logo',
-			'default'	=> 'http://labs.caliberi.com/fchblog/wp-content/themes/falcon_blog/assets/img/falcon-logo.png',
+			'default'	=> get_template_directory_uri().'/assets/images/choices-logo.png',
 			'type'		=> 'upload'
 		),
 		array(
 			'label'		=> 'Favicon',
 			'desc'		=> 'Enter/upload 16x16 favicon for your site themes',
 			'id'		=> 'favicon',
-			'default'	=> 'http://labs.caliberi.com/fchblog/wp-content/themes/falcon_blog/assets/img/falcon-logo.png',
+			'default'	=> get_template_directory_uri().'/assets/images/favicon.ico',
 			'type'		=> 'upload'
 		),
 		array(  
@@ -180,81 +182,34 @@ $fields[] = array(
 	)
 );	
 
-/*----color settings----*/
-$color_standard_vars = array('Default','Invert','Info','Warning','Success','Error','Mute');
-$color_array = array('#000','#fff','cyan','orange','green','red','#999');
-$field_subs = array();
-$i=0;
-foreach($color_standard_vars as $var){
-	$field_subs[] = array(
-		'label'		=> $var.' Color',
-		'id'		=> sg_util::slug('standard_'.$var.'_color','_'),
-		'default'	=> sg_val($color_array,$i),
-		'type'		=> 'color'
-	);
-	$i++;
-}
+
+/*----general settings----*/
 $fields[] = array(
-	'label'		=> 'Color Settings',
-	'icon'		=> SG_THEME_URL.'/includes/sg_framework/assets/images/icons/color_wheel.png',
+	'label'		=> 'Expert Agent Settings',
+	'icon'		=> SG_THEME_URL.'/includes/sg_framework/assets/images/icons/house.png',
 	'type'		=> 'heading',
 	'fields'	=> array(
 		array(
-			'label'		=> 'Standard',
-			'type'		=> 'fieldset',
-			'fields'	=> $field_subs
+			'label'		=> 'EA Search Result Page',
+			'id'		=> 'ea_search_result_page',
+			'type'		=> 'select',
+			'options'	=> sg_get_post_list('page')
+		),
+		array(
+			'label'		=> 'EA Search Investment Result Page',
+			'id'		=> 'ea_search_investment_result_page',
+			'type'		=> 'select',
+			'options'	=> sg_get_post_list('page')
+		),
+		array(
+			'label'		=> 'EA Property Details Page',
+			'id'		=> 'ea_property_details_page',
+			'type'		=> 'select',
+			'options'	=> sg_get_post_list('page')
 		),
 	)
-);
+);	
 
-$color_vars = array('Background','Base','Line','Text','Heading','Accent');
-$color_var_sets = array(
-	'color_set_1' => array('#fff','#fff','#ddd','#555','#333','#428bca'),
-	'color_set_2' => array('#eee','#fff','#ddd','#555','#333','#428bca'),
-	'color_set_3' => array('#2f353e','#fff','#ddd','#fff','#fff','#428bca'),
-	'color_set_4' => array('#428bca','#fff','#ddd','#fff','#fff','#d2322d'),
-	'color_set_5' => array('#d2322d','#fff','#ddd','#fff','#fff','#428bca'),
-	'color_set_6' => array('#39b3d7','#fff','#ddd','#fff','#fff','#428bca'),
-	'color_set_7' => array('#ed9c28','#fff','#ddd','#fff','#fff','#428bca'),
-	'color_set_8' => array('#fff','#fff','#ddd','#555','#333','#428bca'),
-	'color_set_9' => array('#fff','#fff','#ddd','#555','#333','#428bca'),
-	'color_set_10' => array('#fff','#fff','#ddd','#555','#333','#428bca'),
-);
-foreach($color_var_sets as $set=>$set_val){
-	$fields[] = array(
-		'label'		=> ucwords(sg_util::slug($set,' ')),
-		'type'		=> 'fieldset_open'
-	);
-	$preview_id = 'preview_'.sg_util::slug($set,'_');
-	$fields[] = array(
-		'id'		=> $preview_id,
-		'type'		=> 'html_preview',
-		'content'	=> array(
-			'file'	=> 'color_set.php'
-		),	
-		'attr'		=> array(
-			'onload'=> "preview_color_set('".sg_util::slug($preview_id)."')",
-			'style'	=> 'height:250px;'
-		)
-	);
-	$i=0;
-	foreach($color_vars as $var){
-		$color_array = sg_val($color_var_sets,sg_util::slug($set,'_'));
-		$fields[] = array(
-			'label'		=> $var.' Color',
-			'id'		=> sg_util::slug($set.'_'.$var.'_color','_'),
-			'default'	=> sg_val($color_array,$i),
-			'type'		=> 'color',
-			'attr'		=> array(
-				'onchange'=>"preview_color_set('".sg_util::slug($preview_id)."')",
-			)
-		);
-		$i++;
-	}
-	$fields[] = array(
-		'type'		=> 'fieldset_close'
-	);
-}
 
 /*----font settings----*/
 $fields[] = array(
@@ -452,72 +407,6 @@ $fields[] = array(
 			)
 		),
 		array(
-			'label'		=> 'Promo Bar',
-			'type'		=> 'heading',
-			'fields'	=> array(
-				array (  
-					'label'		=> 'Enable Promo Bar',
-					'id' 		=> 'promo_bar',  
-					'default'	=> false, 
-					'type'		=> 'checkbox',
-				),
-				array (  
-					'label'		=> 'Color Set',
-					'id' 		=> 'promo_bar_color_set',  
-					'default'	=> 'color-set-1', 
-					'type'		=> 'select',  
-					'options'	=> $option_color_sets
-				),
-				array (  
-					'label'		=> 'Extra Class',
-					'id' 		=> 'promo_bar_extra_class', 
-					'type'		=> 'text'
-				),
-				array (  
-					'label'		=> 'Promo Bar Text',
-					'id' 		=> 'promo_bar_text',  
-					'default'	=> '', 
-					'type'		=> 'textarea'
-				),
-			)
-		),		
-		array(
-			'label'		=> 'Top Header',
-			'type'		=> 'heading',
-			'fields'	=> array(
-				array (  
-					'label'		=> 'Enable Top Header',
-					'id' 		=> 'header_top',  
-					'default'	=> false, 
-					'type'		=> 'checkbox',
-				),
-				array (  
-					'label'		=> 'Color Set',
-					'id' 		=> 'header_top_color_set',  
-					'default'	=> 'color-set-1', 
-					'type'		=> 'select',  
-					'options'	=> $option_color_sets
-				),
-				array (  
-					'label'		=> 'Separator',
-					'id' 		=> 'header_top_separator',
-					'type'		=> 'select',  
-					'options'	=> $option_separators
-				),
-				array (  
-					'label'		=> 'Extra Class',
-					'id' 		=> 'header_top_extra_class', 
-					'type'		=> 'text'
-				),
-				array (  
-					'label'		=> 'Top Header Text',
-					'id' 		=> 'header_top_text',  
-					'default'	=> '', 
-					'type'		=> 'textarea'
-				),
-			)
-		),
-		array(
 			'label'		=> 'Header',
 			'type'		=> 'heading',
 			'fields'	=> array(
@@ -529,8 +418,7 @@ $fields[] = array(
 				),
 				array (  
 					'label'		=> 'Color Set',
-					'id' 		=> 'header_color_set',  
-					'default'	=> 'color-set-1', 
+					'id' 		=> 'header_color_set',
 					'type'		=> 'select',  
 					'options'	=> $option_color_sets
 				),
@@ -567,116 +455,6 @@ $fields[] = array(
 					'type'		=> 'radio',
 					'options'	=> $option_subheader_aligns
 				),
-			)
-		),
-		array(
-			'label'		=> 'Sub Header',
-			'type'		=> 'heading',
-			'fields'	=> array(
-				array (  
-					'label'		=> 'Enable Sub Header',
-					'id' 		=> 'subheader',  
-					'default'	=> true, 
-					'type'		=> 'checkbox',
-				),
-				array (  
-					'label'		=> 'Color Set',
-					'id' 		=> 'subheader_color_set',  
-					'default'	=> 'color-set-1', 
-					'type'		=> 'select',  
-					'options'	=> $option_color_sets
-				),
-				array (  
-					'label'		=> 'Separator',
-					'id' 		=> 'subheader_separator', 
-					'type'		=> 'select',  
-					'options'	=> $option_separators
-				),
-				array (  
-					'label'		=> 'Extra Class',
-					'id' 		=> 'subheader_extra_class', 
-					'type'		=> 'text'
-				),
-				array (  
-					'label'		=> 'Sub Header Padding Top',
-					'id' 		=> 'subheader_padding_top', 
-					'type'		=> 'text',
-				),
-				array (  
-					'label'		=> 'Sub Header Padding Bottom',
-					'id' 		=> 'subheader_padding_bottom', 
-					'type'		=> 'text',
-				),
-				array (  
-					'label'		=> 'Sub Header Align',
-					'id' 		=> 'subheader_align',  
-					'default'	=> 'center', 
-					'type'		=> 'radio',
-					'options'	=> $option_subheader_aligns
-				),
-				array (  
-					'label'		=> 'Background Image',
-					'id' 		=> 'subheader_background_image',
-					'default'	=> '',  
-					'type'		=> 'radio',
-					'trigger'	=> true,
-					'options'	=> $option_background_image_modes
-				),
-				array(
-					'label'		=> 'Predefined Background',
-					'type'		=> 'fieldset',
-					'binding'	=> array(
-						'trigger'	=> 'subheader_background_image',
-						'value'		=> 'predefined'
-					),
-					'fields'	=> array(
-						array (  
-							'label'		=> 'Background Image',
-							'id' 		=> 'subheader_background_image_predefined',  
-							'type'		=> 'select_image',
-							'options'	=> $option_background_image_predefineds
-						),
-					)
-				),
-				array(
-					'label'		=> 'Custom Background',
-					'type'		=> 'fieldset',
-					'binding'	=> array(
-						'trigger'	=> 'subheader_background_image',
-						'value'		=> 'custom'
-					),
-					'fields'	=> array(
-						array (  
-							'label'		=> 'Background Image',
-							'id' 		=> 'subheader_background_image_url',  
-							'type'		=> 'upload'
-						),
-						array (  
-							'label'		=> 'Background Position',
-							'id' 		=> 'subheader_background_image_position',  
-							'type'		=> 'select',
-							'options'	=> $option_background_image_positions
-						),
-						array (  
-							'label'		=> 'Background Attachment',
-							'id' 		=> 'subheader_background_image_attachment',  
-							'type'		=> 'select',
-							'options'	=> $option_background_image_attachments
-						),
-						array (  
-							'label'		=> 'Background Repeat',
-							'id' 		=> 'subheader_background_image_repeat',  
-							'type'		=> 'select',
-							'options'	=> $option_background_image_repeats
-						),
-						array (  
-							'label'		=> 'Background Size',
-							'id' 		=> 'subheader_background_image_size',  
-							'type'		=> 'select',
-							'options'	=> $option_background_image_sizes
-						),
-					)
-				)
 			)
 		),
 		array(
@@ -765,8 +543,7 @@ $fields[] = array(
 			'fields'	=> array(
 				array (  
 					'label'		=> 'Color Set',
-					'id' 		=> 'footer_color_set',  
-					'default'	=> 'color-set-1', 
+					'id' 		=> 'footer_color_set', 
 					'type'		=> 'select',  
 					'options'	=> $option_color_sets
 				),
@@ -790,13 +567,6 @@ $fields[] = array(
 					'label'		=> 'Footer Padding Bottom',
 					'id' 		=> 'footer_padding_bottom', 
 					'type'		=> 'text',
-				),
-				array(
-					'label'		=> 'Footer Grid Layout',
-					'id' 		=> 'footer_grid_layout',  
-					'default'	=> '3-3-3-3', 
-					'type'		=> 'select',  
-					'options'	=> $option_grid_layouts
 				),
 				array (  
 					'label'		=> 'Background Image',
@@ -863,35 +633,6 @@ $fields[] = array(
 				)
 			)
 		),
-		array(
-			'label'		=> 'Bottom Footer',
-			'type'		=> 'heading',
-			'fields'	=> array(
-				array (  
-					'label'		=> 'Color Set',
-					'id' 		=> 'footer_bottom_color_set',  
-					'default'	=> 'color-set-1', 
-					'type'		=> 'select',  
-					'options'	=> $option_color_sets
-				),
-				array (  
-					'label'		=> 'Separator',
-					'id' 		=> 'footer_bottom_separator', 
-					'type'		=> 'select',  
-					'options'	=> $option_separators
-				),
-				array (  
-					'label'		=> 'Extra Class',
-					'id' 		=> 'footer_bottom_extra_class', 
-					'type'		=> 'text'
-				),
-				array (  
-					'label'		=> 'Text',
-					'id' 		=> 'footer_bottom_text', 
-					'type'		=> 'textarea'
-				),
-			)
-		),
 	)		
 );
 
@@ -922,7 +663,7 @@ $fields[] = array(
 					'label'		=> 'Blog Post Layout',
 					'desc'		=> 'Select blog post layout',  
 					'id' 		=> 'blog_post_layout',  
-					'default'	=> 'thumb', 
+					'default'	=> 'thumb-column', 
 					'type'		=> 'radio',  
 					'options'	=> $option_blog_post_layouts
 				),
@@ -1023,7 +764,7 @@ $fields[] = array(
 	'type'		=> 'heading'
 );
 	
-$social_medias = array('Facebook','Twitter','Google+','Youtube','Vimeo','Pinterest','LinkedIn','Dribble','DeviantArt');
+$social_medias = array('Facebook','Twitter','Google+','Youtube','Vimeo','Pinterest','LinkedIn');
 foreach($social_medias as $social){
 	$fields[] = array(
 		'label'		=> $social,
@@ -1047,13 +788,21 @@ $fields[] = array(
 					'label'		=> 'Head Script',
 					'desc'		=> 'Custom script to be added on inside head tag',  
 					'id' 		=> 'script_head',
-					'type'		=> 'textarea'
+					'type'		=> 'textarea',
+					'sanitizer'		=> 'none',
+					'attr'		=> array(
+						'rows'		=> 10
+					)
 				),
 				array(
 					'label'		=> 'Foot Script',
 					'desc'		=> 'Custom script to be added on footer before body closing tag',  
 					'id' 		=> 'script_foot',
-					'type'		=> 'textarea'
+					'type'		=> 'textarea',
+					'sanitizer'		=> 'none',
+					'attr'		=> array(
+						'rows'		=> 10
+					)
 				),
 			)
 		),
@@ -1065,7 +814,11 @@ $fields[] = array(
 					'label'		=> 'Style',
 					'desc'		=> 'Custom script to be added on inside head tag',  
 					'id' 		=> 'style_head',
-					'type'		=> 'textarea'
+					'type'		=> 'textarea',
+					'sanitizer'		=> 'data',
+					'attr'		=> array(
+						'rows'		=> 10
+					)
 				),
 			)
 		)
@@ -1086,7 +839,7 @@ return $fields;
 }
 
 new sg_metaoption(array(
-	'id'		=> 'sample_box',
-	'title'		=> 'Sample Box',
+	'id'		=> 'wpsg_choices',
+	'title'		=> 'Choices Theme',
 	'fields'	=> 'sg_admin_theme_option'
 ));

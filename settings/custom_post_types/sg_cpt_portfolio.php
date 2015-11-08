@@ -11,7 +11,7 @@ function sg_cpt_portfolio() {
 			'publicly_queryable' => true,
 			'query_var' => true,
 			'has_archive' => true,
-			'supports' => array( 'title', 'editor', 'thumbnail' ),
+			'supports' => array( 'title', 'editor', 'thumbnail', 'page-attributes' ),
 		)
 	);
 }
