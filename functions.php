@@ -28,6 +28,10 @@ require_once locate_template('/settings/ea_api_listing.php');	// EA Api
 require_once locate_template('/settings/ea_api_details.php');	// EA Api
 require_once locate_template('/settings/ea_api_featured.php');	// EA Api
 
+require_once locate_template('/settings/resales_api.php');	// EA Api
+require_once locate_template('/settings/resales_api_search.php');	// EA Api
+require_once locate_template('/settings/resales_api_details.php');	// EA Api
+
 sg_include_path('/settings/custom_post_types');				// Custom post types
 sg_include_path('/settings/widgets');						// Widgets
 sg_include_path('/settings/template_tags');					// Template Tags

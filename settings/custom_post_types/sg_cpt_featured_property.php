@@ -1,7 +1,7 @@
 <?php 
 
 function sg_cpt_featured_property() {
-	register_post_type('sg_cpt_featured_property',
+	register_post_type('sg_cpt_featured_prop',
 		array(
 			'labels' => array(
 				'name' => sg__('Properties'),
