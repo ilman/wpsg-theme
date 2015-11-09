@@ -1,0 +1,19 @@
+body{
+	padding-top:8%;
+	background:#2b3337;
+	box-sizing:border-box;
+}
+
+.login h1 a {
+	background-image:url('../images/choices-logo.png');
+	background-size:auto;
+	width:98px;
+	height:36px;
+}
+
+#login{
+	background:#c9252c;
+	padding:20px;
+}
+
+#login #nav a, #login #backtoblog a{ color:#fff; }
