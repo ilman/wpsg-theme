@@ -136,18 +136,18 @@ function build_resales_property_search_text($params)
 	extract((array) $params);
 
 	$input = $_GET;
-	$text = 'Search result for ';
+	$text = 'Showing result for ';
 	
 	//map input dep
 	$input_dep = SG_Util::val($input, 'dep', $search_type);
 	if($input_dep=='to-rent'){
-		$text .= 'property to rent ';
+		$text .= 'properties to rent ';
 	}
 	elseif($input_dep=='for-investment'){
-		$text .= 'property for investment ';
+		$text .= 'properties for investment ';
 	}
 	else{
-		$text .= 'property for sale ';
+		$text .= 'properties for sale ';
 	}
 
 	//map input country
@@ -156,7 +156,7 @@ function build_resales_property_search_text($params)
 
 	//map input area
 	$input_area = SG_Util::val($input, 'area', $area);
-	$text .= 'in area '.trim($input_area,', ').' ';
+	$text .= 'around '.trim($input_area,', ').' ';
 
 	//map input location
 	$input_location = SG_Util::val($input, 'location');

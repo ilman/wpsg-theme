@@ -1,4 +1,4 @@
-<form class="ea-search-form" action="<?php echo $action ?>">
+<form class="resales-search-form" action="<?php echo $action ?>">
 	<?php 
 		$parsed_action = parse_url($action);
 		$action_query = SG_Util::val($parsed_action,'query');
@@ -99,7 +99,7 @@
                         array('label'=>'-No Minimum-', 'value'=>'')
                     );
                     foreach($price_array as $temp){
-                        $options[] = array('label'=>'&eur;'.$temp, 'value'=>$temp);
+                        $options[] = array('label'=>'&euro;'.$temp, 'value'=>$temp);
                     }
 
                     echo SG_Form::field('select','min',$values,$attr,'',$options);
@@ -112,7 +112,7 @@
                         array('label'=>'-No Maximum-', 'value'=>'')
                     );
                     foreach($price_array as $temp){
-                        $options[] = array('label'=>'&eur;'.$temp, 'value'=>$temp);
+                        $options[] = array('label'=>'&euro;'.$temp, 'value'=>$temp);
                     }
 
                     echo SG_Form::field('select','max',$values,$attr,'',$options);
