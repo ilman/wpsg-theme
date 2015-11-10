@@ -1,4 +1,4 @@
-<form class="resales-search-form" action="<?php echo $action ?>">
+<form class="ea-search-form resales-search-form" action="<?php echo $action ?>">
 	<?php 
 		$parsed_action = parse_url($action);
 		$action_query = SG_Util::val($parsed_action,'query');

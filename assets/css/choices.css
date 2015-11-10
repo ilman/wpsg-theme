@@ -779,3 +779,5 @@ img{
   background: #333;
   color: #fff;
 }
+
+.resales-search-form .radio-inline{ margin-left:0 !important; margin-right:10px; }
