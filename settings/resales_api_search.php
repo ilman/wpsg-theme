@@ -13,7 +13,7 @@ function get_resales_search_result($attr=array()){
 	), $attr));
 
 	$params = array(
-		'search_type' => $search_type, 
+		'search_type' => (isset($_GET['dep'])) ? $_GET['dep'] : $search_type, 
 		'country' => $country, 
 		'area' => $area, 
 	);
@@ -70,8 +70,12 @@ function get_resales_search_form($attr=array()){
 		'style' => '',
 	), $attr));
 
+	// render
 	$action = sg_opt('resales_search_result_page');
 	$action = get_permalink($action);
+
+	$data_property_types = get_resales_property_types();
+	$data_property_locations = get_resales_property_locations();
 
 	ob_start();	
 	include(SG_THEME_PATH.'/templates/resales-search-form-'.$layout.'.php');
@@ -80,12 +84,11 @@ function get_resales_search_form($attr=array()){
 add_shortcode('resales_search_form', 'get_resales_search_form');
 
 
-
 function build_resales_property_search_url($params)
 {
 	extract((array) $params);
 	
-	$identifier = 1014809;
+	$identifier = RESALESAID;
 	$input = $_GET;
 	$query = '';
 
@@ -93,7 +96,7 @@ function build_resales_property_search_url($params)
 		$query = 'http://weblink.resales-online.com/weblink/xml/V4-1/SearchRentalXML.asp';
 	}
 	elseif($search_type == 'featured'){
-		$query = 'http://weblink.resales-online.com/weblink/xml/V4-1FeaturedPropertiesXML.asp';
+		$query = 'http://weblink.resales-online.com/weblink/xml/V4-1/FeaturedPropertiesXML.asp';
 	}
 	else{
 		$query = 'http://weblink.resales-online.com/weblink/xml/V4-1/SearchResaleXML.asp';
@@ -105,24 +108,24 @@ function build_resales_property_search_url($params)
 	$input_country = SG_Util::val($input, 'country', $country);
 	$input_area = SG_Util::val($input, 'area', $area);
 	$input_per_page = SG_Util::val($input, 'per_page', 12);
-	$input_cur = SG_Util::val($input, 'cur', 'GBP');
+	// $input_cur = SG_Util::val($input, 'cur', 'GBP');
 
 	if($input_country){ $query .= '&P_Country='.$input_country; }
 	if($input_area){ $query .= '&P_Area='.urlencode($input_area); }
 	if($input_per_page){ $query .= '&P_PageSize='.$input_per_page; }
-	if($input_cur){ $query .= '&P_Currency='.$input_cur; }
+	// if($input_cur){ $query .= '&P_Currency='.$input_cur; }
 	
-	if(isset($input['location'])){ $query .= '&P_Location='.urlencode($input['location']); }
-	if(isset($input['ptype'])){ $query .= '&PropertyTypes='.$input['ptype']; }
-	if(isset($input['min'])){ $query .= '&P_Min='.$input['min']; }
-	if(isset($input['max'])){ $query .= '&P_Max='.$input['max']; }
-	if(isset($input['beds'])){ $query .= '&P_Beds='.$input['beds']; }
-	if(isset($input['baths'])){ $query .= '&P_Baths='.$input['baths']; }
-	if(isset($input['sort'])){ $query .= '&P_SortType='.$input['sort']; }
-	if(isset($input['own'])){ $query .= '&P_Own='.$input['own']; }
+	if(SG_Util::val($input,'location')){ $query .= '&P_Location='.urlencode($input['location']); }
+	if(SG_Util::val($input,'ptype')){ $query .= '&P_PropertyTypes='.$input['ptype']; }
+	if(SG_Util::val($input,'min')){ $query .= '&P_Min='.$input['min']; }
+	if(SG_Util::val($input,'max')){ $query .= '&P_Max='.$input['max']; }
+	if(SG_Util::val($input,'beds')){ $query .= '&P_Beds='.$input['beds']; }
+	if(SG_Util::val($input,'baths')){ $query .= '&P_Baths='.$input['baths']; }
+	if(SG_Util::val($input,'sort')){ $query .= '&P_SortType='.$input['sort']; }
+	if(SG_Util::val($input,'own')){ $query .= '&P_Own='.$input['own']; }
 	
-	if(isset($input['query_id'])){ $query .= '&P_QueryId='.$input['query_id']; }
-	if(isset($input['s_page'])){ $query .= '&P_PageNo='.$input['s_page']; }
+	if(SG_Util::val($input,'query_id')){ $query .= '&P_QueryId='.$input['query_id']; }
+	if(SG_Util::val($input,'s_page')){ $query .= '&P_PageNo='.$input['s_page']; }
 
 	return $query;;
 }
@@ -136,11 +139,11 @@ function build_resales_property_search_text($params)
 	$text = 'Search result for ';
 	
 	//map input dep
-	$input_type = SG_Util::val($input, 'type', $search_type);
-	if($input_type=='to-rent'){
+	$input_dep = SG_Util::val($input, 'dep', $search_type);
+	if($input_dep=='to-rent'){
 		$text .= 'property to rent ';
 	}
-	elseif($input_type=='for-investment'){
+	elseif($input_dep=='for-investment'){
 		$text .= 'property for investment ';
 	}
 	else{
@@ -154,6 +157,12 @@ function build_resales_property_search_text($params)
 	//map input area
 	$input_area = SG_Util::val($input, 'area', $area);
 	$text .= 'in area '.trim($input_area,', ').' ';
+
+	//map input location
+	$input_location = SG_Util::val($input, 'location');
+	if($input_location){
+		$text .= 'in location '.trim($input_location,', ').' ';
+	}
 
 	//map input_price
 	$input_pricemin = SG_Util::val($input, 'min');
@@ -239,7 +248,7 @@ function get_resales_property_search_dom($html)
 			'type2' => $xpath->query("./type2",$item)->item(0)->nodeValue,
 			'beds' => $xpath->query("./bedrooms",$item)->item(0)->nodeValue,
 			'baths' => $xpath->query("./bathrooms",$item)->item(0)->nodeValue,
-			'currency' => $xpath->query("./currency",$item)->item(0)->nodeValue,
+			'cur' => $xpath->query("./currency",$item)->item(0)->nodeValue,
 			'price' => $xpath->query("./price",$item)->item(0)->nodeValue,
 			'original_price' => $xpath->query("./originalprice",$item)->item(0)->nodeValue,
 			'dims' => $xpath->query("./dimensions",$item)->item(0)->nodeValue,
@@ -254,4 +263,139 @@ function get_resales_property_search_dom($html)
 	}
 
 	return array('query_info'=>$query_info, 'result'=>$result);
+}
+
+
+function get_resales_property_types_dom($html)
+{
+	$result = array();
+
+	$dom = new DOMDocument();
+	@$dom->loadHtml($html);
+	
+	$xpath = new DOMXPath($dom);
+
+	//get search result
+	$xquery = "//propertytype";
+	$row = $xpath->query($xquery);
+	
+	for($i=0; $i<$row->length; $i++){
+		$item = $row->item($i);	
+		
+		$sub_type_data = array();
+		$sub_types = $xpath->query("./subtype",$item);
+		
+		foreach($sub_types as $sub_type){
+			$sub_type_data[] = array(
+				'label' => $xpath->query("./type",$sub_type)->item(0)->nodeValue,
+				'value' => $xpath->query("./optionvalue",$sub_type)->item(0)->nodeValue,
+			);
+		}
+
+		//get item data
+		$item_data = array(
+			'label' => $xpath->query("./type",$item)->item(0)->nodeValue,
+			'value' => $xpath->query("./optionvalue",$item)->item(0)->nodeValue,
+			'sub_types' => $sub_type_data,
+		);		
+		
+		$result[$i] = (object) $item_data;
+	}
+
+	return $result;
+}
+
+
+function get_resales_property_locations_dom($html)
+{
+	$result = array();
+
+	$dom = new DOMDocument();
+	@$dom->loadHtml($html);
+	
+	$xpath = new DOMXPath($dom);
+
+	//get search result
+	$xquery = "//locationname";
+	$row = $xpath->query($xquery);
+	
+	for($i=0; $i<$row->length; $i++){
+		$item = $row->item($i);	
+		
+		$result[$i] = $item->nodeValue;
+	}
+
+	return $result;
+}
+
+
+function get_resales_property_types()
+{
+	// curl get property types
+	$url = 'http://weblink.resales-online.com/weblink/xml/V4-1/SearchPropertyTypesXML.asp?p1='.RESALESAID.'&p_country=Spain';
+
+	//check if its already cached before
+	//dont cache search data :(
+
+	$data_key = 'resales_property_types';
+
+	$data_cache = get_transient($data_key); //get_transient not working
+	
+	if($data_cache!==false){
+		return $data_cache;
+	}
+
+	//continue
+
+	$data_curl =  curl_resales($url);
+	if($data_curl){
+		$data_body = $data_curl['body'];
+		$data_header = $data_curl['header'];
+	}
+	else{
+		return false;
+	}
+
+	$data_cache = get_resales_property_types_dom($data_body);
+
+	// dont cache search data :(
+	set_transient($data_key, $data_cache, 60*60); //1 hour
+
+	return $data_cache;
+}
+
+
+function get_resales_property_locations()
+{
+	// curl get property types
+	$url = 'http://weblink.resales-online.com/weblink/xml/SearchLocationsXMLV4.asp?p1='.RESALESAID.'&p_area=costa%20del%20sol&p_country=Spain';
+
+	//check if its already cached before
+	//dont cache search data :(
+
+	$data_key = 'resales_property_locations';
+
+	$data_cache = get_transient($data_key); //get_transient not working
+	
+	if($data_cache!==false){
+		return $data_cache;
+	}
+
+	//continue
+
+	$data_curl =  curl_resales($url);
+	if($data_curl){
+		$data_body = $data_curl['body'];
+		$data_header = $data_curl['header'];
+	}
+	else{
+		return false;
+	}
+
+	$data_cache = get_resales_property_locations_dom($data_body);
+
+	// dont cache search data :(
+	set_transient($data_key, $data_cache, 60*60); //1 hour
+
+	return $data_cache;
 }

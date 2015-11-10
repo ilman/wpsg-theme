@@ -1,5 +1,8 @@
 <?php 
 
+define('RESALESAID','1014809');
+
+
 function curl_resales($url, $params=array())
 {
 	//http://www.sitepoint.com/using-curl-for-remote-requests/

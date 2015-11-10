@@ -211,6 +211,27 @@ $fields[] = array(
 );	
 
 
+/*----general settings----*/
+$fields[] = array(
+	'label'		=> 'Resales Online Settings',
+	'icon'		=> SG_THEME_URL.'/includes/sg_framework/assets/images/icons/house.png',
+	'type'		=> 'heading',
+	'fields'	=> array(
+		array(
+			'label'		=> 'Resales Online Search Result Page',
+			'id'		=> 'resales_search_result_page',
+			'type'		=> 'select',
+			'options'	=> sg_get_post_list('page')
+		),
+		array(
+			'label'		=> 'Resales Property Details Page',
+			'id'		=> 'resales_property_details_page',
+			'type'		=> 'select',
+			'options'	=> sg_get_post_list('page')
+		),
+	)
+);	
+
 /*----font settings----*/
 $fields[] = array(
 	'label'		=> 'Font Settings',

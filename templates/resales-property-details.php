@@ -15,7 +15,7 @@
 
             <p class="property-meta">
                 <span class="property-status bg-primary"><?php echo SG_Util::val($result, 'status') ?></span>   
-                <span class="property-price">Price: <?php echo str_replace('Â','',SG_Util::val($result, 'price')).' '.SG_Util::val($result, 'cur') ?></span> 
+                <span class="property-price">Price: <?php echo sg_price_format(SG_Util::val($result, 'price'), SG_Util::val($result, 'cur')) ?></span> 
                 <span class="property-ref">Ref: <?php echo SG_Util::val($result, 'ref') ?></span>    
             </p>
 

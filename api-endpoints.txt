@@ -1,3 +1,6 @@
+http://weblink.resales-online.com/weblink/xml/V4-1/SearchPropertyTypesXML.asp?p1=1014809&p_country=Spain
+
+
 http://weblink.resales-online.com/weblink/xml/SearchLocationsXMLV4.asp?p1=1014809&p_area=costa%20del%20sol&p_country=Spain
 
 http://weblink.resales-online.com/weblink/xml/V4-1/SearchResaleXML.asp?p1=1014809&p_area=costa%20del%20sol&p_country=Spain

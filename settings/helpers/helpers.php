@@ -105,3 +105,28 @@ function sg_x($text, $context){
 function sg_e($text){
 	return _e($text, SG_THEME_ID);
 }
+
+function sg_number_format($number){
+	return number_format($number,0,'.',',');
+}
+
+function sg_cur_format($cur){
+	$cur = strtolower($cur);
+
+	if($cur=='usd'){
+		return '$';
+	}
+	elseif($cur=='eur'){
+		return '&euro;';
+	}
+	elseif($cur=='gbp'){
+		return '&pound;';
+	}
+	else{
+		return strtoupper($cur);
+	}
+}
+
+function sg_price_format($number, $cur=''){
+	return trim(sg_cur_format($cur).sg_number_format($number));
+}
