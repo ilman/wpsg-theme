@@ -17,8 +17,8 @@
         <?php 
             $options = array(
                 array('label'=>'For Sale', 'value'=>'for-sale'),
-                array('label'=>'To Rent', 'value'=>'to-rent'),
-                array('label'=>'Featured', 'value'=>'featured')
+                // array('label'=>'To Rent', 'value'=>'to-rent'),
+                // array('label'=>'Featured', 'value'=>'featured')
             );
             $this_attr = array(
                 'class' => 'radio-inline'
@@ -34,6 +34,7 @@
                 array('label'=>'- Select Property Type -', 'value'=>''),
             );
             foreach($data_property_types as $p_type){
+                if($p_type->label == 'Commercial'){ continue; }
                 $options[] = (array) $p_type;
                 foreach($p_type->sub_types as $sub){
                     $options[] = array('label'=>' -- '.$p_type->label.' - '.$sub['label'], 'value'=>$sub['value']);
