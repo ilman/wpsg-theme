@@ -109,16 +109,18 @@ function build_resales_property_search_url($params)
 	$input_area = SG_Util::val($input, 'area', $area);
 	$input_per_page = SG_Util::val($input, 'per_page', 12);
 	$input_ptype = SG_Util::val($input,'ptype','2-1');
+	$input_min = SG_Util::val($input,'min','100000');
 	// $input_cur = SG_Util::val($input, 'cur', 'GBP');
 
 	if($input_country){ $query .= '&P_Country='.$input_country; }
 	if($input_area){ $query .= '&P_Area='.urlencode($input_area); }
 	if($input_per_page){ $query .= '&P_PageSize='.$input_per_page; }
 	if($input_ptype){ $query .= '&P_PropertyTypes='.$input_ptype; }
+	if($input_min){ $query .= '&P_Min='.$input_min; }
 	// if($input_cur){ $query .= '&P_Currency='.$input_cur; }
 	
 	if(SG_Util::val($input,'location')){ $query .= '&P_Location='.urlencode($input['location']); }
-	if(SG_Util::val($input,'min')){ $query .= '&P_Min='.$input['min']; }
+	// if(SG_Util::val($input,'min')){ $query .= '&P_Min='.$input['min']; }
 	if(SG_Util::val($input,'max')){ $query .= '&P_Max='.$input['max']; }
 	if(SG_Util::val($input,'beds')){ $query .= '&P_Beds='.$input['beds']; }
 	if(SG_Util::val($input,'baths')){ $query .= '&P_Baths='.$input['baths']; }

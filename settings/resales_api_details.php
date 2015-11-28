@@ -56,7 +56,7 @@ function build_resales_property_details_url()
 
 	$input_cur = SG_Util::val($input, 'cur', 'GBP');
 
-	if($input_cur){ $query .= '&P_Currency='.$input_cur; }
+	// if($input_cur){ $query .= '&P_Currency='.$input_cur; }
 	
 	if(isset($input['query_id'])){ $query .= '&P_QueryId='.$input['query_id']; }
 	if(isset($input['ref_id'])){ $query .= '&P_RefId='.$input['ref_id']; }
