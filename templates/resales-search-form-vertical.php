@@ -93,7 +93,7 @@
             <div class="col-xs-6">
             	<label>Min. Price</label>
                 <?php 
-                    $price_array = ea_price_array(SG_Util::val($values,'dep','for-sale'));
+                    $price_array = resales_price_array(SG_Util::val($values,'dep','for-sale'));
                 ?>
                 <?php 
                     $options = array(

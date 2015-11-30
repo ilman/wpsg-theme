@@ -2,6 +2,27 @@
 
 define('RESALESAID','1014809');
 
+function resales_price_array($key=null){
+	$price = array(
+		'for-sale' => array(
+		   '100000','125000','150000','175000','225000','250000','275000',
+		   '300000','350000','400000','450000','500000','550000','600000','700000','800000','900000',
+		   '1000000'
+		),
+		'to-rent' => array(
+		   '400','500','600','700','800','900','1000','1200','1400','1600',
+		   '1800','2000','3000',
+		)
+	);
+
+	if($key){
+		return SG_Util::val($price, $key);
+	}
+	else{
+		return $price;
+	}
+}
+
 
 function curl_resales($url, $params=array())
 {
