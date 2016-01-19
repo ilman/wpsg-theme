@@ -57,6 +57,12 @@ function sg_cpt_mb_staff(){
 			'type'		=> 'text'
 		),
 		array(
+			'label'		=> 'Linkedin Url',
+			'id'		=> $prefix.'linkedin_url',
+			'default'	=> '',
+			'type'		=> 'text'
+		),
+		array(
 			'label'		=> 'Quote',
 			'id'		=> $prefix.'quote',
 			'default'	=> '',
