@@ -781,3 +781,21 @@ img{
 }
 
 .resales-search-form .radio-inline{ margin-left:0 !important; margin-right:10px; }
+
+
+.customer-service-hero{ padding:40px 36px; background:#eaeaea url(http://www.choices.co.uk/wp-content/uploads/2015/12/bg-cs-hero.jpg) no-repeat right top; font-size:24px; line-height:1.1em; font-weight:bold; }
+.customer-service-hero img{ margin:0; margin-left:-10px; }
+.customer-service-hero p{ 
+  max-width:500px; 
+}
+.btn-cs{ background:#eaeaea; padding:15px; font-weight:bold; font-size:14px; line-height:1em; text-align:center; min-height:180px; }
+
+.bg-multi-line{
+  display:inline;
+  background:#fff;
+  line-height:1.6em;
+  box-shadow: 10px 0 0 #fff, -10px 0 0 #fff;
+  box-decoration-break: clone;
+  color:inherit !important;
+}
+.margin-b-2x{ margin-bottom:2em; }
