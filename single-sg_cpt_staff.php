@@ -18,9 +18,9 @@
 	
 	<div class="col-sm-4">
 		<p><?php echo sg_get_post_thumbnail('full') ?></p>
-		<ul>
+		<ul class="list-unstyled">
 			<?php if($sg_staff_linkedin_url): ?>
-				<li><a href="<?php echo $sg_staff_linkedin_url ?>"><i class="fa fa-linkedin-square"></i> Linkedin Profile</a></li>
+				<li><a class="btn btn-default" href="<?php echo $sg_staff_linkedin_url ?>"><i class="fa fa-linkedin-square"></i> Linkedin Profile</a></li>
 			<?php endif; ?>
 		</ul>
 	
