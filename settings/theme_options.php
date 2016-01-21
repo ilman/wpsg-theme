@@ -207,6 +207,12 @@ $fields[] = array(
 			'type'		=> 'select',
 			'options'	=> sg_get_post_list('page')
 		),
+		array(
+			'label'		=> 'EA Investment Property Details Page',
+			'id'		=> 'ea_investment_property_details_page',
+			'type'		=> 'select',
+			'options'	=> sg_get_post_list('page')
+		),
 	)
 );	
 

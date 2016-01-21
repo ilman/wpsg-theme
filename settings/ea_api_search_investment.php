@@ -31,7 +31,7 @@ function get_ea_search_investment_result($attr=array()){
 	// dont cache search data :(
 	// set_transient($data_key, $data_cache, 60*60); //1 hour
 
-	return render_ea_property_html($data_cache);
+	return render_ea_property_html($data_cache, 'list-column-investment');
 }
 add_shortcode('ea_search_investment_result', 'get_ea_search_investment_result');
 
