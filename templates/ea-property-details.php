@@ -56,7 +56,6 @@
                 $result_action_brochure = SG_Util::val($result_actions, 'brochure');
                 $result_action_epc = SG_Util::val($result_actions, 'epc');
                 $result_action_reqview = SG_Util::val($result_actions, 'reqview');
-                $result_action_reqview = '#request-viewing-form';
             ?>
             <ul class="property-action row no-padding" style="list-style:none;">
                 <?php if($result_action_map): ?>
