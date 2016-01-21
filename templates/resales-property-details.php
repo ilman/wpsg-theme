@@ -34,6 +34,7 @@
                 $result_action_brochure = SG_Util::val($result_actions, 'brochure');
                 $result_action_epc = SG_Util::val($result_actions, 'epc');
                 $result_action_reqview = SG_Util::val($result_actions, 'reqview');
+                $result_action_reqview = '#request-viewing-form';
             ?>
             <ul class="property-action row no-padding" style="list-style:none;">
                 <?php if($result_action_map): ?>
@@ -101,6 +102,7 @@
                 </div>
 
 
+                <?php if($result->images && is_array($result->images)): ?>
                 <ul class="property-images row post-list list-column">
                     <?php $i=0; foreach($result->images as $image): $i++; ?>
                         <?php if($i<=1){ continue; } ?>
@@ -120,6 +122,7 @@
                         </li>
                     <?php endforeach; ?>            
                 </ul>
+                <?php endif; ?>
             </div>
         
         </div>
