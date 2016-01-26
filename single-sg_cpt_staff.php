@@ -20,7 +20,7 @@
 		<p><?php echo sg_get_post_thumbnail('full') ?></p>
 		<ul class="list-unstyled">
 			<?php if($sg_staff_linkedin_url): ?>
-				<li><a class="btn btn-default" href="<?php echo $sg_staff_linkedin_url ?>"><i class="fa fa-linkedin-square"></i> Linkedin Profile</a></li>
+				<li><a class="btn btn-primary" href="<?php echo $sg_staff_linkedin_url ?>"><i class="fa fa-linkedin-square"></i> Linkedin Profile</a></li>
 			<?php endif; ?>
 		</ul>
 	
