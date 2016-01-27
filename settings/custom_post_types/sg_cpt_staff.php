@@ -20,6 +20,11 @@ function sg_cpt_staff() {
 }
 add_action('init', 'sg_cpt_staff');
 
+if(function_exists('add_image_size')){ 
+	add_image_size('profile_square', 150, 150, true);
+	add_image_size('profile_medium', 300, 400, true);
+}
+
 
 
 /*----rename featured image metabox----*/
