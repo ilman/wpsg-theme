@@ -761,11 +761,13 @@ img{
 .valuation-landing .content-main .post-item > .wpb_row{ margin-bottom:0; }
 .valuation-landing .content-main{ 
   padding:40px;
-  background:#fff url('../images/bg-valuation-landing.jpg') no-repeat right top;
+  /*background:#fff url('../images/bg-valuation-landing.jpg') no-repeat right top;*/
 }
+/*
 @media (min-width : 768px) {
   .valuation-landing .content-main .vc_span4{ padding-top: 290px; }
 }
+*/
 
 .text-upper{ text-transform:uppercase !important; }
 
