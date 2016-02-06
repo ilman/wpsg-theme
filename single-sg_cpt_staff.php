@@ -5,6 +5,7 @@
 	$sg_staff_title = get_post_meta($sg_qid, '_sg_mb_staff_title', true);
 	$sg_staff_quote = get_post_meta($sg_qid, '_sg_mb_staff_quote', true);
 	$sg_staff_linkedin_url = get_post_meta($sg_qid, '_sg_mb_staff_linkedin_url', true);
+	$sg_staff_all_agent_url = get_post_meta($sg_qid, '_sg_mb_staff_all_agent_url', true);
 ?>
 <div class="post-single row">
 <?php while ( have_posts() ) : the_post(); ?>
@@ -18,9 +19,12 @@
 	
 	<div class="col-sm-4">
 		<p><?php echo sg_get_post_thumbnail('full') ?></p>
-		<ul class="list-unstyled">
+		<ul class="list-unstyled" id="list-staff-profile-url">
 			<?php if($sg_staff_linkedin_url): ?>
 				<li><a class="btn btn-primary" href="<?php echo $sg_staff_linkedin_url ?>"><i class="fa fa-linkedin-square"></i> Linkedin Profile</a></li>
+			<?php endif; ?>
+			<?php if($sg_staff_all_agent_url): ?>
+				<li><a class="btn btn-success" href="<?php echo $sg_staff_all_agent_url ?>"><i class="fa fa-linkedin-square"></i> AllAgent Profile</a></li>
 			<?php endif; ?>
 		</ul>
 	
