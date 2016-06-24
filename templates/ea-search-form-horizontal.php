@@ -21,6 +21,7 @@
             'Central London',
             // 'Worthing',
             // 'Horsham',
+            'Nationwide',
         );
 
 		sort($areas);

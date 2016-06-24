@@ -20,6 +20,13 @@
                 );
             }
 
+            if(sg_opt('google_url')){
+                $social_links['google'] = array(
+                    'url'=>sg_opt('google_url'),
+                    'icon'=>'icon-google-plus',
+                );
+            }
+
             if(sg_opt('youtube_url')){
                 $social_links['youtube'] = array(
                     'url'=>sg_opt('youtube_url'),

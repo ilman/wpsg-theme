@@ -67,6 +67,7 @@ function ea_district_code($area=null, $dep='for-sale'){
 		'worthing' => '4897',
 		'dockland' => '30582',
 		'central-london' => '30582',
+		'nationwide' => '44562',
 	);
 
 	$district_investment_code = array(

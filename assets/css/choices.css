@@ -48,13 +48,14 @@ h3,
   width: 20px;
   background: transparent no-repeat center center;
 }
+#footer .icon-socials{ margin:0 2px; }
 .icon-socials.icon-facebook {
   background-image: url('../images/icon-facebook.png');
   width: 73px;
 }
 .icon-socials.icon-youtube {
   background-image: url('../images/icon-youtube.png');
-  width: 59px;
+  width: 46px;
 }
 .icon-socials.icon-twitter {
   background-image: url('../images/icon-twitter.png');
@@ -804,3 +805,25 @@ img{
 
 
 #list-staff-profile-url li{ margin-bottom:5px; }
+
+.banner-red-stripe{
+  background:#c9252c url(../images/bg-banner-white-stripe.png) no-repeat left top;
+  color:#fff;
+  font-size:14px;
+  line-height:22px;
+  padding:15px;
+  margin-bottom:20px;
+}
+
+.banner-red-stripe h3{ font-weight:bold; }
+.banner-red-stripe .col-main{ padding-top:20px; }
+
+@media (max-width : 768px) {
+  .banner-red-stripe{ background:#c9252c; text-align:center; }
+  .banner-red-stripe .col-sec{ background:#fff; }
+}
+
+.font-18{ font-size:18px !important; line-height:1.1em !important; }
+.font-20{ font-size:20px !important; line-height:1.1em !important; }
+.font-22{ font-size:22px !important; line-height:1.1em !important; }
+.font-24{ font-size:24px !important; line-height:1.1em !important; }
