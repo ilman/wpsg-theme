@@ -51,7 +51,7 @@ function get_ea_search_investment_form($attr=array()){
 	$action = get_permalink($action);
 
 	ob_start();	
-	include(SG_THEME_PATH.'/templates/ea-search-investment-form-'.$layout.'.php');
+	include(SG_THEME_PATH.'/templates/ea_api_bak/ea-search-investment-form-'.$layout.'.php');
 	return ob_get_clean();
 }
 add_shortcode('ea_search_investment_form', 'get_ea_search_investment_form');

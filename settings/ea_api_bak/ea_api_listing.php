@@ -46,7 +46,8 @@ function get_ea_property_list($attr=array()){
 	$data_cache = array_merge(
 		get_ea_property_search_dom($data_body), 
 		array(
-			'url' => SG_Util::val($data_header,'url')
+			'url' => SG_Util::val($data_header,'url'),
+			'curl_url' => $url,
 		)
 	);
 

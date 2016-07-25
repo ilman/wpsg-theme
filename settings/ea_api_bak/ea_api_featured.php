@@ -46,7 +46,7 @@ function render_ea_property_html_featured($data, $layout='list-column'){
 
 	extract($data);
 
-	$path = '/templates/ea-featured-'.$layout.'.php';
+	$path = '/templates/ea_api_bak/ea-featured-'.$layout.'.php';
 
 	ob_start();	
 	include(SG_THEME_PATH.$path);

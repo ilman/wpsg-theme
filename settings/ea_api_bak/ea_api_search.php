@@ -66,7 +66,7 @@ function get_ea_search_form($attr=array()){
 	$action = get_permalink($action);
 
 	ob_start();	
-	include(SG_THEME_PATH.'/templates/ea-search-form-'.$layout.'.php');
+	include(SG_THEME_PATH.'/templates/ea_api_bak/ea-search-form-'.$layout.'.php');
 	return ob_get_clean();
 }
 add_shortcode('ea_search_form', 'get_ea_search_form');

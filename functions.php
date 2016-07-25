@@ -21,12 +21,18 @@ require_once locate_template('/settings/metaboxes.php');		// Global custom metab
 require_once locate_template('/settings/template_tags.php');	// Template tags
 require_once locate_template('/settings/sg_walker_menu.php');	// Menu Walker
 require_once locate_template('/settings/login.php');			// Login
-require_once locate_template('/settings/ea_api.php');			// EA Api
-require_once locate_template('/settings/ea_api_search.php');	// EA Api
-require_once locate_template('/settings/ea_api_search_investment.php');	// EA Api
-require_once locate_template('/settings/ea_api_listing.php');	// EA Api
-require_once locate_template('/settings/ea_api_details.php');	// EA Api
-require_once locate_template('/settings/ea_api_featured.php');	// EA Api
+
+require_once locate_template('/settings/ea_api_bak/ea_api.php');			// EA Api
+require_once locate_template('/settings/ea_api_bak/ea_api_search.php');	// EA Api
+require_once locate_template('/settings/ea_api_bak/ea_api_search_investment.php');	// EA Api
+// require_once locate_template('/settings/ea_api_bak/ea_api_listing.php');	// EA Api
+// require_once locate_template('/settings/ea_api_bak/ea_api_details.php');	// EA Api
+require_once locate_template('/settings/ea_api_bak/ea_api_featured.php');	// EA Api
+
+require_once locate_template('/settings/ea_api/ea_api.php');			// EA Api
+require_once locate_template('/settings/ea_api/ea_api_search.php');			// EA Api
+require_once locate_template('/settings/ea_api/ea_api_listing.php');			// EA Api
+require_once locate_template('/settings/ea_api/ea_api_details.php');			// EA Api
 
 require_once locate_template('/settings/resales_api.php');	// EA Api
 require_once locate_template('/settings/resales_api_search.php');	// EA Api

@@ -110,7 +110,7 @@ function render_ea_property_html($data, $layout='list-column'){
 		return '<p><i>Temporary session from EA is expired, please repeat your search</i></p>';
 	}
 
-	$path = '/templates/ea-'.$layout.'.php';
+	$path = '/templates/ea_api_bak/ea-'.$layout.'.php';
 
 	ob_start();	
 	include(SG_THEME_PATH.$path);
