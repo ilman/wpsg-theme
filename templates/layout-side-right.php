@@ -8,7 +8,14 @@
 	</div>
 	<!-- content main -->
 	<aside class="col-sm-3 content-side">
-		<?php dynamic_sidebar('primary-sidebar'); ?>
+		<?php 
+			if(get_post_type()=='sg_cpt_office' && has_term( 'Branches', 'sg_cpt_office_group' )){
+				get_sidebar('office');
+			}
+			else{
+				dynamic_sidebar('primary-sidebar');
+			}
+		?>
 	</aside>
 	<!-- content side -->
 </div>

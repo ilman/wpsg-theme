@@ -11,7 +11,7 @@ function sg_cpt_office() {
 			'publicly_queryable' => true,
 			'query_var' => true,
 			'has_archive' => true,
-			'supports' => array( 'title', 'page-attributes'  ),
+			'supports' => array( 'title', 'editor', 'thumbnail', 'page-attributes' ),
 			'rewrite' => array(
 				'slug' => 'office'
 			),
@@ -19,6 +19,19 @@ function sg_cpt_office() {
 	);
 }
 add_action('init', 'sg_cpt_office');
+
+
+if(function_exists('add_image_size')){ 
+	add_image_size('office_thumb', 320, 230, true);
+}
+
+function sg_cpt_office_scripts(){
+	if(get_post_type()=='sg_cpt_office'){
+		wp_enqueue_script( 'google-map', 'http://maps.google.com/maps/api/js?sensor=false&key=AIzaSyDvRACO1kNp1n64CVZpXpKQW98i8BkzAyo', array('jquery') );
+		wp_enqueue_script( 'shortcode-map', SG_THEME_URL.'/assets/scripts/shortcode-map.js', array('jquery','google-map') );
+	}
+}
+add_action('wp', 'sg_cpt_office_scripts');
 
 
 /*----metabox for custom post type----*/
@@ -63,7 +76,16 @@ function sg_cpt_mb_office(){
 			'id'		=> $prefix.'email',
 			'default'	=> '',
 			'type'		=> 'text'
-		)
+		),
+		array(
+			'label'		=> 'Opening Hours',
+			'id'		=> $prefix.'opening_hour',
+			'default'	=> '',
+			'type'		=> 'textarea',
+			'attr'		=> array(
+				'rows'		=> 8
+			)
+		),
 		
 	);
 

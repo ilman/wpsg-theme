@@ -183,26 +183,6 @@ $fields[] = array(
 );	
 
 
-$fields[] = array(
-	'label'		=> 'Custom Post Type Settings',
-	'icon'		=> SG_THEME_URL.'/includes/sg_framework/assets/images/icons/setting_tools.png',
-	'type'		=> 'heading',
-	'fields'	=> array(
-		array(  
-			'label'		=> 'Office Form Shortcode',
-			'desc'		=> 'Add content/shortcode on office post type',
-			'id' 		=> 'office_form_shortcode',  
-			'default'	=> '', 
-			'type'		=> 'textarea',
-			'sanitizer'		=> 'none',
-			'attr'		=> array(
-				'rows'		=> 4
-			)
-		),
-	)
-);	
-
-
 /*----general settings----*/
 $fields[] = array(
 	'label'		=> 'Expert Agent Settings',

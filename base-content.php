@@ -13,6 +13,11 @@ if(basename($sg_file_path)=='front-page.php' || basename($sg_file_path)=='index.
 else{
 	$sg_content_base = basename($sg_file_path,'.php');
 	$sg_content_layout = '';
+
+	if($sg_page_layout=='layout-side-none'){
+		$sg_page_layout = 'layout-full';
+	}
+
 	include(locate_template('templates/'.$sg_page_layout.'.php'));
 }
 echo ($sg_page_add_container) ? '</div><!-- container -->' : '';
