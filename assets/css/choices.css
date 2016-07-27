@@ -231,6 +231,10 @@ h3,
   left: 0;
   padding: 4px;
 }
+.block-property .property-rooms-count, .block-property .property-type{ color:#999; font-weight:bold; }
+.block-property .property-rooms-count{ margin-bottom:10px; }
+.block-property .property-rooms-count span{ margin-right:10px; }
+
 @media (min-width: 992px) {
   .block-property .property-title,
   .block-property .property-price {
@@ -832,3 +836,5 @@ img{
 .sg_cpt_office .wp-post-image{ float:left; margin: 0 15px 10px 0; }
 
 .map-container{ padding:5px; background:#fff; border:#ddd solid 1px; }
+
+.property-action.property-rooms-count{ color:#999; }

@@ -28,6 +28,9 @@
 			$prop_priority = SG_Util::val($row,'priority');
 			$prop_id      = SG_Util::val($row,'id');
 			$prop_type     = SG_Util::val($row,'property_type');
+			$bedrooms     = SG_Util::val($row,'bedrooms');
+			$bathrooms     = SG_Util::val($row,'bathrooms');
+			$receptions     = SG_Util::val($row,'receptions');
 
 			//prepare property detail query
 			$prop_query = 'pid='.$prop_id;
@@ -56,6 +59,11 @@
 						<a href="<?php echo $prop_link ?>"><?php echo $prop_title ?></a>
 					</h5>
 					<div class="property-type"><?php echo ($prop_type) ? $prop_type :'-' ?></div>
+					<div class="property-rooms-count">
+						<span title="Bedrooms"><i class="fa fa-bed"></i> <?php echo $bedrooms ?></span>						
+						<span title="Bathrooms"><i class="fa fa-tint"></i> <?php echo $bathrooms ?></span>						
+						<span title="Receptions"><i class="fa fa-coffee"></i> <?php echo $receptions ?></span>						
+					</div>
 					<div class="property-price"><?php echo str_replace('Â','',$prop_price) ?></div>
 				</div>
 			</div>

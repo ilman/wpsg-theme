@@ -1,13 +1,13 @@
 <div class="page-property-details">
     <div class="row">
 
-    <style>
-        .property-desc{ margin-bottom:20px; }
-        .property-desc .rooms{ padding-left:1.5em; }
-        .property-desc .room h6{ margin:0; }
-    </style>
-    
-    <div class="col-sm-6">
+        <style>
+            .property-desc{ margin-bottom:20px; }
+            .property-desc .rooms{ padding-left:1.5em; }
+            .property-desc .room h6{ margin:0; }
+        </style>
+        
+        <div class="col-sm-6">
             <div class="magnific-gallery">
                 <div id="property-image-main">
                     <div class="anim-ch ch-slide-in-bottom">
@@ -47,7 +47,8 @@
                 </ul>
             </div>
     
-    </div>
+        </div>
+        <!-- col -->
         <div class="col-sm-6">
             <h1 class="property-address"><?php echo SG_Util::val($row, 'advert_heading') ?></h1>
 
@@ -68,6 +69,10 @@
                 $row_action_epc = SG_Util::val($row, 'epc');
                 $row_action_floorplan = SG_Util::val($row, 'floor_plans');
                 $row_action_reqview = SG_Util::val($row_actions, 'reqview');
+
+                $bedrooms     = SG_Util::val($row,'bedrooms');
+                $bathrooms     = SG_Util::val($row,'bathrooms');
+                $receptions     = SG_Util::val($row,'receptions');
             ?>
             <ul class="property-action row no-padding" style="list-style:none;">
                 <?php if($row_action_map): ?>
@@ -100,6 +105,19 @@
                     </li>
                 <?php endif; ?>
             </ul>
+
+            <ul class="property-action property-rooms-count row no-padding" style="list-style:none;">
+                <li class="col-xs-6">
+                    <span title="Bedrooms"><i class="fa fa-fw fa-bed"></i> Bedrooms: <?php echo $bedrooms ?></span> 
+                </li>
+                <li class="col-xs-6">
+                    <span title="Bathrooms"><i class="fa fa-fw fa-tint"></i> Bathrooms: <?php echo $bathrooms ?></span>
+                </li>
+                <li class="col-xs-6">
+                    <span title="Receptions"><i class="fa fa-fw fa-coffee"></i> Receptions: <?php echo $receptions ?></span>
+                </li>
+            </ul>
+
 
             <h5 class="choices-branch">
                 <?php echo SG_Util::val($row, 'branch') ?>
@@ -136,8 +154,15 @@
                 </div>
             <?php endif; ?>
         </div>
+        <!-- col -->
     
-</div>
+    </div>
+    <!-- row -->
+
+    <?php 
+        $content = sg_opt('ea_property_form_shortcode');
+        echo do_shortcode($content);
+    ?>
 </div>
 
 

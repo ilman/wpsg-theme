@@ -184,7 +184,7 @@ $fields[] = array(
 
 
 $fields[] = array(
-	'label'		=> 'Custom Post Type Settings',
+	'label'		=> 'Form Settings',
 	'icon'		=> SG_THEME_URL.'/includes/sg_framework/assets/images/icons/setting_tools.png',
 	'type'		=> 'heading',
 	'fields'	=> array(
@@ -192,6 +192,17 @@ $fields[] = array(
 			'label'		=> 'Office Form Shortcode',
 			'desc'		=> 'Add content/shortcode on office post type',
 			'id' 		=> 'office_form_shortcode',  
+			'default'	=> '', 
+			'type'		=> 'textarea',
+			'sanitizer'		=> 'none',
+			'attr'		=> array(
+				'rows'		=> 4
+			)
+		),
+		array(  
+			'label'		=> 'EA Properties Form Shortcode',
+			'desc'		=> 'Add content/shortcode on EA property details page',
+			'id' 		=> 'ea_property_form_shortcode',  
 			'default'	=> '', 
 			'type'		=> 'textarea',
 			'sanitizer'		=> 'none',
