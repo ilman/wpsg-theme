@@ -31,9 +31,12 @@
 			$bedrooms     = SG_Util::val($row,'bedrooms');
 			$bathrooms     = SG_Util::val($row,'bathrooms');
 			$receptions     = SG_Util::val($row,'receptions');
+			$aid_pid = substr($row->web_link, (strrpos($row->web_link, '?') ?: -1) +1);
+			$aid_pid = str_replace('pid', 'eapid', $aid_pid);
+			$aid_pid = str_replace('aid', 'eaaid', $aid_pid);
 
 			//prepare property detail query
-			$prop_query = 'pid='.$prop_id;
+			$prop_query = $aid_pid;
 
 			//get property detail url page
 			$prop_link = get_permalink($page_detail_url);
