@@ -249,7 +249,7 @@ h3,
   padding: 6px;
 }
 .page-property-details .property-meta span {
-  margin-right: 10px;
+  margin-right: 10px; margin-bottom:5px; display:inline-block;
 }
 .page-property-details .property-meta .property-status {
   padding: 0 4px;

@@ -53,10 +53,18 @@
             <h1 class="property-address"><?php echo SG_Util::val($row, 'advert_heading') ?></h1>
 
             <p class="property-meta">
+                
                 <span class="property-status bg-primary"><?php echo SG_Util::val($row, 'priority') ?></span>   
                 <span class="property-price">Price: <?php echo str_replace('Â','',SG_Util::val($row, 'price_text')) ?></span> 
                 <span class="property-ref">Ref: <?php echo SG_Util::val($row, 'reference') ?></span>    
-                <span class="property-type">Property Type: <?php echo SG_Util::val($row, 'property_type') ?></span>    
+                <span class="property-type">Property Type: <?php echo SG_Util::val($row, 'property_type') ?></span>   
+                <?php 
+                    $property_style = trim(SG_Util::val($row, 'property_style'));
+
+                    if($property_style){
+                        echo '<span class="property-style">Property Style: '.$property_style.'</span>';
+                    }
+                ?>
             </p>
             
             <?php 

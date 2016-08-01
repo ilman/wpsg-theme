@@ -51,7 +51,7 @@ function get_ea_property_list_new($attr=array()){
 	$pagination['per_page'] = $per_page;
 
 
-	$query = "SELECT id, advert_heading, advert_image, price_text, property_type, priority, bedrooms, bathrooms, receptions, web_link
+	$query = "SELECT id, advert_heading, advert_image, price_text, property_type, property_style, priority, bedrooms, bathrooms, receptions, web_link
 			FROM wp_ea_properties
 			WHERE $query
 			ORDER BY numeric_price ASC
