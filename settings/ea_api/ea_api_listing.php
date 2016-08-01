@@ -21,6 +21,7 @@ function get_ea_property_list_new($attr=array()){
 		'aid' => '',
 		'class' => '',
 		'style' => '',
+		'show_text' => false,
 
 	), $attr));
 
@@ -76,10 +77,13 @@ function get_ea_property_list_new($attr=array()){
 
 	$data_cache = array(
 			'url' => '',
-			'text' => $text,
 			'result' => $result,
 			'pagination' => render_ea_pagination_html_new($pagination, 'eapage'),
 	);
+
+	if(isset($show_text) && $show_text){
+		$data_cache['text'] = $text;
+	}
 
 	// dont cache search data :(
 	// set_transient($data_key, $data_cache, 60*60); //1 hour
