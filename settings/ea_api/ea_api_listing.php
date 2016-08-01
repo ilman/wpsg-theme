@@ -11,6 +11,10 @@ function get_ea_property_list_new($attr=array()){
 	extract(shortcode_atts(array(
 
 		'dep' => 'for-sale',
+		'branch' => '',
+		'district' => '',
+		'town' => '',
+		'county' => '',
 		'area' => '',
 		'district_id' => '',
 		'area_id' => '',

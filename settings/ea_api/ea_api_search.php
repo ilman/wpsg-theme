@@ -114,30 +114,23 @@ function build_ea_propery_search_query_new($input=null){
 	}
 
 
+	//map input branches
+	$query .= ea_query_array_helper($input, 'branch', 'branches', 'branch');
+
+	//map input districts
+	$query .= ea_query_array_helper($input, 'district', 'districts', 'district');
+
+	//map input towns
+	$query .= ea_query_array_helper($input, 'town', 'towns', 'town');
+
+	//map input counties
+	$query .= ea_query_array_helper($input, 'county', 'counties', 'county');
+
 	//map input areas
-	$param_districts = '';
-	$input_districts = SG_Util::val($input, 'areas');
-	$input_district = SG_Util::val($input, 'area');
+	$query .= ea_query_array_helper($input, 'area', 'areas', 'area');
 
-	if($input_district){
-		$input_districts = array($input_district);
-	}
-
-	if(is_array($input_districts)){		
-		foreach($input_districts as $district){
-			$param_districts .= "'".$district."' or";
-		}
-		$param_districts = trim($param_districts, ' or');
-	}
-	else{
-		if(trim($input_districts)){
-			$param_districts = trim($input_districts);
-		}
-	}
-
-	if($param_districts){
-		$query .= "and town like (".$param_districts.") ";
-	}
+	//map input areas
+	$query .= ea_query_array_helper($input, 'region', 'regions', 'agency_region');
 
 	//map input area (single)
 	// $param_district = '';
@@ -187,7 +180,44 @@ function build_ea_propery_search_query_new($input=null){
 }
 
 
+function ea_query_array_helper($input, $key, $key_plural = '', $key_sql = ''){
+	
+	if(!$key_plural){
+		$key_plural = $key.'s';
+	}
 
+	if(!$key_sql){
+		$key_sql = $key;
+	}
+
+	$query = '';
+	$param_items = '';
+
+	$input_items = SG_Util::val($input, $key_plural);
+	$input_item = trim(SG_Util::val($input, $key), '|');
+
+	if($input_item){
+		$input_items = explode('|', $input_item);
+	}
+
+	if(is_array($input_items)){		
+		foreach($input_items as $item){
+			$param_items .= $key_sql." like '%".$item."%' or ";
+		}
+		$param_items = trim($param_items, ' or ');
+	}
+	else{
+		if(trim($input_items)){
+			$param_items = trim($input_items);
+		}
+	}
+
+	if($param_items){
+		$query .= "and (".$param_items.") ";
+	}
+
+	return $query;
+}
 
 
 function build_ea_property_search_text_new($input=null){
