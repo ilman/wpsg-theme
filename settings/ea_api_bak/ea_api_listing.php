@@ -53,7 +53,7 @@ function get_ea_property_list($attr=array()){
 
 	return render_ea_property_html($data_cache);
 }
-add_shortcode('ea_property_list', 'get_ea_property_list');
+add_shortcode('ea_property_list_old', 'get_ea_property_list');
 
 
 
