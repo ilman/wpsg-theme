@@ -77,7 +77,7 @@
 			$eaaid = SG_Util::val($parsed_query, 'aid');
 
 			//prepare property detail query
-			$prop_query = 'eaaid='.$eaaid.'&eapid='.$eapid;
+			$prop_query = 'eaaid='.$eaaid.'&eapid='.$eapid.'&curl=1';
 
 			//get property detail url page
 			$prop_link = get_permalink($page_detail_url);
