@@ -109,6 +109,9 @@ function build_ea_propery_search_query_new($input=null){
 	if($input_dep=='to-rent'){
 		$query .= "department = 'lettings' ";
 	}
+	elseif($input_dep=='new-homes'){
+		$query .= "department = 'new homes' ";
+	}
 	else{
 		$query .= "department = 'sales' ";
 	}
