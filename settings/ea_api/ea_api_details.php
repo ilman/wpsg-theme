@@ -23,6 +23,10 @@ function get_ea_property_details_new($attr=array()){
 		}
 	}
 
+	if(isset($_GET['curl']) && $_GET['curl'] == 1){
+		return get_ea_property_details();
+	}
+
 
 	if(!isset($pid)){
 		$pid = (isset($_GET['pid'])) ? $_GET['pid'] : 0;

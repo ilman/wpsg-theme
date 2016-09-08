@@ -33,7 +33,7 @@ function get_ea_property_details($attr=array()){
 
 	return render_ea_property_html($data_cache, 'property-details');
 }
-add_shortcode('ea_property_details', 'get_ea_property_details');
+add_shortcode('ea_property_details_old', 'get_ea_property_details');
 
 
 
