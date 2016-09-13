@@ -178,6 +178,7 @@ function build_ea_propery_search_query_new($input=null){
 	if($input_sort == 'asc' || $input_sort == 'desc'){
 		$query .= "";
 	}
+	
 
 	return $query;
 }
@@ -205,6 +206,7 @@ function ea_query_array_helper($input, $key, $key_plural = '', $key_sql = ''){
 
 	if(is_array($input_items)){		
 		foreach($input_items as $item){
+
 			$param_items .= $key_sql." like '%".$item."%' or ";
 		}
 		$param_items = trim($param_items, ' or ');
@@ -239,6 +241,9 @@ function build_ea_property_search_text_new($input=null){
 	elseif($input_dep=='for-investment'){
 		$text .= 'property for investment ';
 	}
+	elseif($input_dep=='new-homes'){
+		$text .= 'new homes ';
+	}
 	else{
 		$text .= 'property for sale ';
 	}
@@ -267,12 +272,13 @@ function build_ea_property_search_text_new($input=null){
 			$tmp_text .= ucwords(str_replace('-', ' ', $input_districts));
 		}
 		else{
-			$district_list = ea_district_code(null, $input_dep);
+			// $district_list = ea_district_code(null, $input_dep);
+			$district_list = clean_ea_branch_list();
 			$length = count($district_list);		
 			$i=0;		
 			foreach($district_list as $key=>$val){
 				$delimiter = ($i<($length-1)) ? ', ' : ' and ';
-				$tmp_text .= ucwords(str_replace('-', ' ', $key)).$delimiter;
+				$tmp_text .= ucwords(str_replace('-', ' ', $val)).$delimiter;
 
 				$i++;
 			}
@@ -317,4 +323,28 @@ function build_ea_property_search_text_new($input=null){
 	}
 
 	return trim($text);
+}
+
+function get_ea_group_list($key='branch'){
+
+	global $wpdb;
+
+	$query = "SELECT $key
+			FROM wp_ea_properties
+			GROUP BY $key
+			ORDER BY $key ASC";
+
+	return $wpdb->get_col($query);
+}
+
+function clean_ea_branch_list(){
+	$areas = array();
+    $array = get_ea_group_list('branch');
+    foreach($array as $item){
+        $item = str_ireplace('choices - ', '', $item);
+        $item = str_ireplace('office', '', $item);
+        $areas[] = trim($item);
+    }
+
+    return $areas;
 }

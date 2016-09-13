@@ -24,6 +24,8 @@
             'Nationwide',
         );
 
+        $areas = clean_ea_branch_list();
+
 		sort($areas);
 
         $values = $_GET;
@@ -37,11 +39,12 @@
 
     <div class="row">
     
-    <div class="col-sm-4">
+    <div class="col-sm-6">
             <?php 
                 $options = array(
                     array('label'=>'For Sale', 'value'=>'for-sale'),
-                    array('label'=>'To Rent', 'value'=>'to-rent')
+                    array('label'=>'To Rent', 'value'=>'to-rent'),
+                    array('label'=>'New Homes', 'value'=>'new-homes'),
                 );
                 $this_attr = array(
                     'class' => 'radio-inline'
@@ -51,20 +54,20 @@
     
     </div>
         <!-- col -->
-         <div class="col-sm-8">
+         <div class="col-sm-6">
              <div class="form-group">
                 <label>Area</label>
                 <?php 
                     $options = array();
                     foreach($areas as $area){
-                        $options[] = array('label'=>htmlspecialchars($area), 'value'=>SG_Util::slug($area));
+                        $options[] = array('label'=>htmlspecialchars($area), 'value'=>htmlspecialchars($area));
                     }
                     $this_attr = array(
                         'class' => 'form-control input-select2',
                         'multiple' => 'multiple',
                         'placeholder' => 'Select Areas'
                     );
-                    echo SG_Form::field('select2','areas[]',$values,$this_attr,'',$options);
+                    echo SG_Form::field('select2','branches[]',$values,$this_attr,'',$options);
                 ?>
             </div>
         </div>
