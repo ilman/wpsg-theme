@@ -259,6 +259,9 @@ function ea_query_array_xbranch_helper($input, $key='xbranch', $key_plural = 'xb
 					$param_items .= $key_sql." like '%".trim($item)."%' or ";
 				}
 			}
+			elseif($item = 'Executive Property'){
+				$param_items .= $key_sql." like '%Choices Select%' or ";
+			}
 			else{
 				$param_items .= $key_sql." like '%".trim($item)."%' or ";
 			}
@@ -399,6 +402,7 @@ function clean_ea_branch_list(){
         $item = str_ireplace('choices - ', '', $item);
         $item = str_ireplace('office', '', $item);
         $item = str_ireplace('department', '', $item);
+        $item = trim($item);
 
         if($item == 'Caterham'){
         	$item = 'Caterham & Coulsdon';
@@ -406,9 +410,12 @@ function clean_ea_branch_list(){
         elseif($item == 'Redhill'){
         	$item = 'Horley & Redhill';
         }
+        elseif($item == 'Choices Select'){
+        	$item = 'Executive Property';
+        }
 
-        if($item != 'Coulsdon' || $item != 'Horley'){
-        	$areas[] = trim($item);
+        if($item != 'Coulsdon' && $item != 'Horley'){
+        	$areas[] = $item;
         }
     }
 
