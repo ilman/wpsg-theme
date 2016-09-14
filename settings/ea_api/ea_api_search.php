@@ -41,9 +41,6 @@ function get_ea_search_result_new($attr=array()){
 			LIMIT $per_page
 			OFFSET $offset";
 
-	echo '<pre style="border:#ddd solid 1px; background:#eee; color:#999; padding:10px; margin:10px 0;">';
-	print_r($query);
-	echo '</pre>';
 
 	$result = $wpdb->get_results($query);
 
