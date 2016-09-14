@@ -94,7 +94,11 @@
             <div class="col-xs-6">
             	<label>Min. Price</label>
                 <?php 
-                    $price_array = ea_price_array(SG_Util::val($values,'dep','for-sale'));
+                    $price_dep = SG_Util::val($values,'dep','for-sale');
+                    if($price_dep == 'new-homes'){
+                        $price_dep = 'for-sale';
+                    }
+                    $price_array = ea_price_array($price_dep);
                 ?>
                 <?php 
                     $options = array(
