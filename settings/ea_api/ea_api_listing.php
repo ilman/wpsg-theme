@@ -12,6 +12,7 @@ function get_ea_property_list_new($attr=array()){
 
 		'dep' => 'for-sale',
 		'branch' => '',
+		'xbranch' => '',
 		'district' => '',
 		'town' => '',
 		'county' => '',

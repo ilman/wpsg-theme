@@ -67,7 +67,7 @@
                         'multiple' => 'multiple',
                         'placeholder' => 'Select Areas'
                     );
-                    echo SG_Form::field('select2','branches[]',$values,$this_attr,'',$options);
+                    echo SG_Form::field('select2','xbranches[]',$values,$this_attr,'',$options);
                 ?>
             </div>
         </div>

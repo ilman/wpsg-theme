@@ -41,6 +41,10 @@ function get_ea_search_result_new($attr=array()){
 			LIMIT $per_page
 			OFFSET $offset";
 
+	echo '<pre style="border:#ddd solid 1px; background:#eee; color:#999; padding:10px; margin:10px 0;">';
+	print_r($query);
+	echo '</pre>';
+
 	$result = $wpdb->get_results($query);
 
 	//check if its already cached before
@@ -119,6 +123,9 @@ function build_ea_propery_search_query_new($input=null){
 
 	//map input branches
 	$query .= ea_query_array_helper($input, 'branch', 'branches', 'branch');
+
+	//map input branches
+	$query .= ea_query_array_xbranch_helper($input, 'xbranch', 'xbranches', 'branch');
 
 	//map input districts
 	$query .= ea_query_array_helper($input, 'district', 'districts', 'district');
@@ -207,7 +214,58 @@ function ea_query_array_helper($input, $key, $key_plural = '', $key_sql = ''){
 	if(is_array($input_items)){		
 		foreach($input_items as $item){
 
-			$param_items .= $key_sql." like '%".$item."%' or ";
+			$param_items .= $key_sql." like '%".trim($item)."%' or ";
+		}
+		$param_items = trim($param_items, ' or ');
+	}
+	else{
+		if(trim($input_items)){
+			$param_items = trim($input_items);
+		}
+	}
+
+	if($param_items){
+		$query .= "and (".$param_items.") ";
+	}
+
+	return $query;
+}
+
+
+function ea_query_array_xbranch_helper($input, $key='xbranch', $key_plural = 'xbranches', $key_sql = 'branch'){
+	
+	if(!$key_plural){
+		$key_plural = $key.'s';
+	}
+
+	if(!$key_sql){
+		$key_sql = $key;
+	}
+
+	$query = '';
+	$param_items = '';
+
+	$input_items = SG_Util::val($input, $key_plural);
+	$input_item = trim(SG_Util::val($input, $key), '|');
+
+	if($input_item){
+		$input_items = explode('|', $input_item);
+	}
+
+	if(is_array($input_items)){		
+		foreach($input_items as $item){
+
+			if(stripos($item, '&') !== false){
+				$items = explode('&', $item);
+
+				foreach($items as $item){
+					$param_items .= $key_sql." like '%".trim($item)."%' or ";
+				}
+			}
+			else{
+				$param_items .= $key_sql." like '%".trim($item)."%' or ";
+			}
+
 		}
 		$param_items = trim($param_items, ' or ');
 	}
@@ -250,8 +308,8 @@ function build_ea_property_search_text_new($input=null){
 
 	//map input area
 	$tmp_text = '';
-	$input_districts = SG_Util::val($input, 'areas');
-	$input_district = SG_Util::val($input, 'area');
+	$input_districts = SG_Util::val($input, 'xbranches');
+	$input_district = SG_Util::val($input, 'xbranch');
 
 	if($input_district){
 		$input_districts = array($input_district);
@@ -343,7 +401,18 @@ function clean_ea_branch_list(){
     foreach($array as $item){
         $item = str_ireplace('choices - ', '', $item);
         $item = str_ireplace('office', '', $item);
-        $areas[] = trim($item);
+        $item = str_ireplace('department', '', $item);
+
+        if($item == 'Caterham'){
+        	$item = 'Caterham & Coulsdon';
+        }
+        elseif($item == 'Redhill'){
+        	$item = 'Horley & Redhill';
+        }
+
+        if($item != 'Coulsdon' || $item != 'Horley'){
+        	$areas[] = trim($item);
+        }
     }
 
     return $areas;
