@@ -39,12 +39,12 @@
 
     <div class="row">
     
-    <div class="col-sm-6">
+    <div class="col-sm-4">
             <?php 
                 $options = array(
                     array('label'=>'For Sale', 'value'=>'for-sale'),
                     array('label'=>'To Rent', 'value'=>'to-rent'),
-                    array('label'=>'New Homes', 'value'=>'new-homes'),
+                    // array('label'=>'New Homes', 'value'=>'new-homes'),
                 );
                 $this_attr = array(
                     'class' => 'radio-inline'
@@ -54,13 +54,13 @@
     
     </div>
         <!-- col -->
-         <div class="col-sm-6">
+         <div class="col-sm-8">
              <div class="form-group">
                 <label>Area</label>
                 <?php 
                     $options = array();
                     foreach($areas as $area){
-                        $options[] = array('label'=>htmlspecialchars($area), 'value'=>htmlspecialchars($area));
+                        $options[] = array('label'=>htmlspecialchars($area), 'value'=>$area);
                     }
                     $this_attr = array(
                         'class' => 'form-control input-select2',

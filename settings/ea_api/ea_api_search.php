@@ -110,8 +110,14 @@ function build_ea_propery_search_query_new($input=null){
 	if($input_dep=='to-rent'){
 		$query .= "department = 'lettings' ";
 	}
-	elseif($input_dep=='new-homes'){
-		$query .= "department = 'new homes' ";
+	// elseif($input_dep=='new-homes'){
+	// 	$query .= "department = 'new homes' ";
+	// }
+	elseif(in_array('New Homes', SG_Util::val($input, 'xbranches', []))){
+		$query .= "(department = 'new homes' or department ='sales') ";
+	}
+	elseif('New Homes' == SG_Util::val($input, 'branch')){
+		$query .= "(department = 'new homes' or department ='sales') ";
 	}
 	else{
 		$query .= "department = 'sales' ";
@@ -299,9 +305,9 @@ function build_ea_property_search_text_new($input=null){
 	elseif($input_dep=='for-investment'){
 		$text .= 'property for investment ';
 	}
-	elseif($input_dep=='new-homes'){
-		$text .= 'new homes ';
-	}
+	// elseif($input_dep=='new-homes'){
+	// 	$text .= 'new homes ';
+	// }
 	else{
 		$text .= 'property for sale ';
 	}
