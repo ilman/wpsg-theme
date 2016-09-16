@@ -42,6 +42,11 @@ function get_ea_search_result_new($attr=array()){
 			OFFSET $offset";
 
 
+	echo '<pre style="border:#ddd solid 1px; background:#eee; color:#999; padding:10px; margin:10px 0;">';
+	print_r($query);
+	echo '</pre>';
+
+
 	$result = $wpdb->get_results($query);
 
 	//check if its already cached before
@@ -105,30 +110,14 @@ function build_ea_propery_search_query_new($input=null){
 
 	$query = '';
 
-	//map input dep
-	$input_dep = SG_Util::val($input, 'dep');
-	if($input_dep=='to-rent'){
-		$query .= "department = 'lettings' ";
-	}
-	// elseif($input_dep=='new-homes'){
-	// 	$query .= "department = 'new homes' ";
-	// }
-	elseif(in_array('New Homes', SG_Util::val($input, 'xbranches', []))){
-		$query .= "(department = 'new homes' or department ='sales') ";
-	}
-	elseif('New Homes' == SG_Util::val($input, 'branch')){
-		$query .= "(department = 'new homes' or department ='sales') ";
-	}
-	else{
-		$query .= "department = 'sales' ";
-	}
+	//map input xbranches
+	$query .= ea_query_array_xbranch_helper($input, 'xbranch', 'xbranches', 'branch');
 
+	//map input department
+	$query .= ea_query_department_helper($input, 'dep');
 
 	//map input branches
 	$query .= ea_query_array_helper($input, 'branch', 'branches', 'branch');
-
-	//map input branches
-	$query .= ea_query_array_xbranch_helper($input, 'xbranch', 'xbranches', 'branch');
 
 	//map input districts
 	$query .= ea_query_array_helper($input, 'district', 'districts', 'district');
@@ -191,6 +180,32 @@ function build_ea_propery_search_query_new($input=null){
 	
 
 	return $query;
+}
+
+
+function ea_query_department_helper($input, $key='dep'){
+	$input_dep = SG_Util::val($input, 'dep');
+	if($input_dep=='to-rent'){
+		$query .= "department = 'lettings' ";
+	}
+	else{
+		// elseif($input_dep=='new-homes'){
+		// 	$query .= "department = 'new homes' ";
+		// }
+		if(in_array('New Homes', SG_Util::val($input, 'xbranches', []))){
+			// $query .= "(department = 'new homes' or department ='sales') ";
+			$query .= "department != 'lettings' ";
+		}
+		elseif('New Homes' == SG_Util::val($input, 'branch')){
+			// $query .= "(department = 'new homes' or department ='sales') ";
+			$query .= "department != 'lettings' ";
+		}
+		else{
+			$query .= "department = 'sales' ";
+		}
+	}
+
+	return (SG_Util::val($input, 'xbranch') || SG_Util::val($input, 'xbranches')) ? "and $query ": "$query ";
 }
 
 
@@ -265,7 +280,7 @@ function ea_query_array_xbranch_helper($input, $key='xbranch', $key_plural = 'xb
 					$param_items .= $key_sql." like '%".trim($item)."%' or ";
 				}
 			}
-			elseif($item = 'Executive Property'){
+			elseif($item == 'Executive Property'){
 				$param_items .= $key_sql." like '%Choices Select%' or ";
 			}
 			else{
@@ -282,7 +297,7 @@ function ea_query_array_xbranch_helper($input, $key='xbranch', $key_plural = 'xb
 	}
 
 	if($param_items){
-		$query .= "and (".$param_items.") ";
+		$query .= "(".$param_items.") ";
 	}
 
 	return $query;
