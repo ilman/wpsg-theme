@@ -180,6 +180,10 @@ function build_ea_propery_search_query_new($input=null){
 
 function ea_query_department_helper($input, $key='dep'){
 	$input_dep = SG_Util::val($input, 'dep');
+	$input_branch = SG_Util::val($input, 'branch');
+	$input_xbranch = SG_Util::val($input, 'xbranch');
+	$input_xbranches = SG_Util::val($input, 'xbranches');
+
 	if($input_dep=='to-rent'){
 		$query .= "department = 'lettings' ";
 	}
@@ -191,7 +195,7 @@ function ea_query_department_helper($input, $key='dep'){
 			// $query .= "(department = 'new homes' or department ='sales') ";
 			$query .= "department != 'lettings' ";
 		}
-		elseif('New Homes' == SG_Util::val($input, 'branch')){
+		elseif(stripos($input_xbranch, 'new homes') !== false){
 			// $query .= "(department = 'new homes' or department ='sales') ";
 			$query .= "department != 'lettings' ";
 		}
