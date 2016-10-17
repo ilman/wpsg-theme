@@ -137,7 +137,7 @@
                     echo preg_replace('/[Â]/i', '', $prop_desc);
 
                     if(SG_Util::val($row, 'portal_fee')){
-                        echo '<p class="well well-sm">'.SG_Util::val($row, 'portal_fee');.'</p>';
+                        echo '<p class="well well-sm">'.SG_Util::val($row, 'portal_fee').'</p>';
                     }
                 ?>
             </div>
