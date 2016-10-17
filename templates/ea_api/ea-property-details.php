@@ -135,12 +135,13 @@
                 <?php 
                     $prop_desc = SG_Util::val($row, 'advert');
                     echo preg_replace('/[Â]/i', '', $prop_desc);
-
-                    if(SG_Util::val($row, 'portal_fee')){
-                        echo '<p class="well well-sm">'.SG_Util::val($row, 'portal_fee').'</p>';
-                    }
                 ?>
             </div>
+            <?php 
+                if(SG_Util::val($row, 'portal_fee')){
+                    echo '<p class="proprty-desc-extra well well-sm">'.SG_Util::val($row, 'portal_fee').'</p>';
+                }
+            ?>
 
             <?php 
                 $row_rooms = json_decode($row->rooms);
