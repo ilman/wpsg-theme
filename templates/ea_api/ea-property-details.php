@@ -77,6 +77,7 @@
                 $row_action_epc = SG_Util::val($row, 'epc');
                 $row_action_floorplan = SG_Util::val($row, 'floor_plans');
                 $row_action_reqview = SG_Util::val($row_actions, 'reqview');
+                $row_action_files = @json_decode(SG_Util::val($row, 'files'));
 
                 $bedrooms     = SG_Util::val($row,'bedrooms');
                 $bathrooms     = SG_Util::val($row,'bathrooms');
@@ -111,6 +112,14 @@
                     <li class="col-xs-6">
                         <a href="<?php echo $row_action_reqview ?>"><i class="fa fa-fw fa-search"></i> Request Viewing</a>
                     </li>
+                <?php endif; ?>
+
+                <?php if(is_array($row_action_files)): ?>
+                    <?php foreach ($row_action_files as $rfile): ?>
+                        <li class="col-xs-6">
+                            <a href="<?php echo "javascript:void(window.open('".$rfile."'))" ?>"><i class="fa fa-fw fa-play-circle"></i> Video Tour</a>
+                        </li>
+                    <?php endforeach; ?>
                 <?php endif; ?>
             </ul>
 
