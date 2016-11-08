@@ -54,3 +54,9 @@ if(function_exists('compile_less_css')){
 	compile_less_css('theme.less', 'theme.css', get_template_directory().'/assets');
 	compile_less_css('admin.less', 'admin.css', get_template_directory().'/includes/sg_framework/assets');	
 }
+
+
+function sc_ts_widget(){
+	return '<div ts-widget></div>';
+}
+add_shortcode('ts_widget', 'sc_ts_widget');
