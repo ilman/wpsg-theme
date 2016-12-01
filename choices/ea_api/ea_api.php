@@ -241,7 +241,7 @@ function ea_price_init_new(){
 
 	// Register the script first.
 	wp_register_script('ea-form-price', 
-		get_template_directory_uri() . '/assets/scripts/ea-form-price.js',
+		get_template_directory_uri() . '/front/assets/js/ea-form-price.js',
 		array('theme-js'),
 		'',
 		true

@@ -117,7 +117,7 @@ class SG_FrontSetup{
 	wp_register_script('modernizr', 
 		get_template_directory_uri() . '/front/assets/vendors/modernizr.min.js');
 	wp_register_script('bootstrap-js', 
-		get_template_directory_uri() . '/front/assets/bootstrap/js/bootstrap.min.js', 
+		get_template_directory_uri() . '/front/assets/vendors/bootstrap/js/bootstrap.min.js', 
 		array('jquery'),'1.0.0',true);
 	wp_register_script('jquery-inview', 
 		get_template_directory_uri() . '/front/assets/vendors/inview-zuk/jquery.inview.js', 

@@ -25,7 +25,7 @@ class Choices_Property_Form_Widget extends WP_Widget {
 		);
 
 		$this->init();
-		// SG_Form::init();
+		SG_Builder::form_init();
 		SG_Builder::init();
 
 	}
@@ -89,11 +89,6 @@ class Choices_Property_Form_Widget extends WP_Widget {
 	 */
  	public function form( $values ) {
 
- 		
-
-		echo '<pre style="padding:10px; border:#ddd solid 1px; background:#eee; color:#999;">';
-		print_r($values);
-		echo '</pre>';
 
 		$fields = array();
 
@@ -105,7 +100,7 @@ class Choices_Property_Form_Widget extends WP_Widget {
 			$i++;
 		}
 
-		// SG_Form::init();
+		SG_Builder::form_init();
 		SG_Builder::init();
 		echo SG_Builder::form_builder($fields, $values);
 

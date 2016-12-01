@@ -25,7 +25,7 @@
 
     <div class="row">
     
-         <div class="col-sm-8">
+         <div class="col-xs-8">
             <div class="form-group">
                 <?php 
                     $options = array();
@@ -43,7 +43,7 @@
         </div>
         <!-- col -->
 
-        <div class="col-sm-2">
+        <div class="col-xs-2">
             <div class="form-group">
                 <button type="submit" name="dep" class="btn btn-primary btn-block" value="for-sale">Sell</button>
             </div>
@@ -51,7 +51,7 @@
         </div>
         <!-- col -->
 
-        <div class="col-sm-2">
+        <div class="col-xs-2">
             <div class="form-group">
                 <button type="submit" name="dep" class="btn btn-primary btn-block" value="to-rent">Rent</button>
             </div>

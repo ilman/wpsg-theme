@@ -64,7 +64,8 @@
 				<div class="navbar-header">
 					<button class="navbar-toggle btn btn-primary" type="button" data-toggle="collapse" data-target="#nav-main"> <i class="fa fa-fw fa-bars"></i> </button>
 					<a class="navbar-brand hide show-xs" href="<?php echo home_url(); ?>">
-						<img class="brand-default" src="<?php echo sg_opt('logo') ?>" alt="logo">
+						<!-- <img class="brand-default" src="<?php echo sg_opt('logo') ?>" alt="logo"> -->
+						CHOICES
 					</a>
 				</div>
 				
@@ -93,7 +94,7 @@
 </header>
 <!-- header -->
 
-<div id="subheader">
+<div id="subheader" style="background-image:url(<?php echo sg_asset_url('front/assets/images/bg-1.jpg') ?>)">
 	<div class="container">
 		<div class="subcontainer">
 			<h2>Life is about</h2>

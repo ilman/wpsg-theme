@@ -37,7 +37,7 @@ if(!class_exists('SG_MetaShortcode')){
 
 			if(in_array($pagenow, array('post-new.php', 'post.php'))){
 				if(self::_can_output($this)){
-					// SG_Form::init();
+					// SG_Builder::form_init();
 					// SG_Builder::init();
 					add_action('admin_enqueue_scripts', array(new SG_Form, 'init'));
 					add_action('admin_enqueue_scripts', array(new SG_Builder, 'init'));
