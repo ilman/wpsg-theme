@@ -159,8 +159,9 @@ function sg_get_metadata($meta_type, $object_id, $meta_key = '', $single = false
 }
 
 
-function sg_get_post_meta( $post_id, $key = '', $single = false ) {
-	return sg_get_metadata('post', $post_id, $key, $single);
+function sg_get_post_meta( $post_id, $key = '', $single = false, $default = null) {
+	$value = sg_get_metadata('post', $post_id, $key, $single);
+	return ($value !== null) ? $value : $default;
 }
 
 

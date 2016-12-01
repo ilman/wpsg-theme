@@ -1,7 +1,7 @@
 <?php
 	global $sg_qid;
 	
-	$sg_show_theme_title = get_post_meta($sg_qid, '_sg_theme_title', true);
+	$sg_show_theme_title = sg_get_post_meta($sg_qid, '_sg_theme_title', true, true);
 ?>
 
 
