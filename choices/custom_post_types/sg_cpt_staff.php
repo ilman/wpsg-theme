@@ -4,8 +4,8 @@ function sg_cpt_staff() {
 	register_post_type('sg_cpt_staff',
 		array(
 			'labels' => array(
-				'name' => sg__('Staffs'),
-				'singular_name' => sg__('Staff')
+				'name' => __('Staffs', SG_THEME_ID),
+				'singular_name' => __('Staff', SG_THEME_ID)
 			),
 			'public' => true,
 			'publicly_queryable' => true,
@@ -40,8 +40,6 @@ function sg_cpt_staff_change_image_box()
 
 
 /*----metabox for custom post type----*/
-
-require_once(TEMPLATEPATH.'/settings/helpers/admin_helper.php');
 
 function sg_cpt_mb_staff(){
 

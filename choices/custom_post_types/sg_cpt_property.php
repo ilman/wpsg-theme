@@ -4,8 +4,8 @@ function sg_cpt_property() {
 	register_post_type('sg_cpt_property',
 		array(
 			'labels' => array(
-				'name' => sg__('Properties'),
-				'singular_name' => sg__('Property')
+				'name' => __('Properties', SG_THEME_ID),
+				'singular_name' => __('Property', SG_THEME_ID)
 			),
 			'public' => true,
 			'publicly_queryable' => true,
@@ -22,8 +22,6 @@ add_action('init', 'sg_cpt_property');
 
 
 /*----metabox for custom post type----*/
-
-require_once(TEMPLATEPATH.'/settings/helpers/admin_helper.php');
 
 function sg_cpt_mb_property(){
 

@@ -3,104 +3,27 @@
 Template Name: No Header Template
 */
 ?>
-<!DOCTYPE HTML>
-<!--[if IE 7 ]><html class="ie ie7" <?php language_attributes(); ?>><![endif]-->
-<!--[if IE 8 ]><html class="ie ie8" <?php language_attributes(); ?>><![endif]-->
-<!--[if IE 9 ]><html class="ie ie9" <?php language_attributes(); ?>><![endif]-->
-<!--[if (gt IE 9)|!(IE)]><!--><html <?php language_attributes(); ?>><!--<![endif]-->
-<head>
 
-<!-- ****basic page needs**** -->
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-<title><?php wp_title('|', true, 'right'); ?></title>
+<?php include(sg_view_path('front/header.php')) ?>
 
-<!-- ****responsive viewport**** -->
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<style> 
+	#header-main{ display:none; }
+</style>
 
-<!-- ****wordpress enqueue**** -->
-<?php wp_head(); ?>
-</head>
+<div class="page-section">
+	<div class="container">
+		<?php 
+			echo ($sg_page_add_section) ? '<div class="'.trim('page-section '.$sg_page_section_class).'">' : '';
+			echo ($sg_page_add_container) ? '<div class="container">' : '';
 
-<body <?php body_class(); ?>>
+			sg_get_template_part($sg_wrapper['content_base'], $sg_wrapper['content_layout']);
 
-<header id="header">
-	<?php if(sg_opt('header_top')): ?>
-	<div id="header-top" class="<?php echo sg_val_class(array('theme-header-top page-section',sg_opt('header_top_color_set'),sg_opt('header_top_separator'),sg_opt('header_extra_class'))) ?>">
-		<div class="container">		
-			<div class="pull-left">
-				<?php echo sg_opt('header_top_text') ?>
-			</div>
-			<div class="pull-right">
-				<div class="menu menu-inline">
-					<?php 
-						wp_nav_menu(
-							array(
-								'theme_location'	=> 'header_top', 
-								'menu_class'		=> 'menu menu-inline',
-								'walker'			=> new sg_walker_menu(),
-								'fallback_cb'		=> 'sg_no_menu_cb'
-							)
-						); 
-					?>
-				</div>
-				<div class="menu menu-inline menu-social">
-					<ul>
-						<?php $vars = array('facebook','twitter','linkedin','email'); ?>
-						<?php foreach($vars as $var): ?>
-							<li><a href=""><?php echo $var ?></a></li>
-						<?php endforeach; ?>
-					</ul>
-				</div>
-			</div>
-			<!-- pull right -->
-		</div>
-		<!-- container -->
+			echo ($sg_page_add_container) ? '</div><!-- container -->' : '';
+			echo ($sg_page_add_section) ? '</div><!-- section -->' : '';
+		?>
 	</div>
-	<!-- header top -->
-	<?php endif; ?>
-	<div id="header-main" class="<?php echo sg_val_class(array('theme-header-main page-section bg-trans',sg_opt('header_color_set'),sg_opt('header_separator'),sg_opt('header_align'),sg_opt('header_extra_class'))) ?>">
-		<?php include('header-choices-no-menu.php') ?>
-	</div>
-	<!-- header-main -->
-</header>
-<!-- header -->
-
-<?php if(sg_opt('subheader')): ?>
-<?php get_template_part('templates/subheader') ?>
-<?php endif; ?>
-
-<div id="content">
-<?php 
-	echo ($sg_page_add_section) ? '<div class="'.trim('page-section '.$sg_page_section_class).'">' : '';
-	echo ($sg_page_add_container) ? '<div class="container">' : '';
-
-	sg_get_template_part($sg_wrapper['content_base'], $sg_wrapper['content_layout']);
-
-	echo ($sg_page_add_container) ? '</div><!-- container -->' : '';
-	echo ($sg_page_add_section) ? '</div><!-- section -->' : '';
-?>
+	<!-- container -->
 </div>
-<!-- content -->
+<!-- section -->
 
-<footer id="footer">
-
-	<?php 
-		$footer_block_id = sg_opt('footer_template');
-
-		if($footer_block_id){
-			echo SG_CptBlock::render($footer_block_id);
-		}
-		else{
-			include(sg_view_path('front/part-footer.php'));
-		}	
-
-	?>
-
-</footer>
-<!-- footer -->
-
-<div id="theme-modal" class="modal fade" tabindex="-1" style="display: none;"></div>
-
-<?php wp_footer(); ?>
-</body>
-</html>
+<?php include(sg_view_path('front/footer.php')) ?>

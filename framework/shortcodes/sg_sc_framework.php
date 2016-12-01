@@ -1,5 +1,7 @@
 <?php
 
+use Scienceguard\SG_Util;
+
 $sg_collapse_count = 0;
 $sg_collapse_content_count = 0;
 $sg_gmap_count = 0;

@@ -4,8 +4,8 @@ function sg_cpt_portfolio() {
 	register_post_type('sg_cpt_portfolio',
 		array(
 			'labels' => array(
-				'name' => sg__('Portfolios'),
-				'singular_name' => sg__('Portfolio')
+				'name' => __('Portfolios', SG_THEME_ID),
+				'singular_name' => __('Portfolio', SG_THEME_ID)
 			),
 			'public' => true,
 			'publicly_queryable' => true,
@@ -19,9 +19,6 @@ function sg_cpt_portfolio() {
 
 
 /*----metabox for custom post type----*/
-
-require_once(TEMPLATEPATH.'/settings/helpers/admin_helper.php');
-
 
 
 // Field Array

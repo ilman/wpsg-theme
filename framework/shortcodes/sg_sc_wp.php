@@ -1,5 +1,7 @@
 <?php 
 
+use Scienceguard\SG_Util;
+
 function sc_sg_template_url(){
 	return get_template_directory_uri();
 }

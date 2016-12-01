@@ -13,7 +13,7 @@ class SG_Latest_Posts_Widget extends WP_Widget {
 		parent::__construct(
 	 		'sg_latest_post', // Base ID
 			'Latest Post', // Name
-			array( 'description' => sg__('Showing related posts in list style') ) // Args
+			array( 'description' => __('Showing related posts in list style', SG_THEME_ID) ) // Args
 		);
 	}
 	

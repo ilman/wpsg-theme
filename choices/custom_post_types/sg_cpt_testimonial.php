@@ -4,8 +4,8 @@ function sg_cpt_testimonial() {
 	register_post_type('sg_cpt_testimonial',
 		array(
 			'labels' => array(
-				'name' => sg__('Testimonials'),
-				'singular_name' => sg__('Testimonial')
+				'name' => __('Testimonials', SG_THEME_ID),
+				'singular_name' => __('Testimonial', SG_THEME_ID)
 			),
 			'public' => true,
 			'publicly_queryable' => true,
@@ -35,8 +35,6 @@ function sg_cpt_testimonial_change_image_box()
 
 
 /*----metabox for custom post type----*/
-
-require_once(TEMPLATEPATH.'/settings/helpers/admin_helper.php');
 
 function sg_cpt_mb_testimonial(){
 

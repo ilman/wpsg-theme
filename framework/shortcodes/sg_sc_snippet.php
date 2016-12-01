@@ -1,5 +1,7 @@
 <?php 
 
+use Scienceguard\SG_Util;
+
 function sc_sg_snippet($attr){
 	// extract the attributes into variables
 	extract(shortcode_atts(array(

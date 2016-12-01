@@ -22,3 +22,8 @@ function sc_choices_form($attr=array(), $content=null){
 	return $output;
 }
 add_shortcode('choices_form', 'sc_choices_form');
+
+function sc_ts_widget(){
+	return '<div ts-widget></div>';
+}
+add_shortcode('ts_widget', 'sc_ts_widget');

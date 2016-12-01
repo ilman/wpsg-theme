@@ -4,8 +4,8 @@ function sg_cpt_career() {
 	register_post_type('sg_cpt_career',
 		array(
 			'labels' => array(
-				'name' => sg__('Careers'),
-				'singular_name' => sg__('Career')
+				'name' => __('Careers', SG_THEME_ID),
+				'singular_name' => __('Career', SG_THEME_ID)
 			),
 			'public' => true,
 			'publicly_queryable' => true,
@@ -22,8 +22,6 @@ add_action('init', 'sg_cpt_career');
 
 
 /*----metabox for custom post type----*/
-
-require_once(TEMPLATEPATH.'/settings/helpers/admin_helper.php');
 
 function sg_cpt_mb_career(){
 

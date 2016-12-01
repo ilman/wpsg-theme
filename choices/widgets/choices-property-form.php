@@ -5,9 +5,12 @@ http://wp.tutsplus.com/tutorials/creative-coding/building-custom-wordpress-widge
 http://www.wpbeginner.com/wp-themes/how-to-add-related-posts-with-a-thumbnail-without-using-plugins/
 */
 
-require_once(SG_FRAMEWORK_PATH.'/helpers/sg_wp.php');
-require_once(SG_FRAMEWORK_PATH.'/helpers/sg_form.php');
-require_once(SG_FRAMEWORK_PATH.'/helpers/sg_builder.php');
+// require_once(SG_FRAMEWORK_PATH.'/helpers/sg_wp.php');
+// require_once(SG_FRAMEWORK_PATH.'/helpers/SG_Form.php');
+// require_once(SG_FRAMEWORK_PATH.'/helpers/sg_builder.php');
+
+use Scienceguard\SG_Util;
+use Scienceguard\SG_Form;
 
 class Choices_Property_Form_Widget extends WP_Widget {
 
@@ -18,12 +21,12 @@ class Choices_Property_Form_Widget extends WP_Widget {
 		parent::__construct(
 	 		'choices_property_form', // Base ID
 			'Choices :: Property Form', // Name
-			array( 'description' => sg__('Showing property form') ) // Args
+			array( 'description' => __('Showing property form', SG_THEME_ID) ) // Args
 		);
 
 		$this->init();
-		sg_form::init();
-		sg_builder::init();
+		// SG_Form::init();
+		SG_Builder::init();
 
 	}
 
@@ -102,9 +105,9 @@ class Choices_Property_Form_Widget extends WP_Widget {
 			$i++;
 		}
 
-sg_form::init();
-		sg_builder::init();
-		echo sg_builder::form_builder($fields, $values);
+		// SG_Form::init();
+		SG_Builder::init();
+		echo SG_Builder::form_builder($fields, $values);
 
 		?>
 		<p>
@@ -142,7 +145,7 @@ sg_form::init();
 						$sanitizer = 'repeat';
 					}
 													
-					$new = sg_form::sanitize($new, $sanitizer);	
+					$new = SG_Form::sanitize($new, $sanitizer);	
 					$output[$field_id] = $new;
 				}
 				else{
