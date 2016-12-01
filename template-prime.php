@@ -34,7 +34,7 @@ Template Name: Prime Template
 		<!-- BEGIN CHOICES CONTENT -->
 			
 		<?php if ( have_posts() ): ?>	
-			<?php include(sg_view_path('templates/'.$sg_page_layout.'.php')); ?>
+			<?php sg_get_template_part($sg_wrapper['content_base'], $sg_wrapper['content_layout']); ?>
 		<?php endif; ?>
 			
 		<!-- END CHOICES CONTENT -->	

@@ -74,7 +74,7 @@ Template Name: No Header Template
 	echo ($sg_page_add_section) ? '<div class="'.trim('page-section '.$sg_page_section_class).'">' : '';
 	echo ($sg_page_add_container) ? '<div class="container">' : '';
 
-	include(sg_view_path('templates/'.$sg_page_layout.'.php'));
+	sg_get_template_part($sg_wrapper['content_base'], $sg_wrapper['content_layout']);
 
 	echo ($sg_page_add_container) ? '</div><!-- container -->' : '';
 	echo ($sg_page_add_section) ? '</div><!-- section -->' : '';
@@ -82,13 +82,25 @@ Template Name: No Header Template
 </div>
 <!-- content -->
 
-<footer id="footer">	
-	<div id="footer-bottom" class="<?php echo sg_val_class(array('page-section bg-trans',sg_opt('footer_bottom_color_set'),sg_opt('footer_bottom_separator'),sg_opt('footer_bottom_extra_class'))) ?>">
-		<?php include('footer-choices.php') ?>
-	</div>
-	<!-- footer-bottom -->
+<footer id="footer">
+
+	<?php 
+		$footer_block_id = sg_opt('footer_template');
+
+		if($footer_block_id){
+			echo SG_CptBlock::render($footer_block_id);
+		}
+		else{
+			include(sg_view_path('front/part-footer.php'));
+		}	
+
+	?>
+
 </footer>
 <!-- footer -->
+
+<div id="theme-modal" class="modal fade" tabindex="-1" style="display: none;"></div>
+
 <?php wp_footer(); ?>
 </body>
 </html>
