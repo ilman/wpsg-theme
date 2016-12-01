@@ -87,17 +87,13 @@ function sc_sg_post_meta($attr=array()){
 		$output = $default;
 	}
 
-	return do_shortcode($output);
+	return $output;
 }
 add_shortcode('sg_post_meta', 'sc_sg_post_meta');
 
 
 
 function sc_sg_post_list($attr=array(), $content=null){
-	global $post;
-
-	$temp_post = $post;
-
 	// extract the attributes into variables
 	extract(shortcode_atts(array(
 		'post_type' => 'post',
@@ -171,8 +167,6 @@ function sc_sg_post_list($attr=array(), $content=null){
 
 	$args = array_merge($args, $param_args);
 
-	
-
 	$sg_post = new WP_Query($args);
 
 	if($is_single){
@@ -180,17 +174,16 @@ function sc_sg_post_list($attr=array(), $content=null){
 			do_shortcode($content);
 		}
 		else{
-			$output = '<h2>'.$sg_post->get_the_title().'</h2>';
-			$output .= $sg_post->get_the_content();
+			$output = '<h2>'.get_the_title().'</h2>';
+			$output .= get_the_content();
 		}
 	}
 	else{
 		ob_start();
-			include(SG_THEME_PATH.'/templates/list-'.$list.'.php');
+			include(sg_view_path('templates/list-'.$list.'.php'));
 		$output = ob_get_clean();
 	}
 
-	$post = $temp_post;
 
 	return $output;
 }

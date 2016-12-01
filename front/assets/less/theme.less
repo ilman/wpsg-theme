@@ -1,0 +1,65 @@
+@import url('bootstrap.less');
+@import url('sg-theme.less');
+@import url('component.less');
+@import url('flexslider.less');
+
+.text-white{ color:#fff !important; }
+.row{ padding:0; list-style:none; }
+
+body{ font-family: 'Open Sans', Arial, sans-serif; }
+h1,h2,h3,h4{ font-family: 'Roboto Condensed', Arial, sans-serif; }
+
+#header-main{ 
+	&{ height:50px; background:@brand-primary; padding:0; }
+	a{ color:#fff; }
+	.navbar{ margin:0; text-transform:uppercase; }
+	.navbar{ 
+		a:hover, a:focus{ background:none; }
+	}
+}
+
+#nav-main{ 
+	&{ text-align:center; }
+	.navbar-nav{ float:none; }
+	.navbar-nav >li{ float:none; display:inline-block; }
+}
+
+#subheader{
+	&{ 
+		text-align: center;
+		background:#f0f0f0 no-repeat center center;
+		background-size: cover;
+		margin: 0;
+	}
+	h2{ font-size:78px; line-height:1.1em; text-transform:uppercase; font-weight:lighter; display:none; } 
+	.container{ padding:60px; }
+}
+.home #subheader{
+	h2{ display:block; }
+	.container{ display:table; min-height: 400px; }
+	.subcontainer{ display:table-cell; height:100%; float:none; vertical-align:middle; }
+}
+
+#searchbar{
+	&{ position:relative; min-height:60px; }
+	.ea-search-bar{ position:absolute; top:-30px; left:50%; margin-left:-330px; }
+}
+
+#footer{ 
+	&{ text-align:center; padding:15px 0; color:#999; background:@brand-primary; }
+	a{ color:#fff; }
+}
+
+.page-section{ 
+	&.section-breadcrumbs{ padding:0 0 30px; }
+}
+
+.vc_separator{
+	text-align: center;
+	h4{ font-size:30px !important; line-height:1.2em !important; text-transform:uppercase; width:100%; }
+	.vc_sep_holder{ display:none; }
+}
+
+.widget{
+	.widget-title{ font-weight:bold; }
+}

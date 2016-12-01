@@ -1,6 +1,6 @@
 <?php 
 
-require_once locate_template('/settings/helpers/admin_helper.php');
+use Scienceguard\SG_Util;
 
 function sg_admin_theme_option(){
 
@@ -9,23 +9,23 @@ $prefix = '';
 /*----options----*/
 
 $option_body_layouts = array(
-	array('label'=>'full', 'value'=>'full'),
-	array('label'=>'boxed', 'value'=>'boxed'),
-	array('label'=>'boxed padding', 'value'=>'boxed-padding'),
+	array('label'=>'Full', 'value'=>'full'),
+	array('label'=>'Boxed', 'value'=>'boxed'),
+	array('label'=>'Boxed Padding', 'value'=>'boxed-padding'),
 );
 
 $option_blog_layouts = array(
-	array('label'=>'side none', 'value'=>'layout-side-none'),
-	array('label'=>'side left', 'value'=>'layout-side-left'),
-	array('label'=>'side right', 'value'=>'layout-side-right'),
-	array('label'=>'side both', 'value'=>'layout-side-both'),
+	array('label'=>'Side None', 'value'=>'layout-full'),
+	array('label'=>'Side Left', 'value'=>'layout-side-left'),
+	array('label'=>'Side Right', 'value'=>'layout-side-right'),
+	array('label'=>'Side Both', 'value'=>'layout-side-both'),
 );
 
 $option_blog_post_layouts = array(
-	array('label'=>'full', 'value'=>'full'),
-	array('label'=>'isotope', 'value'=>'isotope'),
-	array('label'=>'thumb-column', 'value'=>'thumb-column'),
-	array('label'=>'thumb-left', 'value'=>'thumb-left'),
+	array('label'=>'Full', 'value'=>'full'),
+	array('label'=>'Isotope', 'value'=>'isotope'),
+	array('label'=>'Thumb Column', 'value'=>'thumb-column'),
+	// array('label'=>'Thumb Left', 'value'=>'thumb-left'),
 );
 
 $option_paginations = array(
@@ -144,48 +144,73 @@ $option_grid_layouts = array(
 	array('label'=>'Four Columns (3 + 3 + 3 + 3)', 'value'=>'3-3-3-3'),
 );
 
+$option_select_images = array(
+	array('label'=>'Image 1', 'value'=>'http://lorempixel.com/100/100/nature?1'),
+	array('label'=>'Image 2', 'value'=>'http://lorempixel.com/100/100/nature?2'),
+	array('label'=>'Image 3', 'value'=>'http://lorempixel.com/100/100/nature?3'),
+	array('label'=>'Image 4', 'value'=>'http://lorempixel.com/100/100/nature?4'),
+	array('label'=>'Image 5', 'value'=>'http://lorempixel.com/100/100/nature?5'),
+);
+
 $fields = array();
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 /*----general settings----*/
 $fields[] = array(
 	'label'		=> 'General Settings',
-	'icon'		=> SG_THEME_URL.'/includes/sg_framework/assets/images/icons/setting_tools.png',
+	'icon'		=> sg_asset_url('framework/sg_admin/assets/images/icons/setting_tools.png'),
 	'type'		=> 'heading',
 	'fields'	=> array(
 		array(
 			'label'		=> 'Logo',
 			'desc'		=> 'Enter/upload logo for your site themes',
 			'id'		=> 'logo',
-			'default'	=> get_template_directory_uri().'/assets/images/choices-logo.png',
+			'default'	=> sg_asset_url('front/assets/images/logo.png'),
 			'type'		=> 'upload'
 		),
 		array(
 			'label'		=> 'Favicon',
 			'desc'		=> 'Enter/upload 16x16 favicon for your site themes',
 			'id'		=> 'favicon',
-			'default'	=> get_template_directory_uri().'/assets/images/favicon.ico',
+			'default'	=> sg_asset_url('front/assets/images/favicon.png'),
 			'type'		=> 'upload'
 		),
 		array(  
 			'label'		=> 'Add Section',
 			'desc'		=> 'Add section wrapper in content',
-			'id' 		=> 'add_section',  
+			'id' 		=> 'theme_section',  
 			'default'	=> 'true', 
 			'type'		=> 'checkbox'
 		),
 		array(  
 			'label'		=> 'Add Container',
 			'desc'		=> 'Add container wrapper in content',
-			'id' 		=> 'add_container',  
-			'default'	=> 'true', 
+			'id' 		=> 'theme_container',  
+			'default'	=> true, 
 			'type'		=> 'checkbox'
 		),
 	)
 );	
 
 
+
+
 $fields[] = array(
 	'label'		=> 'Form Settings',
-	'icon'		=> SG_THEME_URL.'/includes/sg_framework/assets/images/icons/setting_tools.png',
+	'icon'		=> sg_asset_url('framework/sg_admin/assets/images/icons/setting_tools.png'),
 	'type'		=> 'heading',
 	'fields'	=> array(
 		array(  
@@ -214,10 +239,10 @@ $fields[] = array(
 );	
 
 
-/*----general settings----*/
+/*----expert agent settings----*/
 $fields[] = array(
 	'label'		=> 'Expert Agent Settings',
-	'icon'		=> SG_THEME_URL.'/includes/sg_framework/assets/images/icons/house.png',
+	'icon'		=> sg_asset_url('framework/sg_admin/assets/images/icons/house.png'),
 	'type'		=> 'heading',
 	'fields'	=> array(
 		array(
@@ -248,10 +273,10 @@ $fields[] = array(
 );	
 
 
-/*----general settings----*/
+/*----resales online settings----*/
 $fields[] = array(
 	'label'		=> 'Resales Online Settings',
-	'icon'		=> SG_THEME_URL.'/includes/sg_framework/assets/images/icons/house.png',
+	'icon'		=> sg_asset_url('framework/sg_admin/assets/images/icons/house.png'),
 	'type'		=> 'heading',
 	'fields'	=> array(
 		array(
@@ -269,435 +294,55 @@ $fields[] = array(
 	)
 );	
 
-/*----font settings----*/
-$fields[] = array(
-	'label'		=> 'Font Settings',
-	'icon'		=> SG_THEME_URL.'/includes/sg_framework/assets/images/icons/font.png',
-	'type'		=> 'heading'
-);
-$font_set_params = array('','h1','h2','h3','h4','h5','h6');
-$font_vars = array('Font Family','Font Style','Font Weight','Font Size','Line Height','Text Transform','Color');
-$font_var_sets = array(
-	'body' => array('Helvetica','normal','normal','13','21','normal','#333'),
-	'heading_1' => array('Helvetica','normal','normal','26','34','none','#333'),
-	'heading_2' => array('Helvetica','normal','normal','22','30','none','#333'),
-	'heading_3' => array('Helvetica','normal','normal','18','26','none','#333'),
-	'heading_4' => array('Helvetica','normal','normal','16','24','none','#333'),
-	'heading_5' => array('Helvetica','normal','normal','14','22','none','#333'),
-	'heading_6' => array('Helvetica','normal','normal','13','21','none','#333'),
-);
-$i=0;
-foreach($font_var_sets as $set=>$set_val){
-	$this_prefix = sg_util::slug($set,'_');
-	$this_font_set = sg_util::val($font_set_params,$i);
-	$preview_id = 'preview_'.sg_util::slug($set,'_');
-	$preview_cb = "preview_font_set('".sg_util::slug($preview_id)."','".$this_font_set."')";
-	
-	$fields[] = array(
-		'label'		=> ucwords(sg_util::slug($set,' ')),
-		'type'		=> 'fieldset_open'
-	);
-	$fields[] = array(
-		'id'		=> $preview_id,
-		'type'		=> 'html_preview',
-		'content'	=> array(
-			'file'	=> 'font.php&param='.$this_font_set
-		),
-		'attr'		=> array(
-			'onload'=> $preview_cb,
-		)
-	);
-	$fields[] = array(
-		'label'		=> 'Font Family',
-		'id'		=> $this_prefix.'_font_family',
-		'type'		=> 'select_font',
-		'attr'		=> array(
-			'onchange'=> $preview_cb,
-		)
-	);
-	$fields[] = array(
-		'label'		=> 'Font Style',
-		'id'		=> $this_prefix.'_font_style',
-		'type'		=> 'radio',
-		'options'	=> $option_font_styles,
-		'attr'		=> array(
-			'onclick'=> $preview_cb,
-		)
-	);
-	$fields[] = array(
-		'label'		=> 'Font Weight',
-		'id'		=> $this_prefix.'_font_weight',
-		'type'		=> 'radio',
-		'options'	=> $option_font_weights,
-		'attr'		=> array(
-			'onclick'=> $preview_cb,
-		)
-	);
-	$fields[] = array(
-		'label'		=> 'Font Size',
-		'id'		=> $this_prefix.'_font_size',
-		'type'		=> 'select',
-		'options'	=> $option_font_sizes,
-		'desc'		=> 'Font size in px',
-		'attr'		=> array(
-			'onchange'=> $preview_cb,
-		)
-	);
-	$fields[] = array(
-		'label'		=> 'Line Height',
-		'id'		=> $this_prefix.'_line_height',
-		'type'		=> 'select',
-		'options'	=> $option_font_sizes,
-		'desc'		=> 'Line height in px, normally the size is font_size + 8px',
-		'attr'		=> array(
-			'onchange'=> $preview_cb,
-		)
-	);
-	$fields[] = array(
-		'label'		=> 'Text Transform',
-		'id'		=> $this_prefix.'_text_transform',
-		'type'		=> 'select',
-		'options'	=> $option_text_transforms,
-		'attr'		=> array(
-			'onchange'=> $preview_cb,
-		)
-	);
-	$fields[] = array(
-		'label'		=> 'Color',
-		'id'		=> $this_prefix.'_color',
-		'type'		=> 'color',
-		'attr'		=> array(
-			'onchange'=> $preview_cb,
-		)
-	);
-	$fields[] = array(
-		'type'		=> 'fieldset_close'
-	);
-$i++;
-}
 
-/*----layout settings----*/
+
+
+
+
+$option_footer_template = array_merge(array(array('label'=>'Default', 'value'=>'')), SG_WP::getPostList($type='sg_cpt_block'));	
+
+
+/*----theme settings----*/
 $fields[] = array(
-	'label'		=> 'Layout Settings',
-	'icon'		=> SG_THEME_URL.'/includes/sg_framework/assets/images/icons/layout.png',
+	'label'		=> 'Template Settings',
+	'icon'		=> sg_asset_url('framework/sg_admin/assets/images/icons/palette.png'),
 	'type'		=> 'heading',
 	'fields'	=> array(
 		array(
-			'label'		=> 'Body',
-			'type'		=> 'heading',
-			'fields'	=> array(
-				array (  
-					'label'		=> 'Body Layout',
-					'id' 		=> 'body_layout',  
-					'default'	=> 'full', 
-					'type'		=> 'radio',  
-					'options'	=> $option_body_layouts
-				),
-				array (  
-					'label'		=> 'Background Color',
-					'id' 		=> 'body_background_color',
-					'type'		=> 'color',
-				),
-				array (  
-					'label'		=> 'Background Image',
-					'id' 		=> 'body_background_image',
-					'default'	=> '',  
-					'type'		=> 'radio',
-					'trigger'	=> true,
-					'options'	=> $option_background_image_modes
-				),
-				array(
-					'label'		=> 'Predefined Background',
-					'type'		=> 'fieldset',
-					'binding'	=> array(
-						'trigger'	=> 'body_background_image',
-						'value'		=> 'predefined'
-					),
-					'fields'	=> array(
-						array (  
-							'label'		=> 'Background Image',
-							'id' 		=> 'body_background_image_predefined',  
-							'type'		=> 'select_image',
-							'options'	=> $option_background_image_predefineds
-						),
-					)
-				),
-				array(
-					'label'		=> 'Custom Background',
-					'type'		=> 'fieldset',
-					'binding'	=> array(
-						'trigger'	=> 'body_background_image',
-						'value'		=> 'custom'
-					),
-					'fields'	=> array(
-						array (  
-							'label'		=> 'Background Image',
-							'id' 		=> 'body_background_image_url',  
-							'type'		=> 'upload'
-						),
-						array (  
-							'label'		=> 'Background Position',
-							'id' 		=> 'body_background_image_position',  
-							'type'		=> 'select',
-							'options'	=> $option_background_image_positions
-						),
-						array (  
-							'label'		=> 'Background Attachment',
-							'id' 		=> 'body_background_image_attachment',  
-							'type'		=> 'select',
-							'options'	=> $option_background_image_attachments
-						),
-						array (  
-							'label'		=> 'Background Repeat',
-							'id' 		=> 'body_background_image_repeat',  
-							'type'		=> 'select',
-							'options'	=> $option_background_image_repeats
-						),
-						array (  
-							'label'		=> 'Background Size',
-							'id' 		=> 'body_background_image_size',  
-							'type'		=> 'select',
-							'options'	=> $option_background_image_sizes
-						),
-					)
-				)
+			'label'		=> 'Footer Template',
+			'desc'		=> 'Select either to use default footer template or your custom footer template',
+			'id'		=> 'footer_template',
+			'default'	=> '',
+			'type'		=> 'select',
+			'options'	=> $option_footer_template,
+		),
 
-			)
-		),
 		array(
-			'label'		=> 'Header',
-			'type'		=> 'heading',
-			'fields'	=> array(
-				array (  
-					'label'		=> 'Fixed Position',
-					'id' 		=> 'header_position_fixed',  
-					'default'	=> true, 
-					'type'		=> 'checkbox',
-				),
-				array (  
-					'label'		=> 'Color Set',
-					'id' 		=> 'header_color_set',
-					'type'		=> 'select',  
-					'options'	=> $option_color_sets
-				),
-				array (  
-					'label'		=> 'Separator',
-					'id' 		=> 'header_separator', 
-					'type'		=> 'select',  
-					'options'	=> $option_separators
-				),
-				array (  
-					'label'		=> 'Extra Class',
-					'id' 		=> 'header_extra_class', 
-					'type'		=> 'text'
-				),
-				array (  
-					'label'		=> 'Header Height',
-					'id' 		=> 'header_height', 
-					'type'		=> 'text'
-				),
-				array (  
-					'label'		=> 'Header Padding Top',
-					'id' 		=> 'header_padding_top', 
-					'type'		=> 'text',
-				),
-				array (  
-					'label'		=> 'Header Padding Bottom',
-					'id' 		=> 'Header_padding_bottom', 
-					'type'		=> 'text',
-				),
-				array (  
-					'label'		=> 'Header Align',
-					'id' 		=> 'header_align',  
-					'default'	=> 'center', 
-					'type'		=> 'radio',
-					'options'	=> $option_subheader_aligns
-				),
+			'label'		=> 'Footer Email Template',
+			'desc'		=> 'Enter footer email template. Ex: Company VAT details',
+			'id'		=> 'footer_email_template',
+			'default'	=> '',
+			'type'		=> 'textarea',
+			'sanitizer'		=> 'none',
+			'attr'		=> array(
+				'rows'		=> 5
 			)
 		),
-		array(
-			'label'		=> 'Content',
-			'type'		=> 'heading',
-			'fields'	=> array(
-				array (  
-					'label'		=> 'Separator',
-					'id' 		=> 'content_separator', 
-					'type'		=> 'select',  
-					'options'	=> $option_separators
-				),
-				array (  
-					'label'		=> 'Extra Class',
-					'id' 		=> 'content_extra_class', 
-					'type'		=> 'text'
-				),
-				array (  
-					'label'		=> 'Background Image',
-					'id' 		=> 'content_background_image',
-					'default'	=> '',  
-					'type'		=> 'radio',
-					'trigger'	=> true,
-					'options'	=> $option_background_image_modes
-				),
-				array(
-					'label'		=> 'Predefined Background',
-					'type'		=> 'fieldset',
-					'binding'	=> array(
-						'trigger'	=> 'content_background_image',
-						'value'		=> 'predefined'
-					),
-					'fields'	=> array(
-						array (  
-							'label'		=> 'Background Image',
-							'id' 		=> 'content_background_image_predefined',  
-							'type'		=> 'select_image',
-							'options'	=> $option_background_image_predefineds
-						),
-					)
-				),
-				array(
-					'label'		=> 'Custom Background',
-					'type'		=> 'fieldset',
-					'binding'	=> array(
-						'trigger'	=> 'content_background_image',
-						'value'		=> 'custom'
-					),
-					'fields'	=> array(
-						array (  
-							'label'		=> 'Background Image',
-							'id' 		=> 'content_background_image_url',  
-							'type'		=> 'upload'
-						),
-						array (  
-							'label'		=> 'Background Position',
-							'id' 		=> 'content_background_image_position',  
-							'type'		=> 'select',
-							'options'	=> $option_background_image_positions
-						),
-						array (  
-							'label'		=> 'Background Attachment',
-							'id' 		=> 'content_background_image_attachment',  
-							'type'		=> 'select',
-							'options'	=> $option_background_image_attachments
-						),
-						array (  
-							'label'		=> 'Background Repeat',
-							'id' 		=> 'content_background_image_repeat',  
-							'type'		=> 'select',
-							'options'	=> $option_background_image_repeats
-						),
-						array (  
-							'label'		=> 'Background Size',
-							'id' 		=> 'content_background_image_size',  
-							'type'		=> 'select',
-							'options'	=> $option_background_image_sizes
-						),
-					)
-				)
-			)
-		),
-		array(
-			'label'		=> 'Footer',
-			'type'		=> 'heading',
-			'fields'	=> array(
-				array (  
-					'label'		=> 'Color Set',
-					'id' 		=> 'footer_color_set', 
-					'type'		=> 'select',  
-					'options'	=> $option_color_sets
-				),
-				array (  
-					'label'		=> 'Separator',
-					'id' 		=> 'footer_separator', 
-					'type'		=> 'select',  
-					'options'	=> $option_separators
-				),
-				array (  
-					'label'		=> 'Extra Class',
-					'id' 		=> 'footer_extra_class', 
-					'type'		=> 'text'
-				),
-				array (  
-					'label'		=> 'Footer Padding Top',
-					'id' 		=> 'footer_padding_top', 
-					'type'		=> 'text',
-				),
-				array (  
-					'label'		=> 'Footer Padding Bottom',
-					'id' 		=> 'footer_padding_bottom', 
-					'type'		=> 'text',
-				),
-				array (  
-					'label'		=> 'Background Image',
-					'id' 		=> 'footer_background_image',
-					'default'	=> '',  
-					'type'		=> 'radio',
-					'trigger'	=> true,
-					'options'	=> $option_background_image_modes
-				),
-				array(
-					'label'		=> 'Predefined Background',
-					'type'		=> 'fieldset',
-					'binding'	=> array(
-						'trigger'	=> 'footer_background_image',
-						'value'		=> 'predefined'
-					),
-					'fields'	=> array(
-						array (  
-							'label'		=> 'Background Image',
-							'id' 		=> 'footer_background_image_predefined',  
-							'type'		=> 'select_image',
-							'options'	=> $option_background_image_predefineds
-						),
-					)
-				),
-				array(
-					'label'		=> 'Custom Background',
-					'type'		=> 'fieldset',
-					'binding'	=> array(
-						'trigger'	=> 'footer_background_image',
-						'value'		=> 'custom'
-					),
-					'fields'	=> array(
-						array (  
-							'label'		=> 'Background Image',
-							'id' 		=> 'footer_background_image_url',  
-							'type'		=> 'upload'
-						),
-						array (  
-							'label'		=> 'Background Position',
-							'id' 		=> 'footer_background_image_position',  
-							'type'		=> 'select',
-							'options'	=> $option_background_image_positions
-						),
-						array (  
-							'label'		=> 'Background Attachment',
-							'id' 		=> 'footer_background_image_attachment',  
-							'type'		=> 'select',
-							'options'	=> $option_background_image_attachments
-						),
-						array (  
-							'label'		=> 'Background Repeat',
-							'id' 		=> 'footer_background_image_repeat',  
-							'type'		=> 'select',
-							'options'	=> $option_background_image_repeats
-						),
-						array (  
-							'label'		=> 'Background Size',
-							'id' 		=> 'footer_background_image_size',  
-							'type'		=> 'select',
-							'options'	=> $option_background_image_sizes
-						),
-					)
-				)
-			)
-		),
-	)		
-);
+	)
+);	
+
+
+
+
+
+
+
+
 
 /*----pages settings----*/
 $fields[] = array(
 	'label'		=> 'Pages Settings',
-	'icon'		=> SG_THEME_URL.'/includes/sg_framework/assets/images/icons/page.png',
+	'icon'		=> sg_asset_url('framework/sg_admin/assets/images/icons/page.png'),
 	'type'		=> 'heading',
 	'fields'	=> array(
 		/*----blog settings----*/
@@ -721,7 +366,7 @@ $fields[] = array(
 					'label'		=> 'Blog Post Layout',
 					'desc'		=> 'Select blog post layout',  
 					'id' 		=> 'blog_post_layout',  
-					'default'	=> 'thumb-column', 
+					'default'	=> 'isotope', 
 					'type'		=> 'radio',  
 					'options'	=> $option_blog_post_layouts
 				),
@@ -747,14 +392,14 @@ $fields[] = array(
 					'label'		=> 'Content Cut Limit',
 					'desc'		=> 'Limit number of word before content get cut',  
 					'id' 		=> 'content_cut_limit',  
-					'default'	=> 80, 
+					'default'	=> 12, 
 					'type'		=> 'text'
 				),
 				array(
 					'label'		=> 'Read More Text',
 					'desc'		=> 'Text to add as suffix when the content get cut',  
 					'id' 		=> 'read_more_text',  
-					'default'	=> '&hellip;Read More', 
+					'default'	=> '&hellip; Read More', 
 					'type'		=> 'text'
 				),
 				array(
@@ -767,6 +412,95 @@ $fields[] = array(
 				)
 			)
 		),
+		/*----archive settings----*/
+		array(
+			'label'		=> 'Archive',
+			'type'		=> 'heading',
+			'fields'	=> array(
+				array(
+					'label'		=> 'Content',
+					'type'		=> 'fieldset_open'
+				),
+				array (  
+					'label'		=> 'Archive Layout',  
+					'desc'		=> 'Select archive layout',  
+					'id' 		=> 'archive_layout',  
+					'default'	=> 'layout-full', 
+					'type'		=> 'radio',  
+					'options'	=> $option_blog_layouts
+				),
+				array(
+					'label'		=> 'Archive Post Layout',
+					'desc'		=> 'Select archive post layout',  
+					'id' 		=> 'archive_post_layout',  
+					'default'	=> 'isotope', 
+					'type'		=> 'radio',  
+					'options'	=> $option_blog_post_layouts
+				),
+				array(
+					'label'		=> 'Archive Post Column',
+					'desc'		=> 'Select archive post column',  
+					'id' 		=> 'archive_post_column',  
+					'default'	=> 3, 
+					'type'		=> 'radio',  
+					'options'	=> $option_columns
+				),
+				array(
+					'type'		=> 'fieldset_close'
+				),	
+				array(
+					'label'		=> 'Content Cut',
+					'desc'		=> 'Cut content if exceed certains number of words',  
+					'id' 		=> 'archive_content_cut',  
+					'default'	=> true, 
+					'type'		=> 'checkbox'
+				),
+				array(
+					'label'		=> 'Content Cut Limit',
+					'desc'		=> 'Limit number of word before content get cut',  
+					'id' 		=> 'archive_content_cut_limit',  
+					'default'	=> 12, 
+					'type'		=> 'text'
+				),
+				array(
+					'label'		=> 'Read More Text',
+					'desc'		=> 'Text to add as suffix when the content get cut',  
+					'id' 		=> 'archive_read_more_text',  
+					'default'	=> '&hellip; Read More', 
+					'type'		=> 'text'
+				),
+				array(
+					'label'		=> 'Pagination',
+					'desc'		=> 'Select pagination type',  
+					'id' 		=> 'archive_pagination',  
+					'default'	=> 'numbers', 
+					'type'		=> 'radio',
+					'options'	=> $option_paginations
+				)
+			)
+		),
+		/*----single post settings----*/
+		array(
+			'label'		=> 'Single Post',
+			'type'		=> 'heading',
+			'fields'	=> array(
+				array(
+					'label'		=> 'Content',
+					'type'		=> 'fieldset_open'
+				),
+				array (  
+					'label'		=> 'Page Layout',  
+					'desc'		=> 'Select page layout',  
+					'id' 		=> 'single_layout',  
+					'default'	=> 'layout-full', 
+					'type'		=> 'radio',  
+					'options'	=> $option_blog_layouts
+				),
+				array(
+					'type'		=> 'fieldset_close'
+				),
+			)
+		),	
 		/*----page settings----*/
 		array(
 			'label'		=> 'Page',
@@ -780,7 +514,7 @@ $fields[] = array(
 					'label'		=> 'Page Layout',  
 					'desc'		=> 'Select blog layout',  
 					'id' 		=> 'page_layout',  
-					'default'	=> 'layout-side-none', 
+					'default'	=> 'layout-full', 
 					'type'		=> 'radio',  
 					'options'	=> $option_blog_layouts
 				),
@@ -798,7 +532,7 @@ $fields[] = array(
 					'label'		=> 'Search Result Layout',  
 					'desc'		=> 'Select layout',  
 					'id' 		=> 'search_result_layout',  
-					'default'	=> 'layout-side-none', 
+					'default'	=> 'layout-full', 
 					'type'		=> 'radio',  
 					'options'	=> $option_blog_layouts
 				),
@@ -818,16 +552,25 @@ $fields[] = array(
 /*----social options----*/
 $fields[] = array(
 	'label'		=> 'Social Options',
-	'icon'		=> SG_THEME_URL.'/includes/sg_framework/assets/images/icons/group.png',
+	'icon'		=> sg_asset_url('framework/sg_admin/assets/images/icons/group.png'),
 	'type'		=> 'heading'
 );
 	
-$social_medias = array('Facebook','Twitter','Google+','Youtube','Vimeo','Pinterest','LinkedIn');
-foreach($social_medias as $social){
+$social_medias = array('Facebook','Twitter','Google Plus','Youtube','Instagram','LinkedIn');
+$social_medias_url = array(
+	'https://www.facebook.com/',
+	'https://twitter.com/',
+	'https://plus.google.com/',
+	'http://www.youtube.com/',
+	'http://www.instagram.com/',
+	'http://www.linkedin.com/',
+);
+foreach($social_medias as $idx=>$social){
 	$fields[] = array(
 		'label'		=> $social,
 		'desc'		=> 'Enter your '.$social.' url',
-		'id'		=> sg_util::slug($social.'_url','_'),
+		'id'		=> SG_Util::slug($social.'_url','_'),
+		'default'   => $social_medias_url[$idx],
 		'type'		=> 'text'
 	);
 }
@@ -835,7 +578,7 @@ foreach($social_medias as $social){
 /*----custom script options----*/
 $fields[] = array(
 	'label'		=> 'Custom Scripts',
-	'icon'		=> SG_THEME_URL.'/includes/sg_framework/assets/images/icons/script.png',
+	'icon'		=> sg_asset_url('framework/sg_admin/assets/images/icons/script.png'),
 	'type'		=> 'heading',
 	'fields'	=> array(
 		array(
@@ -888,7 +631,7 @@ $fields[] = array(
 /*----custom script options----*/
 $fields[] = array(
 	'label'		=> 'Backup & Restore',
-	'icon'		=> SG_THEME_URL.'/includes/sg_framework/assets/images/icons/database.png',
+	'icon'		=> sg_asset_url('framework/sg_admin/assets/images/icons/database.png'),
 	'type'		=> 'heading'
 );
 
@@ -897,7 +640,22 @@ return $fields;
 }
 
 new sg_metaoption(array(
-	'id'		=> 'wpsg_choices',
-	'title'		=> 'Choices Theme',
+	'id'		=> SG_THEME_ID,
+	'title'		=> 'Theme',
 	'fields'	=> 'sg_admin_theme_option'
 ));
+
+
+function sg_default_theme_option($old_theme_name, $old_theme='false'){
+	 if(!get_option(SG_THEME_ID)){
+	 	$theme_option = new sg_metaoption(array(
+			'id'		=> SG_THEME_ID,
+			'title'		=> '',
+			'fields'	=> 'sg_admin_theme_option'
+		));
+
+	 	update_option(SG_THEME_ID, $theme_option->defaults());
+	 }
+}
+
+add_action('after_switch_theme', 'sg_default_theme_option');

@@ -2,24 +2,26 @@
 //http://shibashake.com/wordpress-theme/add-custom-taxonomy-tags-to-your-wordpress-permalinks
 //http://www.deluxeblogtips.com/2010/07/custom-post-type-with-categories-post.html
 
-function sg_cpt_portfolio_cat() {
-	register_taxonomy(
-		'sg_cpt_portfolio_cat', //taxonomy slug
-		array('sg_cpt_portfolio'), //custom post type
-		array(
-			'labels' => array(
-				'name' => __('Portfolio Categories'),
-				'singular_name' => __('Portfolio Category')
-			),
-			'show_ui' => true,
-			'show_tagcloud' => false,
-			'hierarchical' => true,
-			'query_var' => 'sg_cpt_portfolio_cat',
-			'rewrite' => true
-		)
-	);
+class SG_SettingsTaxonomies
+{
+	public static function continent_cat() {
+		register_taxonomy(
+			'continent', //taxonomy slug
+			array('post', 'sg_cpt_destination'), //custom post type
+			array(
+				'labels' => array(
+					'name' => __('Continents', SG_THEME_ID),
+					'singular_name' => __('Continent', SG_THEME_ID)
+				),
+				'show_ui' => true,
+				'show_tagcloud' => true,
+				'hierarchical' => true,
+				'query_var' => 'continent',
+				'rewrite' => true
+			)
+		);
+	}
 }
-add_action('init', 'sg_cpt_portfolio_cat');
 
 
-?>
+add_action('init', array('SG_SettingsTaxonomies', 'continent_cat'));

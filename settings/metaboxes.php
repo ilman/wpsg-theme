@@ -1,82 +1,92 @@
 <?php 
 
-require_once(TEMPLATEPATH.'/settings/helpers/admin_helper.php');
+function sg_admin_metabox(){
 
-function sg_admin_metabox_test(){
+	$prefix = '_sg_theme_'; //always use prefix _ for metabox
 
-// Field Array
-$prefix = '_test_'; //always use prefix _ for metabox
+	/*----options----*/
 
-$sample_options = array (
-	array (
-		'label' => 'Option One',
-		'value'	=> 'one'
-	),
-	array (
-		'label' => 'Option Two',
-		'value'	=> 'two'
-	),
-	array (
-		'label' => 'Option Three',
-		'value'	=> 'three'
-	)
-);
+	$option_layouts = array(
+		array('label'=>'Default', 'value'=>''),
+		array('label'=>'Full', 'value'=>'layout-full'),
+		array('label'=>'Side Right', 'value'=>'layout-side-right'),
+		array('label'=>'Side Left', 'value'=>'layout-side-left'),
+		array('label'=>'Side Both', 'value'=>'layout-side-both'),
+	);
 
-$fields = array(
-	array(
-		'label'=> 'Heading 1',
-		'type'	=> 'heading'
-	),
-	array(
-		'label'		=> 'Text Input',
-		'desc'		=> 'A description for the field.',
-		'id'		=> $prefix.'text',
-		'default'	=> 'test',
-		//'repeat'	=> true,
-		'type'		=> 'text'
-	),
-	array(
-		'label'		=> 'Text Input',
-		'desc'		=> 'A description for the field.',
-		'id'		=> $prefix.'textasd',
-		'default'	=> array('asd','zxc'),
-		'repeat'	=> true,
-		'type'		=> 'text'
-	),
-	array(
-		'label'		=> 'tabs',
-		'type'		=> 'fieldset',
-		'fields'	=> array(
-			array(
-				'label'		=> 'Logo aad',
-				'id'		=> 'logo1',
-				'default'	=> 'falcon-logo.png',
-				'type'		=> 'text',
-			),
-			array(
-				'label'		=> 'Logo',
-				'id'		=> 'logo2',
-				'default'	=> 'logo.png',
-				'type'		=> 'text',
-			),
-			array(
-				'label'		=> 'Bla bla',
-				'id'		=> 'blu_blu',
-				'default'	=> 'lorem ipsum dolor sit amet consectuer adisplicing elit',
-				'type'		=> 'textarea',
-			),
-		)
-	),
-	
-);
+	$option_true_false = array(
+		array('label'=>'Yes', 'value'=>1),
+		array('label'=>'No', 'value'=>0),
+	);
+
+	/*----fields----*/
+
+	$fields = array(
+		
+		array(
+			'label'		=> 'Layout',
+			'id'		=> $prefix.'layout',
+			'default'	=> '',
+			'type'		=> 'select',
+			'options'	=> $option_layouts
+		),
+		array(
+			'label'		=> 'Add Section',
+			'id'		=> $prefix.'section',
+			'default'	=> 1,
+			'type'		=> 'radio',
+			'options'	=> $option_true_false,
+			'attr'		=> array(
+				'class' => 'sgtb-radio-inline'
+			)
+		),
+		array(
+			'label'		=> 'Section Class',
+			'id'		=> $prefix.'section_class',
+			'default'	=> '',
+			'type'		=> 'text',
+		),
+		array(
+			'label'		=> 'Add Container',
+			'id'		=> $prefix.'container',
+			'default'	=> 1,
+			'type'		=> 'radio',
+			'options'	=> $option_true_false,
+			'attr'		=> array(
+				'class' => 'sgtb-radio-inline'
+			)
+		),
+		array(
+			'label'		=> 'Show Title',
+			'id'		=> $prefix.'title',
+			'default'	=> 1,
+			'type'		=> 'radio',
+			'options'	=> $option_true_false,
+			'attr'		=> array(
+				'class' => 'sgtb-radio-inline'
+			)
+		),
+		array(
+			'label'		=> 'Show Breadcrumbs',
+			'id'		=> $prefix.'breadcrumbs',
+			'default'	=> 1,
+			'type'		=> 'radio',
+			'options'	=> $option_true_false,
+			'attr'		=> array(
+				'class' => 'sgtb-radio-inline'
+			)
+		),
+		
+	);
+
 	return $fields;
 }
 
-// $sample_box = new sg_metabox(array(
-// 	'id'		=> 'sample_box', 
-// 	'title'		=> 'Sample Box', 
-// 	'fields'	=> 'sg_admin_metabox_test', 
-// 	'post_type'	=> 'page',
-// 	'context'	=> 'advanced',
-// 	'priority'	=> 'hight'
-// ));
+$sg_mb_layout = new sg_metabox(array(
+	'id'		=> 'sg_admin_metabox', 
+	'title'		=> 'Page Settings', 
+	'fields'	=> 'sg_admin_metabox', 
+	'post_type'	=> 'page',
+	'context'	=> 'side',
+	'priority'	=> 'high'
+));

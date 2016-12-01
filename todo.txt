@@ -1,0 +1,103 @@
+
+[done] footer
+[done] responsive content
+responsive menu
+[done] featured button
+[done] twitter feed
+[done] wordpress subscribe
+[done] user avatar
+[done] share button
+[done] social button
+- [done] user avatar
+- related post
+- popular post
+- category image
+- author page
+- custom file tree editor
+
+
+[done] base theme ctent
+[done] theme option
+[done] theme option google font
+[done] theme option tab 
+[done] metabox
+- theme option success message
+- array option helper
+- auto set default option
+[done] custom post type
+- shortcode
+[done] search result page
+[done] 404 page
+[done] category page
+- customizer
+- multilingual
+
+[done] tgm plugin
+- backup option
+[done] editable footer
+
+
+
+[done] add login register page
+- change woocommerce archive product layout
+[done] woocommerce product bundle
+- woocommerce stripe
+[done] woocommerce discount
+[done]visual composer
+[done] promo page
+[done]] only logged user page
+[50%] customer my account page
+[done] woocommerce set unlimited stock
+[done] woocommerce views order page
+[done] woocommerce in stock query
+[done] woocommerce single product page
+- woocommerce archive product page
+- woocommerce custom archive product page
+[done] woocommerce cart header
+
+
+
+
+Array
+(
+    [bundle_selected_optional_31] => 
+    [bundle_quantity_31] => 3
+    [bundle_selected_optional_32] => 
+    [bundle_quantity_32] => 2
+    [quantity] => 1
+    [add-to-cart] => 237
+)
+
+
+Array
+(
+    [bundle_selected_optional_31] => 
+    [bundle_quantity_31] => 3
+    [bundle_quantity_32] => 1
+    [quantity] => 2
+    [add-to-cart] => 237
+)
+
+
+
+
+
+
+
+
+[done] Change ‘Add to Cart’ to a ‘Login for price’ functionality
+[done] Keep only Stripe & Paypal (remove the others)
+[done]   Show all the listings on a single page (no pagination)
+[no-change]    Accessories (Should show price & discounted value)
+
+o    Add a category filter selector (left)
+o    Choose your own (Add a drop box menu)
+§  Add selector like the current site
+o    Choose your bundle page
+§  Add another button to “Add another bundle”
+
+
+- side-widget affix
+- mobile main-menu
+
+paypal

@@ -1,0 +1,105 @@
+.sg-to-wrapper{
+	padding:30px 0;
+	color:#666;
+}
+
+.sg-to-container{
+	border:@base-border;
+	padding:0;
+	width:860px;
+}
+
+@media (max-width: @screen-xs-max){
+	.sg-to-container{
+		width:100%;
+	}
+}
+
+.sg-to-content{
+	border-top:@base-border;
+	padding:0 @base-margin;
+	background: #e9e9e9;
+}
+
+.sg-to-side{
+	padding:0;
+	z-index:1;
+
+	.sgtb-navbar-collapse{ padding:0; }
+	.sgtb-navbar-nav{ float:none; list-style:none; }
+	.sgtb-navbar-nav li{ float:none; margin:0; border-bottom:@base-border; list-style:none; }
+	.sgtb-navbar-nav li a:focus{ outline:0 none; box-shadow:none; }
+	.sgtb-navbar-nav > li { border-top:#eee solid 1px; }
+	.sgtb-navbar-nav > li a{ padding:10px @base-margin; display:block; font-weight:bold; color:@text-color; cursor:pointer; }
+	.sgtb-navbar-nav > li a > .caret{ font-weight:bold; position:absolute; right:15px; top:50%; }
+	.sgtb-navbar-nav > li .sg-icon16{ position:absolute; right:10px; }
+	.sgtb-navbar-nav > li > ul{ background:#f2f2f2; border-top:@base-border; display:none; }
+	.sgtb-navbar-nav > li > ul > li{ border-top:0 none; }
+	.sgtb-navbar-nav > li > ul > li:last-child{ border-bottom:0 none; }
+	.sgtb-navbar-nav .active{ margin-right:-1px; }
+	.sgtb-navbar-nav .active > a{ background:#fff; }
+	.sgtb-navbar-nav .active > a > .caret{ content:'&#45'; }
+	.sgtb-navbar-nav .active > ul{ display:block; }
+
+	.sg-to-icon{ margin-right:5px; text-transform:capitalize; }
+}
+
+.sg-to-main{
+	border-left:@base-border;
+	background:#fff;
+	padding-top:@base-margin;
+	padding-bottom:@base-margin;
+	min-height:500px;
+
+	.sgtb-form-group{
+		margin:0;
+		padding:10px 0;
+		border-top:#e9e9e9 solid 1px;
+
+		&:first-child{ border-top:0 none; }
+	}
+	.sgtb-help-block{ color:#999; }
+}
+
+.sg-to-toolbar{
+	.clearfix();
+	padding:10px @base-margin;
+	border-top:@base-border;
+	background:#fff;
+
+	&:first-child{ border-top:0 none; }
+	.sgtb-navbar-right{ margin:0; }
+}
+
+.sg-to-header{
+	padding:30px @base-margin;
+	background:#23282d;
+
+	.sg-to-logo{
+		h3{ text-transform:uppercase; color:#999; }
+		strong{ color:#fff; }
+		*{ margin:0; }
+	}
+}
+
+.sg-form-title{ font-size:1.5em; line-height:1.1em; margin:0 0 @base-margin; }
+
+fieldset{
+	border: #e9e9e9 solid 1px;
+    border-radius: 3px;
+    margin-bottom: 30px;
+
+    legend+.sgtb-form-group{ border-top:0 none !important; }
+}
+
+legend{ 
+	margin: 0 15px; 
+    padding: 10px 0;
+    font-weight: bold;
+    text-transform: uppercase;
+    color: @brand-primary;
+    font-size: 1.1em;
+    display:inline;
+    width:auto;
+    border:0 none;
+}

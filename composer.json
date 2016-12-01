@@ -1,0 +1,13 @@
+{
+	"repositories": [
+	    {
+	        "type":"vcs",
+	        "url":"https://github.com/ilman/sg_formbs.git"
+	    }
+    ],
+    "require": {
+        "scienceguard/sg_util": "*@dev",
+        "scienceguard/sg_form": "*@dev",
+        "scienceguard/sg_formbs": "*@dev"
+    }
+}

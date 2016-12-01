@@ -4,12 +4,12 @@
 
 		<?php 
 			$post = $wpdb->get_row($wp_query->request);
-			$post_status = SG_Util::val($post, 'post_status');
+			$post_status = sg_val($post, 'post_status');
 			if($post_status == 'private') {
-				include(locate_template('templates/content-error-private.php'));
+				include(locate_template('framework/templates/content-error-private.php'));
 			}
 			else{
-				include(locate_template('templates/content-error-404.php'));
+				include(locate_template('framework/templates/content-error-404.php'));
 			}
 		?>
 		
