@@ -21,6 +21,8 @@ jQuery(document).ready(function($){
 		var $footer = $('#footer');
 		var $offset = $footer.offset();
 
+		if($footer.length < 1){ return false; }
+
 		if(($footer.height() + $offset.top) < $window.height()){
 			$footer.css({
 				'margin-top' : $window.height() - ($footer.height() + $offset.top) - 1
