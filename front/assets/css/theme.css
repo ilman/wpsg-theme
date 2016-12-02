@@ -6076,8 +6076,16 @@ a {
   border: 0 none;
   padding: 20px 40px;
 }
-.ea-search-form .radio-inline input {
-  margin-right: 5px !important;
+.breadcrumbs > a {
+  padding-right: 15px;
+  position: relative;
+  margin-right: 5px;
+}
+.breadcrumbs > a:before {
+  content: '\00bb';
+  display: block;
+  position: absolute;
+  right: 0;
 }
 .block-box {
   background: #fff;
