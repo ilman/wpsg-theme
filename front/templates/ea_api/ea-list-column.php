@@ -1,7 +1,7 @@
 <?php
 	use Scienceguard\SG_Util;
 	
-	if(!isset($col_width)){ $col_width = 4; }
+	if(!isset($col_width)){ $col_width = 3; }
 
 	$page_detail_url = sg_opt('ea_property_details_page');
 
@@ -48,32 +48,22 @@
 			else{
 				$prop_link .= '?'.$prop_query;
 			}
+
+			$data = array(
+				'prop_image' => $prop_image,
+				'prop_title' => $prop_title,
+				'prop_price' => $prop_price,
+				'prop_priority' => $prop_priority,
+				'prop_type' => $prop_type,
+				'prop_link' => $prop_link,
+				'prop_id' => $prop_id,
+				'bedrooms' => $bedrooms,
+				'bathrooms' => $bathrooms,
+				'receptions' => $receptions,
+			);
+
+			echo '<li class="col-sm-'.$col_width.'">'.ea_property_block($data).'</li>';
 		?>
-		<li <?php post_class('post-item col-sm-'.$col_width); ?>>
-			<div class="block block-box block-property bg-gray">
-				<div class="block-thumb no-overflow">
-					<a class="anim-hover hover-parent" href="<?php echo $prop_link ?>">
-						<img class="hover-child hover-grow" src="<?php echo $prop_image ?>" alt="<?php echo $prop_title ?>" />
-						<?php if($prop_priority): ?>
-							<span class="property-priority bg-primary"><?php echo $prop_priority ?></span>
-						<?php endif; ?>
-					</a>
-				</div>
-				<div class="block-body">
-					<h5 class="property-title">
-						<a href="<?php echo $prop_link ?>"><?php echo $prop_title ?></a>
-					</h5>
-					<div class="property-type"><?php echo ($prop_type) ? $prop_type :'-' ?></div>
-					<div class="property-rooms-count">
-						<span title="Bedrooms"><i class="fa fa-bed"></i> <?php echo $bedrooms ?></span>						
-						<span title="Bathrooms"><i class="fa fa-tint"></i> <?php echo $bathrooms ?></span>						
-						<span title="Receptions"><i class="fa fa-coffee"></i> <?php echo $receptions ?></span>						
-					</div>
-					<div class="property-price"><?php echo str_replace('Â','',$prop_price) ?></div>
-				</div>
-			</div>
-			<!-- block -->
-		</li>
 	<?php endforeach; ?>
 </ul>
 <!-- post-list -->

@@ -53,7 +53,7 @@
 				'receptions' => $receptions,
 			);
 
-			echo '<li class="col-sm-'.$col_width.'">'.ea_property_block($data).'</li>'
+			echo '<li class="col-sm-'.$col_width.'">'.ea_property_block($data).'</li>';
 		?>
 	<?php endforeach; endif; ?>
 </ul>
