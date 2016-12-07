@@ -131,7 +131,7 @@
 			<div class="form-group">
 				<div class="row">
 					<div class="col-xs-6">
-						<button type="submit" class="btn btn-block btn-primary" name="dep" value="for-sale">Sell</button>
+						<button type="submit" class="btn btn-block btn-primary" name="dep" value="for-sale">Buy</button>
 					</div>
 					<!-- col -->
 					<div class="col-xs-6">

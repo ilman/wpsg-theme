@@ -106,7 +106,7 @@ class Choices_Property_Form_Widget extends WP_Widget {
 
 		?>
 		<p>
-			<label for="<?php echo $this->get_field_name( 'cat_slug' ); ?>"><?php sg_e( 'Exclude Category Slug:' ); ?></label> 
+			<label for="<?php echo $this->get_field_name( 'cat_slug' ); ?>"><?php _e( 'Exclude Category Slug:' ); ?></label> 
 			<input class="widefat" id="<?php echo $this->get_field_id( 'cat_slug' ); ?>" name="<?php echo $this->get_field_name( 'cat_slug' ); ?>" type="text" value="<?php echo esc_attr( $values['cat_slug'] ); ?>" />
 		</p>
 		<?php 

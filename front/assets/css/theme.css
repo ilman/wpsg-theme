@@ -8120,7 +8120,7 @@ h4 {
     display: block;
   }
   #subheader h2 {
-    font-size: 43px;
+    font-size: 36px;
   }
   .ea-search-bar .btn {
     padding-left: 0;
@@ -8129,4 +8129,10 @@ h4 {
   .show-sm {
     display: block !important;
   }
+}
+.ea-search-form .radio-inline {
+  padding-left: 30px;
+}
+.ea-search-form .radio-inline input {
+  margin-left: -20px !important;
 }

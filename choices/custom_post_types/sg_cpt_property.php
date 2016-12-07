@@ -68,9 +68,9 @@ function sg_cpt_property_change_columns($cols) {
 
 	$cols = array(
 		'cb' => '<input type="checkbox" />',
-		'title' => sg__('Title'),
-		'sg_col_dep' => sg__('Department'),
-		'date' => sg__('Date'),
+		'title' => __('Title'),
+		'sg_col_dep' => __('Department'),
+		'date' => __('Date'),
 	);
 		
 	return $cols;

@@ -144,11 +144,11 @@ add_action( 'init', 'sg_cpt_staff_taxonomies', 0 );
 function sg_cpt_staff_change_columns($cols) {
 	$cols = array(
 		'cb' => '<input type="checkbox" />',
-		'title' => sg__('Name'),
-		'sg_col_image' => sg__('Image'),
-		'sg_col_title' => sg__('Title'),
-		'taxonomy-sg_cpt_staff_group' => sg__('Staff Group'),
-		'date' => sg__('Date'),
+		'title' => __('Name'),
+		'sg_col_image' => __('Image'),
+		'sg_col_title' => __('Title'),
+		'taxonomy-sg_cpt_staff_group' => __('Staff Group'),
+		'date' => __('Date'),
 	);
 		
 	return $cols;

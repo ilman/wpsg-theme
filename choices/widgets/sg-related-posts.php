@@ -47,22 +47,22 @@ class SG_Latest_Posts_Widget extends WP_Widget {
 			$title = $instance[ 'title' ];
 		}
 		else {
-			$title = sg__('Latest Posts');
+			$title = __('Latest Posts');
 		}
 		
 		$num_post = (isset($instance['num_post'])) ? $instance['num_post'] : 4;
 		
 		?>
 		<p>
-			<label for="<?php echo $this->get_field_name( 'title' ); ?>"><?php sg_e( 'Title:' ); ?></label> 
+			<label for="<?php echo $this->get_field_name( 'title' ); ?>"><?php _e( 'Title:' ); ?></label> 
 			<input class="widefat" id="<?php echo $this->get_field_id( 'title' ); ?>" name="<?php echo $this->get_field_name( 'title' ); ?>" type="text" value="<?php echo esc_attr( $title ); ?>" />
 		</p>
 		<p>
-			<label for="<?php echo $this->get_field_name( 'num_post' ); ?>"><?php sg_e( 'Number of Posts:' ); ?></label> 
+			<label for="<?php echo $this->get_field_name( 'num_post' ); ?>"><?php _e( 'Number of Posts:' ); ?></label> 
 			<input class="widefat" id="<?php echo $this->get_field_id( 'num_post' ); ?>" name="<?php echo $this->get_field_name( 'num_post' ); ?>" type="text" value="<?php echo esc_attr( $num_post ); ?>" />
 		</p>
 		<p>
-			<label for="<?php echo $this->get_field_name( 'cat_slug' ); ?>"><?php sg_e( 'Exclude Category Slug:' ); ?></label> 
+			<label for="<?php echo $this->get_field_name( 'cat_slug' ); ?>"><?php _e( 'Exclude Category Slug:' ); ?></label> 
 			<input class="widefat" id="<?php echo $this->get_field_id( 'cat_slug' ); ?>" name="<?php echo $this->get_field_name( 'cat_slug' ); ?>" type="text" value="<?php echo esc_attr( $cat_slug ); ?>" />
 		</p>
 		<?php 

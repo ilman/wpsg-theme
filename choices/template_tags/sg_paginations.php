@@ -61,11 +61,11 @@ function sg_content_nav( $nav_id ) {
     <?php elseif ( $wp_query->max_num_pages > 1 && ( is_home() || is_archive() || is_search() ) ) : // navigation links for home, archive, and search pages ?>
  
         <?php if ( get_next_posts_link() ) : ?>
-        <div class="nav-previous"><?php next_posts_link( '<span class="meta-nav">&larr;</span>'.sg__('Older posts') ); ?></div>
+        <div class="nav-previous"><?php next_posts_link( '<span class="meta-nav">&larr;</span>'.__('Older posts') ); ?></div>
         <?php endif; ?>
  
         <?php if ( get_previous_posts_link() ) : ?>
-        <div class="nav-next"><?php previous_posts_link( sg__('Newer posts').'<span class="meta-nav">&rarr;</span>' ); ?></div>
+        <div class="nav-next"><?php previous_posts_link( __('Newer posts').'<span class="meta-nav">&rarr;</span>' ); ?></div>
         <?php endif; ?>
  
     <?php endif; ?>
