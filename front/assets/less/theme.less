@@ -69,3 +69,15 @@ h1,h2,h3,h4{ font-family: 'Roboto Condensed', Arial, sans-serif; }
 .widget{
 	.widget-title{ font-weight:bold; }
 }
+
+@media (max-width: @screen-sm) {
+	#header-main{ height:auto; }
+ 	#nav-main{
+ 		&{ background:@brand-primary; color:#fff; }
+ 		a{ color:#fff; }
+		.navbar-nav >li{ display:block; }
+ 	}
+	#subheader h2{ font-size:43px; }
+	.ea-search-bar .btn{ padding-left:0; padding-right:0; }
+	.show-sm{ display:block !important; }
+}

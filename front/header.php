@@ -63,9 +63,8 @@
 			<div class="container">
 				<div class="navbar-header">
 					<button class="navbar-toggle btn btn-primary" type="button" data-toggle="collapse" data-target="#nav-main"> <i class="fa fa-fw fa-bars"></i> </button>
-					<a class="navbar-brand hide show-xs" href="<?php echo home_url(); ?>">
-						<!-- <img class="brand-default" src="<?php echo sg_opt('logo') ?>" alt="logo"> -->
-						CHOICES
+					<a class="navbar-brand hide show-sm" href="<?php echo home_url(); ?>">
+						<img class="brand-default" src="<?php echo sg_asset_url('front/assets/images/logo-2016-mobile.png') ?>" alt="Choices">
 					</a>
 				</div>
 				

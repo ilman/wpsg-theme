@@ -45,7 +45,7 @@
 
         <div class="col-xs-2">
             <div class="form-group">
-                <button type="submit" name="dep" class="btn btn-primary btn-block" value="for-sale">Sell</button>
+                <button type="submit" name="dep" class="btn btn-primary btn-block" value="for-sale">Buy</button>
             </div>
             <!-- form-group -->
         </div>
