@@ -3,7 +3,7 @@
 		<p class="alert alert-info">
 			<?php printf(__('Logged in as <a href="%s/wp-admin/profile.php">%s</a>.'), get_option('siteurl'), $user_identity); ?> 
 			<a href="<?php echo wp_logout_url(get_permalink()); ?>" title="<?php __('Log out of this account', SG_THEME_ID); ?>">
-				<?php _e('Log out'); echo '&raquo;'; ?>
+				<?php _e('Log out', SG_THEME_ID); echo '&raquo;'; ?>
 			</a>
 		</p>
 	<?php else : ?>
@@ -13,7 +13,7 @@
 				<div class="form-group">
 					<label for="author">
 						<?php 
-							_e('Name');
+							_e('Name', SG_THEME_ID);
 							echo ' <small>('; _e('required'); echo ')</small>';
 						?>
 					</label>
@@ -25,7 +25,7 @@
 				<div class="form-group">
 					<label for="email">
 						<?php 
-							_e('Email');
+							_e('Email', SG_THEME_ID);
 							echo ' <small>('; _e('required'); echo ')</small>';
 						?>
 					</label>
@@ -36,7 +36,7 @@
 			<div class="col-sm-4">
 				<div class="form-group">
 					<label for="url">
-						<?php _e('Website'); ?>
+						<?php _e('Website', SG_THEME_ID); ?>
 					</label>
 					<input type="url" class="form-control" name="url" id="url" value="<?php echo esc_attr($comment_author_url); ?>" tabindex="3">
 				</div>
@@ -47,13 +47,13 @@
 	<?php endif; ?>
 	<div class="form-group">
 		<label for="comment">
-			<?php _e('Comment'); ?>
+			<?php _e('Comment', SG_THEME_ID); ?>
 		</label>
 		<textarea name="comment" id="comment" class="form-control" rows="6" tabindex="4"></textarea>
 	</div>
 	<div class="form-group">
 		<button name="submit" class="btn btn-primary" type="submit" id="submit" tabindex="5">
-			<?php _e('Submit Comment'); ?>
+			<?php _e('Submit Comment', SG_THEME_ID); ?>
 		</button>
 	</div>
 	

@@ -96,7 +96,6 @@
 <div id="subheader" style="background-image:url(<?php echo sg_asset_url('front/assets/images/bg-1.jpg') ?>)">
 	<div class="container">
 		<div class="subcontainer">
-			<h2>Life is about</h2>
 			<p>
 				<a href="<?php echo site_url() ?>">
 					<img src="<?php echo get_template_directory_uri().'/front/assets/images/logo-2016.png' ?>" alt="choices">

@@ -40,6 +40,7 @@
     	<label>Area</label>
         <?php 
             $options = array();
+            $options[] = array('label'=>'Select Area', 'value'=>'');
             foreach($areas as $area=>$val){
                 $options[] = array('label'=>htmlspecialchars($area), 'value'=>SG_Util::slug($val));
             }

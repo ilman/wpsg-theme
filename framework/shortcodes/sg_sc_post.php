@@ -65,11 +65,7 @@ function sc_sg_post_image($attr=array()){
 		'size' => ''
 	), $attr));
 
-	ob_start();
-	sg_get_post_thumbnail($size);
-	$output = ob_get_clean();
-
-	return $output; 
+	return sg_get_post_thumbnail($size); 
 }
 add_shortcode('sg_post_image', 'sc_sg_post_image');
 
