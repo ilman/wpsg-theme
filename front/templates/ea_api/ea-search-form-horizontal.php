@@ -48,7 +48,7 @@
 				<label>Area</label>
 				<?php 
 					$options = array();
-					$options[] = array('label'=>'Select Area', 'value'=>'');
+					$options[] = array('label'=>'- Select Area -', 'value'=>'');
 					foreach($areas as $area){
 						$options[] = array('label'=>htmlspecialchars($area), 'value'=>$area);
 					}
