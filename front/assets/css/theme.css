@@ -8037,7 +8037,6 @@ h4 {
   text-align: center;
   background: #f0f0f0 no-repeat center center;
   background-size: cover;
-  background-position: center -470px;
   margin: 0;
 }
 #subheader h2 {
@@ -8049,9 +8048,6 @@ h4 {
 }
 #subheader .container {
   padding: 60px;
-}
-.home #subheader {
-  background-position: center center;
 }
 .home #subheader h2 {
   display: block;
