@@ -8064,7 +8064,7 @@ h4 {
 }
 #searchbar {
   position: relative;
-  min-height: 60px;
+  min-height: 10px;
 }
 #searchbar .ea-search-bar {
   position: absolute;

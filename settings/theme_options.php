@@ -202,6 +202,13 @@ $fields[] = array(
 			'default'	=> true, 
 			'type'		=> 'checkbox'
 		),
+		array(  
+			'label'		=> 'Show Breadrumbs',
+			'desc'		=> 'Show breadcrumbs in content',
+			'id' 		=> 'theme_breadcrumbs',  
+			'default'	=> false, 
+			'type'		=> 'checkbox'
+		),
 	)
 );	
 

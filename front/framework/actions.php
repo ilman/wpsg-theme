@@ -45,7 +45,7 @@ Class SG_FrontAction
 
 			$breadcrumbs = sg_get_post_meta(get_the_ID(), '_sg_theme_breadcrumbs', true);
 			if($breadcrumbs === null){
-				$breadcrumbs = true;
+				$breadcrumbs = sg_opt('theme_breadcrumbs', true);
 			}
 
 			if($breadcrumbs){
