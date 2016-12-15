@@ -174,20 +174,20 @@ $fields[] = array(
 	'icon'		=> sg_asset_url('framework/sg_admin/assets/images/icons/setting_tools.png'),
 	'type'		=> 'heading',
 	'fields'	=> array(
-		array(
-			'label'		=> 'Logo',
-			'desc'		=> 'Enter/upload logo for your site themes',
-			'id'		=> 'logo',
-			'default'	=> sg_asset_url('front/assets/images/logo.png'),
-			'type'		=> 'upload'
-		),
-		array(
-			'label'		=> 'Favicon',
-			'desc'		=> 'Enter/upload 16x16 favicon for your site themes',
-			'id'		=> 'favicon',
-			'default'	=> sg_asset_url('front/assets/images/favicon.png'),
-			'type'		=> 'upload'
-		),
+		// array(
+		// 	'label'		=> 'Logo',
+		// 	'desc'		=> 'Enter/upload logo for your site themes',
+		// 	'id'		=> 'logo',
+		// 	'default'	=> sg_asset_url('front/assets/images/logo.png'),
+		// 	'type'		=> 'upload'
+		// ),
+		// array(
+		// 	'label'		=> 'Favicon',
+		// 	'desc'		=> 'Enter/upload 16x16 favicon for your site themes',
+		// 	'id'		=> 'favicon',
+		// 	'default'	=> sg_asset_url('front/assets/images/favicon.png'),
+		// 	'type'		=> 'upload'
+		// ),
 		array(  
 			'label'		=> 'Add Section',
 			'desc'		=> 'Add section wrapper in content',
