@@ -8105,6 +8105,9 @@ h4 {
 .widget .widget-title {
   font-weight: bold;
 }
+.post-list .block-box {
+  margin-bottom: 20px;
+}
 @media (max-width: 768px) {
   #header-main {
     height: auto;
