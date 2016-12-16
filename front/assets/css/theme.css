@@ -8051,7 +8051,7 @@ h4 {
 }
 #subheader .logo {
   display: inline-block;
-  background: rgba(23, 27, 28, 0.6);
+  background: rgba(23, 27, 28, 0.7);
   padding: 5px;
 }
 #subheader .logo img {
@@ -8085,6 +8085,12 @@ h4 {
   #searchbar .ea-search-bar {
     left: 0;
     margin: 0 auto;
+  }
+}
+@media (max-width: 768px) {
+  #searchbar {
+    position: relative;
+    height: 30px;
   }
 }
 #footer {
