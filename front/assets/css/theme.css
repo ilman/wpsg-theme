@@ -8049,6 +8049,15 @@ h4 {
 #subheader .container {
   padding: 60px;
 }
+#subheader .logo {
+  display: inline-block;
+  background: rgba(23, 27, 28, 0.6);
+  padding: 5px;
+}
+#subheader .logo img {
+  width: 342px;
+  display: inline-block;
+}
 .home #subheader h2 {
   display: block;
 }

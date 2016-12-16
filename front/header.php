@@ -97,8 +97,8 @@
 	<div class="container">
 		<div class="subcontainer">
 			<p>
-				<a href="<?php echo site_url() ?>">
-					<img src="<?php echo get_template_directory_uri().'/front/assets/images/logo-2016.png' ?>" alt="choices">
+				<a href="<?php echo site_url() ?>" class="logo">
+					<img src="<?php echo get_template_directory_uri().'/front/assets/images/logo-2016.svg' ?>" alt="choices">
 				</a>
 			</p>
 		</div>
