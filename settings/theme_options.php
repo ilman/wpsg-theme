@@ -174,20 +174,20 @@ $fields[] = array(
 	'icon'		=> sg_asset_url('framework/sg_admin/assets/images/icons/setting_tools.png'),
 	'type'		=> 'heading',
 	'fields'	=> array(
-		// array(
-		// 	'label'		=> 'Logo',
-		// 	'desc'		=> 'Enter/upload logo for your site themes',
-		// 	'id'		=> 'logo',
-		// 	'default'	=> sg_asset_url('front/assets/images/logo.png'),
-		// 	'type'		=> 'upload'
-		// ),
-		// array(
-		// 	'label'		=> 'Favicon',
-		// 	'desc'		=> 'Enter/upload 16x16 favicon for your site themes',
-		// 	'id'		=> 'favicon',
-		// 	'default'	=> sg_asset_url('front/assets/images/favicon.png'),
-		// 	'type'		=> 'upload'
-		// ),
+		array(
+			'label'		=> 'Logo',
+			'desc'		=> 'Enter/upload logo for your site themes',
+			'id'		=> 'logo',
+			'default'	=> sg_asset_url('front/assets/images/logo.png'),
+			'type'		=> 'upload'
+		),
+		array(
+			'label'		=> 'Favicon',
+			'desc'		=> 'Enter/upload 16x16 favicon for your site themes',
+			'id'		=> 'favicon',
+			'default'	=> sg_asset_url('front/assets/images/favicon.png'),
+			'type'		=> 'upload'
+		),
 		array(  
 			'label'		=> 'Add Section',
 			'desc'		=> 'Add section wrapper in content',
@@ -215,95 +215,6 @@ $fields[] = array(
 
 
 
-$fields[] = array(
-	'label'		=> 'Form Settings',
-	'icon'		=> sg_asset_url('framework/sg_admin/assets/images/icons/setting_tools.png'),
-	'type'		=> 'heading',
-	'fields'	=> array(
-		array(  
-			'label'		=> 'Office Form Shortcode',
-			'desc'		=> 'Add content/shortcode on office post type',
-			'id' 		=> 'office_form_shortcode',  
-			'default'	=> '', 
-			'type'		=> 'textarea',
-			'sanitizer'		=> 'none',
-			'attr'		=> array(
-				'rows'		=> 4
-			)
-		),
-		array(  
-			'label'		=> 'EA Properties Form Shortcode',
-			'desc'		=> 'Add content/shortcode on EA property details page',
-			'id' 		=> 'ea_property_form_shortcode',  
-			'default'	=> '', 
-			'type'		=> 'textarea',
-			'sanitizer'		=> 'none',
-			'attr'		=> array(
-				'rows'		=> 4
-			)
-		),
-	)
-);	
-
-
-/*----expert agent settings----*/
-$fields[] = array(
-	'label'		=> 'Expert Agent Settings',
-	'icon'		=> sg_asset_url('framework/sg_admin/assets/images/icons/house.png'),
-	'type'		=> 'heading',
-	'fields'	=> array(
-		array(
-			'label'		=> 'EA Search Result Page',
-			'id'		=> 'ea_search_result_page',
-			'type'		=> 'select',
-			'options'	=> sg_get_post_list('page')
-		),
-		array(
-			'label'		=> 'EA Search Investment Result Page',
-			'id'		=> 'ea_search_investment_result_page',
-			'type'		=> 'select',
-			'options'	=> sg_get_post_list('page')
-		),
-		array(
-			'label'		=> 'EA Property Details Page',
-			'id'		=> 'ea_property_details_page',
-			'type'		=> 'select',
-			'options'	=> sg_get_post_list('page')
-		),
-		array(
-			'label'		=> 'EA Investment Property Details Page',
-			'id'		=> 'ea_investment_property_details_page',
-			'type'		=> 'select',
-			'options'	=> sg_get_post_list('page')
-		),
-	)
-);	
-
-
-/*----resales online settings----*/
-$fields[] = array(
-	'label'		=> 'Resales Online Settings',
-	'icon'		=> sg_asset_url('framework/sg_admin/assets/images/icons/house.png'),
-	'type'		=> 'heading',
-	'fields'	=> array(
-		array(
-			'label'		=> 'Resales Online Search Result Page',
-			'id'		=> 'resales_search_result_page',
-			'type'		=> 'select',
-			'options'	=> sg_get_post_list('page')
-		),
-		array(
-			'label'		=> 'Resales Property Details Page',
-			'id'		=> 'resales_property_details_page',
-			'type'		=> 'select',
-			'options'	=> sg_get_post_list('page')
-		),
-	)
-);	
-
-
-
-
 
 
 $option_footer_template = array_merge(array(array('label'=>'Default', 'value'=>'')), SG_WP::getPostList($type='sg_cpt_block'));	
@@ -317,7 +228,7 @@ $fields[] = array(
 	'fields'	=> array(
 		array(
 			'label'		=> 'Footer Template',
-			'desc'		=> 'Select either to use default footer template or your custom footer template',
+			'desc'		=> 'Select either to use default footer template or your custom footer template from blocks custom post type',
 			'id'		=> 'footer_template',
 			'default'	=> '',
 			'type'		=> 'select',

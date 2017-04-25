@@ -85,12 +85,28 @@ function sg_register_required_plugins() {
 		// 	'required'  => true,
 		// ),
 
+		array(
+			'name'         => 'WPSG Core Plugin', 
+			'slug'         => 'wpsg-core', 
+			'source'       => 'https://github.com/ilman/wpsg-core-plugin/archive/master.zip', 
+			'required'     => true,
+			// 'force_activation'   => true,
+			'external_url' => 'https://github.com/ilman/wpsg-core-plugin/',
+		),
 
 		array(
-			'name'      => 'Restrict Content',
-			'slug'      => 'restrict-content',
-			'required'  => true,
+			'name'         => 'Visual Composer', 
+			'slug'         => 'js_composer', 
+			'source'       => 'http://io.agency/files/wp-plugins/js_composer.zip', 
+			// 'required'     => true,
 		),
+
+		// array(
+		// 	'name'      => 'Restrict Content',
+		// 	'slug'      => 'restrict-content',
+		// 	'required'  => true,
+		// ),
+
 
 
 	);

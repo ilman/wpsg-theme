@@ -76,6 +76,28 @@ if(!class_exists('SG_MetaOption')){
 			if(isset($_POST['reset']) && $_POST['reset']=='reset'){
 				return $this->defaults();
 			}
+
+			// make backup
+			if(isset($_POST['backup']) && $_POST['backup']=='backup'){
+				$backup = array(
+					'date' => time(),
+					'data' => $input,
+				);
+				update_option($this->id.'_backup', json_encode($backup));
+			}
+
+			// do restore
+			if(isset($_POST['restore']) && $_POST['restore']=='restore'){
+				$backup = (array) @json_decode(trim(get_option($this->id.'_backup')));
+				if(isset($backup['data'])){
+					return $backup['data'];
+				}
+			}
+
+			// do import
+			if(isset($_POST['import']) && $_POST['import']=='import' && isset($_POST['import_code'])){
+				$input = (array) json_decode(base64_decode(trim(@$_POST['import_code'])));
+			}
 			
 			// loop through fields and save the data
 			foreach ( $fields as $field ) {
@@ -159,7 +181,7 @@ if(!class_exists('SG_MetaOption')){
 								<!-- tab nav -->
 								<div class="sgtb-col-sm-9 sg-to-main">
 									<div class="sgtb-tab-content bg-white">
-										<?php echo SG_Builder::form_builder($this->fields,get_option($this->id),0,array('prefix'=>$this->id, 'form_type'=>'sg_metaoption')); ?>
+										<?php echo SG_Builder::form_builder($this->fields,get_option($this->id),0,array('prefix'=>$this->id, 'form_type'=>'sg_metaoption', 'form_id'=>$this->id)); ?>
 									</div>
 								</div>
 								<!-- tab group -->

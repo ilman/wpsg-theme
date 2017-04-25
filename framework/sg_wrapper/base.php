@@ -1,5 +1,7 @@
 <?php 
 
+use Scienceguard\SG_Util;
+
 $sg_qid = get_queried_object_id();
 $sg_wrapper_file = SG_Wrap::$main_template;
 $sg_wrapper = array(
@@ -72,7 +74,6 @@ if($sg_wrapper['content_layout'] === null){
 
 
 
-
 /*--- dunno ---*/
 
 if(is_page() || get_post_type()!='post'){
@@ -89,6 +90,41 @@ $sg_wrapper['theme_layout'] = apply_filters('sg_theme_layout', $sg_wrapper['them
 $sg_wrapper['content_layout'] = apply_filters('sg_content_layout', $sg_wrapper['content_layout']);
 
 do_action('add_debug_info', $sg_wrapper, '$sg_wrapper');
+
+
+
+
+/*--- add body class ---*/
+function sg_wrap_body_class($classes) {
+	global $sg_wrapper;
+	$temp = $sg_wrapper;
+
+	if(!is_array($temp)){
+		return $classes;
+	}
+
+	unset($temp['theme_section_class']);
+	unset($temp['content_base']);
+
+	foreach ($temp as $key => $value) {
+		$class = SG_Util::slug($key, '-');
+
+		if($value && is_string($value) && strlen($value) <= 20){
+			$class .= '-'.SG_Util::slug($value, '-');
+		}
+		else{
+			$class .= '-false';
+		}
+
+		$classes[] = $class;
+	}
+
+	return $classes;     
+}
+
+add_filter('body_class', 'sg_wrap_body_class');
+
+
 
 
 /*

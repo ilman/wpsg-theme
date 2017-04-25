@@ -2,19 +2,19 @@
 
 class SG_ThemeFilter{
 
-	function widget_empty_title($output='') {
+	public static function widget_empty_title($output='') {
 		if ($output == '') {
 			return ' ';
 		}
 		return $output;
 	}
 
-	function widget_class($params){
+	public static function widget_class($params){
 		$params[0]['before_widget'] = str_replace('_','-',$params[0]['before_widget']);
 		return $params;
 	}
 
-	function wp_title($title, $sep) {
+	public static function wp_title($title, $sep) {
 		global $paged, $page;
 
 		if(is_feed()){
@@ -37,8 +37,14 @@ class SG_ThemeFilter{
 
 		return $title;
 	}
+
+	public static function no_empty_p($content) {
+		return preg_replace('#<p>\s*+(<br\s*/*>)?\s*</p>#i', '', $content);
+	}
+
 }
 
 add_filter('widget_title', array('SG_ThemeFilter', 'widget_empty_title'));
 add_filter('dynamic_sidebar_params', array('SG_ThemeFilter', 'widget_class'));
 add_filter('wp_title', array('SG_ThemeFilter', 'wp_title'), 10, 2);
+add_filter('the_content', array('SG_ThemeFilter', 'no_empty_p'), 20);

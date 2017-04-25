@@ -1,7 +1,9 @@
 /*----fonts----*/
 <?php 
-function sg_str_if($str,$key,$suffix='',$default=''){
-	return (sg_opt($key,$default)) ? $str.sg_opt($key).$suffix.";\r\n" : '';	
+if(!function_exists('sg_str_if')){
+	function sg_str_if($str,$key,$suffix='',$default=''){
+		return (sg_opt($key,$default)) ? $str.sg_opt($key).$suffix.";\r\n" : '';	
+	}
 }
 ?>
 

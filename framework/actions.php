@@ -5,7 +5,7 @@ class SG_ThemeAction{
 	public static function admin_head(){
 		echo '<style type="text/css">'."\n";
 		echo ".notice, .update-nag, .settings-error{ display:block !important; }";
-		echo '<style type="text/css">'."\n";
+		echo '</style>'."\n";
 	}
 
 	public static function content_pagination(){
@@ -21,7 +21,7 @@ class SG_ThemeAction{
 		}
 	}
 
-	function print_script($param) {
+	public static function print_script($param) {
 		$content = sg_opt($param);
 
 		if(!$content){
@@ -65,4 +65,7 @@ add_action('admin_head', array('SG_ThemeAction', 'admin_head'));
 add_action('sg_content_footer', array('SG_ThemeAction', 'content_pagination'));
 add_action('wp_head', array('SG_ThemeAction', 'head_script'));
 add_action('wp_footer', array('SG_ThemeAction', 'foot_script'));
-add_action('sg_to_save', array('SG_ThemeAction', 'create_dynamic_css'));
+
+if(!isset($_SERVER['SERVER_SOFTWARE']) || strpos($_SERVER['SERVER_SOFTWARE'],'Google App Engine') === false) {
+	add_action('sg_to_save', array('SG_ThemeAction', 'create_dynamic_css'));
+}

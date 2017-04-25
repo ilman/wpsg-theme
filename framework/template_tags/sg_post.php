@@ -28,6 +28,62 @@ function sg_get_post_category($post_id=null, $count=null){
 	return $output;
 }
 
+function sg_get_post_terms($post_id=null, $taxonomy_slug='post_tag', $count=null, $format=''){		
+	if(!$post_id){
+		global $post;
+		$post_id = $post->ID;		
+	}
+		
+	$post_cats = get_the_terms($post_id, $taxonomy_slug);
+	$count_post = count($post_cats);
+	
+	if(!$count){
+		$count = $count_post;
+	}	
+	elseif($count > $count_post){
+		$count = $count_post;
+	}
+		
+	$output = '';
+	if(!$format){
+		$format = '<span class="post-term"><i class="fa fa-tags"></i> <a href="%s">%s</a></span>';
+	}
+
+	for($i=0; $i<$count; $i++){
+		$output .= sprintf($format, get_term_link($post_cats[$i]->term_id, $taxonomy_slug), $post_cats[$i]->name);
+	}
+	
+	return $output;
+}
+
+function sg_get_post_tags($post_id=null, $count=null, $format=''){		
+	if(!$post_id){
+		global $post;
+		$post_id = $post->ID;		
+	}
+		
+	$post_cats = get_the_tags($post_id);
+	$count_post = count($post_cats);
+	
+	if(!$count){
+		$count = $count_post;
+	}	
+	elseif($count > $count_post){
+		$count = $count_post;
+	}
+		
+	$output = '';
+	if(!$format){
+		$format = '<span class="post-tag"><i class="fa fa-tags"></i> <a href="%s">%s</a></span>';
+	}
+
+	for($i=0; $i<$count; $i++){
+		$output .= sprintf($format, get_tag_link($post_cats[$i]->term_id), $post_cats[$i]->name);
+	}
+	
+	return $output;
+}
+
 function sg_get_post_author($user_id=false){
 	if(!$user_id){
 		global $authordata;

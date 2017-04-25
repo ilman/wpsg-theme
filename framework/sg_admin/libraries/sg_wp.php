@@ -46,7 +46,7 @@ class SG_WP{
 		return false;
 	}
 
-	function getPostMetaAll($post_id=false){
+	static function getPostMetaAll($post_id=false){
 		global $wpdb;
 		$data = array();
 		$wpdb->query("
@@ -60,7 +60,7 @@ class SG_WP{
 		return $data;
 	}
 
-	function getPostList($type='post'){
+	static function getPostList($type='post'){
 		global $wpdb;
 			
 		$sql_query = "
@@ -74,7 +74,7 @@ class SG_WP{
 		return $wpdb->get_results($sql_query, ARRAY_A);	
 	}
 
-	function getTaxonomyList($type='category'){
+	static function getTaxonomyList($type='category'){
 		global $wpdb;
 			
 		$sql_query = "
@@ -88,7 +88,7 @@ class SG_WP{
 		return $wpdb->get_results($sql_query, ARRAY_A);	
 	}
 
-	function get_google_font_json(){
+	static function get_google_font_json(){
 		$request = wp_remote_get(SG_THEME_URL.'/admin/gwf.json');
 		$response = wp_remote_retrieve_body($request);
 		$response = json_decode($response);

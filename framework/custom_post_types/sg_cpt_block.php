@@ -5,7 +5,7 @@ use Scienceguard\SG_Util;
 class SG_CptBlock
 {
 
-	function init() {
+	static function init() {
 		register_post_type('sg_cpt_block',
 			array(
 				'labels' => array(
@@ -33,7 +33,7 @@ class SG_CptBlock
 
 	// Modify save datas
 
-	function save($post_id){
+	static function save($post_id){
 		if(isset($_POST['post_type']) && $_POST['post_type'] != 'sg_cpt_block'){
 		  return;
 		}
@@ -58,7 +58,7 @@ class SG_CptBlock
 
 	// Change the columns for the edit CPT screen
 
-	function change_columns($cols) {
+	static function change_columns($cols) {
 
 		$cols = array(
 			'cb' => '<input type="checkbox" />',
@@ -72,7 +72,7 @@ class SG_CptBlock
 	}
 	
 
-	function custom_columns($column, $post_id){
+	static function custom_columns($column, $post_id){
 		switch($column){
 			case "sg_col_id":
 				echo $post_id;
@@ -95,7 +95,7 @@ class SG_CptBlock
 
 	// Remove default permalink from edit post
 
-	function permalinks($input){
+	static function permalinks($input){
 		global $post;
 		
 		if(isset($post->post_type) && $post->post_type == 'sg_cpt_block'){
@@ -107,7 +107,7 @@ class SG_CptBlock
 
 	// Remove default shortlink from edit post
 
-	function shortlinks($input){
+	static function shortlinks($input){
 		global $post;
 
 		if(isset($post->post_type) && $post->post_type == 'sg_cpt_block'){

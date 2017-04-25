@@ -239,6 +239,29 @@ if(!class_exists('SG_Builder')){
 					//$output .= '<iframe src="http://localhost/wp-dev/wpsg/?preview=true&content='.$field_content_file.'" '.SG_Util::event_attr($field_attr).' style="'.SG_Util::val($field_attr,'style').'"></iframe>';
 					$output .= '</div></div>';
 				}
+				elseif($field['type']=='backup'){
+					$output .= '<div class="sgtb-form-group">';
+					$output .= '<div class="sgtb-form-label">'.ucwords($field_label).'</div>';
+					$output .= '<p>You can use the two buttons below to backup your current options, and then restore it back at a later time. This is useful if you want to experiment on the options but would like to keep the old settings in case you need it back.</p>';
+					$output .= '<p><button class="sgtb-btn sgtb-btn-default" name="backup" value="backup">Backup</button> <button class="sgtb-btn sgtb-btn-default" name="restore" value="restore">Restore</button></p>';
+					// $output .= '</div';
+
+					$backup = trim(get_option($form_id.'_backup'));
+					if($backup){
+						$backup = (array) @json_decode($backup);
+						if(isset($backup['date'])){
+							$output .= '<p><em>Last backup: '.date('Y-m-d H:i:s', $backup['date']).'</em></p>';
+						}
+					}
+				}
+				elseif($field['type']=='transfer'){
+					$output .= '<div class="sgtb-form-group">';
+					$output .= '<div class="sgtb-form-label">'.ucwords($field_label).'</div>';
+					$output .= '<p>You can transfer the saved options data between different installations by copying the text inside the text box. To import data from another installation, replace the data in the text box with the one from another installation and click "Import Options".</p>';
+					$output .= '<p><textarea class="sgtb-form-control" rows="10" name="import_code" style="color:#999">'.base64_encode(json_encode(sg_opt())).'</textarea></p>';
+					$output .= '<p><button class="sgtb-btn sgtb-btn-default" name="import" value="import">Import Options</button></p>';
+					// $output .= '</div';
+				}
 				else{
 					$field_desc = ($field_desc) ? '<p class="sgtb-help-block">'.$field_desc.'</p>' : '';
 								

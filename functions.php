@@ -23,37 +23,14 @@ require_once locate_template('front/framework/init.php');
 require_once locate_template('front/framework/actions.php');
 require_once locate_template('front/framework/filters.php');
 
-// sg_include_path('framework/template_tags');
-sg_include_path('front/framework/template_tags');
-require_once locate_template('framework/template_tags/sg_content_tags.php');
-require_once locate_template('framework/template_tags/sg_paginations.php');
+// require_once locate_template('framework/template_tags/sg_content_tags.php');
+// require_once locate_template('framework/template_tags/sg_paginations.php');
 
-require_once locate_template('framework/plugins/sg_popular_posts/sg_popular_posts.php');
-require_once locate_template('framework/plugins/sg_related_posts/sg_related_posts.php');
-require_once locate_template('framework/plugins/sg_user_avatar/sg_user_avatar.php');
+sg_include_path('framework/template_tags');
 sg_include_path('/framework/custom_post_types');	
-sg_include_path('/framework/shortcodes');	
 
+require_once locate_template('settings/tgm_plugins.php');
 require_once locate_template('settings/theme_options.php');
 require_once locate_template('settings/metaboxes.php');
-require_once locate_template('settings/taxonomies.php');
 
-sg_include_path('/choices/custom_post_types');	
-sg_include_path('/choices/shortcodes');	
-sg_include_path('/choices/widgets');	
-
-require_once locate_template('/choices/ea_api_bak/ea_api.php');			// EA Api
-require_once locate_template('/choices/ea_api_bak/ea_api_search.php');	// EA Api
-require_once locate_template('/choices/ea_api_bak/ea_api_search_investment.php');	// EA Api
-require_once locate_template('/choices/ea_api_bak/ea_api_listing.php');	// EA Api
-require_once locate_template('/choices/ea_api_bak/ea_api_details.php');	// EA Api
-require_once locate_template('/choices/ea_api_bak/ea_api_featured.php');	// EA Api
-
-require_once locate_template('/choices/ea_api/ea_api.php');			// EA Api
-require_once locate_template('/choices/ea_api/ea_api_search.php');			// EA Api
-require_once locate_template('/choices/ea_api/ea_api_listing.php');			// EA Api
-require_once locate_template('/choices/ea_api/ea_api_details.php');			// EA Api
-
-require_once locate_template('/choices/resales_api.php');	// EA Api
-require_once locate_template('/choices/resales_api_search.php');	// EA Api
-require_once locate_template('/choices/resales_api_details.php');	// EA Api
+add_filter('jpeg_quality', function($arg){ return 100; });

@@ -7,4 +7,5 @@
 cache/
 bower_components/
 node_modules/
-vendor/
+ignore/
+vendor/**/.git

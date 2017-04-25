@@ -1,3 +1,6 @@
+
+	</div>
+	<!-- container -->
 </div>
 <!-- content -->
 
@@ -17,8 +20,6 @@
 
 </footer>
 <!-- footer -->
-
-<div id="theme-modal" class="modal fade" tabindex="-1" style="display: none;"></div>
 
 <?php wp_footer(); ?>
 </body>

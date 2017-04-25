@@ -5,12 +5,12 @@ wpsg.init = function($) {
 
 	/*----bootstrap starter----*/
 
-	$('.bs-tooltip').tooltip();
-	$('.bs-popover').popover();
-	$('.cs-modal').on('click', '.close', function(event) {
-		var $this = $(this);
-		$this.closest('.modal').hide();
-	});
+	// $('.bs-tooltip').tooltip();
+	// $('.bs-popover').popover();
+	// $('.cs-modal').on('click', '.close', function(event) {
+	// 	var $this = $(this);
+	// 	$this.closest('.modal').hide();
+	// });
 
 	/*---plugin enabler---*/
 	(function() {

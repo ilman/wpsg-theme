@@ -16,4 +16,6 @@
 			<?php echo sg_get_post_category() ?>
 		</div>
 	</div>
+
+	<?php do_action('sg_content_after'); ?>
 </div>
